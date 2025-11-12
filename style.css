@@ -39,20 +39,24 @@ body {
     max-width: 32rem;
     margin: 0 auto 3rem;
 }
+
 /*equioe card*/
-.equipe-card{
+.equipe-card {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     gap: 1rem;
 }
-.custom-size{
+
+.custom-size {
     width: 25%;
     height: 100%;
 }
+
 /* Conteneur principal de la carte */
 .project-card-container {
-    height: 400px; /* tu peux ajuster cette valeur selon tes besoins */
+    height: 400px;
+    /* tu peux ajuster cette valeur selon tes besoins */
     background: #ffffff;
     border-radius: 1rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -632,4 +636,32 @@ html {
 .logo {
     height: 15%;
     width: 20%
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    /* vert succès */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s, transform 0.5s;
+    transform: translateY(-20px);
+    z-index: 1000;
+}
+
+.notification.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.notification.error {
+    background-color: #f44336;
+    /* rouge erreur */
 }

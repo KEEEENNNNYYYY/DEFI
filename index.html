@@ -731,6 +731,7 @@
             </div>
         </div>
     </footer>
+    <div id="notification" class="notification"></div>
 
     <script>
         // Mobile menu toggle
@@ -801,12 +802,12 @@
 
 
             // Debug console
-            console.log("== EmailJS send parameters ==");
+            /*console.log("== EmailJS send parameters ==");
             console.log("from_name:", from_name);
             console.log("from_email:", from_email);
             console.log("subject:", subject);
             console.log("message (plain):", message);
-            console.log("=============================");
+            console.log("=============================");*/
 
             const message_html = message.replace(/\n/g, "<br>");
 
@@ -819,17 +820,30 @@
                 message_html: message_html // au cas où tu veux utiliser du HTML plus tard
             };
 
+            function showNotification(message, isError = false) {
+                const notification = document.getElementById("notification");
+                notification.textContent = message;
+                notification.className = "notification show" + (isError ? " error" : "");
+
+                // Masquer après 3 secondes
+                setTimeout(() => {
+                    notification.className = "notification";
+                }, 3000);
+            }
+
+            // Envoi EmailJS
             emailjs
                 .send("service_m395mqh", "template_2gym8bu", templateParams)
                 .then((response) => {
-                    console.log(" EmailJS success:", response);
-                    alert("Message envoyé avec succès !");
+                    //console.log("EmailJS success:", response);
+                    showNotification("Message envoyé avec succès !");
                     contactForm.reset();
                 })
                 .catch((error) => {
-                    console.error(" Erreur EmailJS :", error);
-                    alert("Erreur lors de l'envoi : " + (error.text || "Vérifie la console pour plus de détails."));
+                    //console.error("Erreur EmailJS :", error);
+                    showNotification("Erreur lors de l'envoi : " + (error.text || "Vérifie la console pour plus de détails."), true);
                 });
+
         });
 
 
