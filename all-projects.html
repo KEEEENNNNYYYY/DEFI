@@ -63,6 +63,11 @@
             color: #64748b;
             line-height: 1.6;
         }
+
+        .project-card-container {
+            cursor: pointer;
+            /* important pour indiquer que c'est cliquable */
+        }
     </style>
 </head>
 
@@ -82,19 +87,24 @@
                 const response = await axios.get(API_URL);
                 const items = response.data;
 
-                container.innerHTML = "";
+                container.innerHTML = ""; // vider avant d'ajouter
 
                 items.forEach(item => {
                     const card = document.createElement("div");
                     card.className = "project-card-container";
 
+                    // ✅ Ajouter le click pour redirection
+                    card.addEventListener("click", () => {
+                        window.location.href = `details.html?id=${item.id}`;
+                    });
+
                     card.innerHTML = `
-            <img src="assets/800_5cdc003c680f4.jpg" alt="${item.name}" class="project-card">
-            <div class="card-content">
-              <h3 class="card-title">${item.name}</h3>
-              <p class="card-description">Prix : ${item.price} Ar</p>
-            </div>
-          `;
+        <img src="assets/800_5cdc003c680f4.jpg" alt="${item.name}" class="project-card">
+        <div class="card-content">
+          <h3 class="card-title">${item.name}</h3>
+          <p class="card-description">Prix : ${item.price} Ar</p>
+        </div>
+      `;
 
                     container.appendChild(card);
                 });
@@ -104,6 +114,7 @@
                 container.innerHTML = '<p style="color:red;">Impossible de charger les projets.</p>';
             }
         });
+
     </script>
 
 </body>

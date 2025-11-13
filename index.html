@@ -1166,16 +1166,23 @@
                     const card = document.createElement("div");
                     card.className = "project-card-container";
 
+                    // Ajout d'un événement click
+                    card.addEventListener("click", () => {
+                        // redirige vers la page details.html avec l'id
+                        window.location.href = `details.html?id=${item.id}`;
+                    });
+
                     card.innerHTML = `
-            <img src="assets/800_5cdc003c680f4.jpg" alt="${item.name}" class="project-card">
-            <div class="card-content">
-              <h3 class="card-title">${item.name}</h3>
-              <p class="card-description">Prix : ${item.price} Ar</p>
-            </div>
-          `;
+    <img src="assets/800_5cdc003c680f4.jpg" alt="${item.name}" class="project-card">
+    <div class="card-content">
+      <h3 class="card-title">${item.name}</h3>
+      <p class="card-description">Prix : ${item.price} Ar</p>
+    </div>
+  `;
 
                     container.appendChild(card);
                 });
+
 
             } catch (err) {
                 console.error("Erreur de chargement :", err);
