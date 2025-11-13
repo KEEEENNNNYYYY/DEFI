@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tous les Projets</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        /* Même style responsive que sur la page principale */
+        #projects-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            #projects-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #projects-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .project-card-container {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card-container:hover {
+            transform: translateY(-5px) scale(1.03);
+        }
+
+        .project-card {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+
+        .card-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="services" class="py-16">
+        <h2 style="text-align:center; margin-bottom:1rem;">TOUS LES PROJETS</h2>
+        <div id="projects-container"></div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const API_URL = "http://localhost:5000/api/items";
+            const container = document.getElementById("projects-container");
+
+            try {
+                const response = await axios.get(API_URL);
+                const items = response.data;
+
+                container.innerHTML = "";
+
+                items.forEach(item => {
+                    const card = document.createElement("div");
+                    card.className = "project-card-container";
+
+                    card.innerHTML = `
+            <img src="assets/800_5cdc003c680f4.jpg" alt="${item.name}" class="project-card">
+            <div class="card-content">
+              <h3 class="card-title">${item.name}</h3>
+              <p class="card-description">Prix : ${item.price} Ar</p>
+            </div>
+          `;
+
+                    container.appendChild(card);
+                });
+
+            } catch (err) {
+                console.error("Erreur de chargement :", err);
+                container.innerHTML = '<p style="color:red;">Impossible de charger les projets.</p>';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

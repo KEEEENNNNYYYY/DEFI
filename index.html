@@ -297,11 +297,25 @@
         </div>
     </section>-->
     <!-- NOS PROJETS Section -->
-    <section id="services">
-        <div class="container">
-            <h2>NOS PROJETS</h2>
-            <div id="projects-container" class="projects-grid" style="display: flex; flex-wrap: wrap; gap: 2rem;"></div>
+    <section id="services" class="py-16">
+        <h2>NOS PROJETS</h2>
+        <p>
+            Nous développons des projets durables, respectueux des communautés et de l’environnement.
+            Des initiatives audacieuses et innovantes, portées par des esprits passionnés pour transformer notre île.
+        </p>
+        <div id="projects-container"></div>
+        <div style="text-align:center; margin-top:2rem;">
+            <button id="see-more-btn" style="
+    background-color:#0f172a; 
+    color:white; 
+    padding:0.75rem 1.5rem; 
+    border:none; 
+    border-radius:0.5rem;
+    cursor:pointer;
+    font-weight:bold;
+  ">Voir plus</button>
         </div>
+
     </section>
 
     <!-- L’ÉQUIPE Section -->
@@ -1142,13 +1156,15 @@
 
             try {
                 const response = await axios.get(API_URL);
-                const items = response.data;
+                let items = response.data;
+
+                items = items.slice(0, 3);
 
                 container.innerHTML = ""; // vider avant d'ajouter
 
                 items.forEach(item => {
                     const card = document.createElement("div");
-                    card.className = "project-card-container"; // ta classe CSS
+                    card.className = "project-card-container";
 
                     card.innerHTML = `
             <img src="assets/800_5cdc003c680f4.jpg" alt="${item.name}" class="project-card">
@@ -1166,6 +1182,11 @@
                 container.innerHTML = '<p style="color:red;">Impossible de charger les projets.</p>';
             }
         });
+        document.getElementById("see-more-btn").addEventListener("click", () => {
+            // Redirige vers la page complète
+            window.location.href = "all-projects.html";
+        });
+
     </script>
 </body>
 
