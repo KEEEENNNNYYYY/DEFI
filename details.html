@@ -8,31 +8,71 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
+        html,
         body {
-            font-family: sans-serif;
-            padding: 2rem;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+            /* Empêche le scroll horizontal */
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .project-detail {
             max-width: 800px;
             margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .project-detail img {
             width: 100%;
-            height: 400px;
+            height: auto;
             object-fit: cover;
             border-radius: 1rem;
         }
 
-        .project-detail h2 {
-            font-size: 2rem;
-            margin: 1rem 0;
+        .project-content {
+            overflow-y: auto;
+            /* scroll vertical si nécessaire */
+            word-wrap: break-word;
+            /* empêche le texte long de créer un scroll horizontal */
         }
 
-        .project-detail p {
-            font-size: 1.2rem;
-            color: #555;
+        .project-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .project-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            white-space: pre-line;
+            /* garde les sauts de ligne */
+        }
+
+        .back-btn {
+            background-color: #95a5a6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            align-self: flex-start;
         }
     </style>
 </head>
@@ -46,7 +86,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
             const params = new URLSearchParams(window.location.search);
-            const projectId = params.get("id"); // récupère l'id de l'URL
+            const projectId = params.get("id");
 
             if (!projectId) {
                 document.getElementById("project-detail").innerHTML = "<p>Projet introuvable.</p>";
@@ -67,11 +107,22 @@
 
                 // Affichage du projet
                 document.getElementById("project-detail").innerHTML = `
-        <img src="assets/800_5cdc003c680f4.jpg" alt="${project.name}">
-        <h2>${project.name}</h2>
-        <p>Prix : ${project.price} Ar</p>
-        <p>Description du projet ici (placeholder)</p>
-      `;
+          <img src="assets/800_5cdc003c680f4.jpg" alt="${project.name}">
+          <div class="project-content">
+            <h2>${project.name}</h2>
+            <p><strong></strong></p>
+            <p>${project.contenu}</p>
+          </div>
+        `;
+
+                // Bouton retour
+                const btn = document.createElement("button");
+                btn.textContent = "← Retour";
+                btn.className = "back-btn";
+                btn.addEventListener("click", () => {
+                    window.location.href = "index.html";
+                });
+                document.getElementById("project-detail").appendChild(btn);
 
             } catch (err) {
                 console.error(err);

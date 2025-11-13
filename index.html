@@ -1150,6 +1150,7 @@
 
 
     <script>
+        //preview
         document.addEventListener("DOMContentLoaded", async () => {
             const API_URL = "http://localhost:5000/api/items";
             const container = document.getElementById("projects-container");
@@ -1176,7 +1177,7 @@
     <img src="assets/800_5cdc003c680f4.jpg" alt="${item.name}" class="project-card">
     <div class="card-content">
       <h3 class="card-title">${item.name}</h3>
-      <p class="card-description">Prix : ${item.price} Ar</p>
+      <p class="card-description">${item.contenu} </p>
     </div>
   `;
 
