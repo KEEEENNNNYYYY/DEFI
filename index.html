@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png"
         href="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body class="min-h-screen bg-white">
@@ -239,7 +240,7 @@
 
 
     <!-- NOS PROJETS Section -->
-    <section id="services" class="py-16 bg-gray-50">
+    <!--<section id="services" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 fade-in-up">
                 <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -261,8 +262,8 @@
                         <h3 class="text-xl font-semibold text-gray-900 mb-4">Création d'une fosse biodigesteur pour le
                             village d’Ambolomanjakarivo</h3>
                         <p class="text-gray-600 leading-relaxed">
-                            <!-- description of the project needed here -->
-                        </p>
+                            description of the project needed here -->
+    <!--  </p>
                     </div>
                 </div>
 
@@ -274,8 +275,8 @@
                         <h3 class="text-xl font-semibold text-gray-900 mb-4">ECO-TOURISME : village durable
                             d'Ambolomanjakarivo</h3>
                         <p class="text-gray-600 leading-relaxed">
-                            <!-- description of the project needed here -->
-                        </p>
+                             description of the project needed here -->
+    <!--</p>
                     </div>
                 </div>
 
@@ -286,13 +287,20 @@
                     <div class="p-6 flex-1">
                         <h3 class="text-xl font-semibold text-gray-900 mb-4">HOW TO MAKE EXTRA MONEY</h3>
                         <p class="text-gray-600 leading-relaxed">
-                            <!-- description of the project needed here -->
-                        </p>
+                             description of the project needed here -->
+    <!--</p>
                     </div>
                 </div>
 
 
             </div>
+        </div>
+    </section>-->
+    <!-- NOS PROJETS Section -->
+    <section id="services">
+        <div class="container">
+            <h2>NOS PROJETS</h2>
+            <div id="projects-container" class="projects-grid" style="display: flex; flex-wrap: wrap; gap: 2rem;"></div>
         </div>
     </section>
 
@@ -1123,6 +1131,40 @@
         document.addEventListener('DOMContentLoaded', () => {
             initCarousel();
             initDonation();
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const API_URL = "http://localhost:5000/api/items";
+            const container = document.getElementById("projects-container");
+
+            try {
+                const response = await axios.get(API_URL);
+                const items = response.data;
+
+                container.innerHTML = ""; // vider avant d'ajouter
+
+                items.forEach(item => {
+                    const card = document.createElement("div");
+                    card.className = "project-card-container"; // ta classe CSS
+
+                    card.innerHTML = `
+            <img src="assets/800_5cdc003c680f4.jpg" alt="${item.name}" class="project-card">
+            <div class="card-content">
+              <h3 class="card-title">${item.name}</h3>
+              <p class="card-description">Prix : ${item.price} Ar</p>
+            </div>
+          `;
+
+                    container.appendChild(card);
+                });
+
+            } catch (err) {
+                console.error("Erreur de chargement :", err);
+                container.innerHTML = '<p style="color:red;">Impossible de charger les projets.</p>';
+            }
         });
     </script>
 </body>
