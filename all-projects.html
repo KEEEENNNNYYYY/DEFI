@@ -109,10 +109,10 @@
                         : item.contenu;
 
                     card.innerHTML = `
-                <img src="assets/800_5cdc003c680f4.jpg" alt="${item.name}" class="project-card">
+                <img src="${item.imageUrl || 'assets/placeholder.jpg'}" alt="${item.name}" class="project-card">
                 <div class="card-content">
                   <h3 class="card-title">${item.name}</h3>
-                  <p><strong></strong> ${preview}</p>
+                  <p>${preview}</p>
                 </div>
             `;
 
@@ -125,6 +125,7 @@
             }
         });
     </script>
+
 </body>
 
 </html>

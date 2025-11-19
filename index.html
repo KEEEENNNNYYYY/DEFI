@@ -1150,7 +1150,6 @@
 
 
     <script>
-        //preview
         document.addEventListener("DOMContentLoaded", async () => {
             const API_URL = "https://defi-admin-back-end.onrender.com/api/items";
             const container = document.getElementById("projects-container");
@@ -1159,6 +1158,7 @@
                 const response = await axios.get(API_URL);
                 let items = response.data;
 
+                // Afficher seulement les 3 premiers projets
                 items = items.slice(0, 3);
 
                 container.innerHTML = ""; // vider avant d'ajouter
@@ -1167,35 +1167,39 @@
                     const card = document.createElement("div");
                     card.className = "project-card-container";
 
-                    // Ajout d'un événement click
+                    // Click pour redirection vers la page détails
                     card.addEventListener("click", () => {
-                        // redirige vers la page details.html avec l'id
                         window.location.href = `details.html?id=${item.id}`;
                     });
 
+                    // Preview du contenu limité à 100 caractères
+                    const preview = item.contenu.length > 100
+                        ? item.contenu.substring(0, 100) + "..."
+                        : item.contenu;
+
                     card.innerHTML = `
-    <img src="assets/800_5cdc003c680f4.jpg" alt="${item.name}" class="project-card">
-    <div class="card-content">
-      <h3 class="card-title">${item.name}</h3>
-      <p class="card-description">${item.contenu} </p>
-    </div>
-  `;
+                <img src="${item.imageUrl || 'assets/placeholder.jpg'}" alt="${item.name}" class="project-card">
+                <div class="card-content">
+                    <h3 class="card-title">${item.name}</h3>
+                    <p class="card-description">${preview}</p>
+                </div>
+            `;
 
                     container.appendChild(card);
                 });
-
 
             } catch (err) {
                 console.error("Erreur de chargement :", err);
                 container.innerHTML = '<p style="color:red;">Impossible de charger les projets.</p>';
             }
         });
-        document.getElementById("see-more-btn").addEventListener("click", () => {
-            // Redirige vers la page complète
+
+        // Bouton "See More" pour rediriger vers la page complète
+        document.getElementById("see-more-btn")?.addEventListener("click", () => {
             window.location.href = "all-projects.html";
         });
-
     </script>
+
 </body>
 
 </html>

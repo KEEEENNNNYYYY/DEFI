@@ -88,8 +88,10 @@
             const params = new URLSearchParams(window.location.search);
             const projectId = params.get("id");
 
+            const detailContainer = document.getElementById("project-detail");
+
             if (!projectId) {
-                document.getElementById("project-detail").innerHTML = "<p>Projet introuvable.</p>";
+                detailContainer.innerHTML = "<p>Projet introuvable.</p>";
                 return;
             }
 
@@ -101,16 +103,15 @@
                 const project = items.find(p => p.id == projectId);
 
                 if (!project) {
-                    document.getElementById("project-detail").innerHTML = "<p>Projet introuvable.</p>";
+                    detailContainer.innerHTML = "<p>Projet introuvable.</p>";
                     return;
                 }
 
-                // Affichage du projet
-                document.getElementById("project-detail").innerHTML = `
-          <img src="assets/800_5cdc003c680f4.jpg" alt="${project.name}">
+                // Affichage du projet avec image dynamique
+                detailContainer.innerHTML = `
+          <img src="${project.imageUrl || 'assets/placeholder.jpg'}" alt="${project.name}">
           <div class="project-content">
             <h2>${project.name}</h2>
-            <p><strong></strong></p>
             <p>${project.contenu}</p>
           </div>
         `;
@@ -122,14 +123,15 @@
                 btn.addEventListener("click", () => {
                     window.location.href = "index.html";
                 });
-                document.getElementById("project-detail").appendChild(btn);
+                detailContainer.appendChild(btn);
 
             } catch (err) {
                 console.error(err);
-                document.getElementById("project-detail").innerHTML = "<p>Impossible de charger les détails du projet.</p>";
+                detailContainer.innerHTML = "<p>Impossible de charger les détails du projet.</p>";
             }
         });
     </script>
+
 
 </body>
 
