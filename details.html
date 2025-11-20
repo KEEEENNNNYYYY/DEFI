@@ -44,12 +44,14 @@
         }
 
         .article-title {
-            font-size: 2.4rem;
-            font-weight: bold;
+            font-size: 2rem;
+            /* Taille réduite */
+            font-weight: 800;
             line-height: 1.2;
-            margin-bottom: 20px;
-            color: #1e293b;
+            word-break: break-word;
+            /* empêche le débordement */
         }
+
 
         .article-meta {
             font-size: 0.95rem;
@@ -64,7 +66,12 @@
             line-height: 1.85;
             color: #374151;
             white-space: pre-line;
+            overflow-wrap: break-word;
+            /* FORCE la coupure des mots */
+            word-break: break-word;
+            /* sécurité supplémentaire */
         }
+
 
         .back-btn {
             margin-top: 35px;
