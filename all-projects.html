@@ -1,270 +1,88 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tous les Projets</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/projects.css">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <style>
-        /* RESET SIMPLE */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: "Inter", Arial, sans-serif;
-            background: #f3f4f6;
-            padding: 2rem 1rem;
-        }
-
-        section h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #0f172a;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 2.5rem;
-        }
-
-        /* Container responsive */
-        #projects-container {
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            #projects-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            #projects-container {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        /* CARD */
-        .project-card-container {
-            background: #ffffff;
-            border-radius: 1.2rem;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-
-            /* Animation */
-            transition: all 0.25s ease;
-            border: 1px solid #e5e7eb;
-            position: relative;
-        }
-
-        /* Effet hover premium */
-        .project-card-container:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
-            border-color: #d1d5db;
-        }
-
-        /* Image */
-        .project-card {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            background: #e2e8f0;
-        }
-
-        /* CONTENT */
-        .card-content {
-            padding: 1.4rem 1.6rem;
-        }
-
-        .card-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 0.4rem;
-        }
-
-        .card-content p {
-            font-size: 0.95rem;
-            color: #475569;
-            line-height: 1.35rem;
-            margin-top: 0.3rem;
-        }
-
-        /* Petit badge */
-        .project-card-container::after {
-            content: "Voir plus →";
-            position: absolute;
-            bottom: 12px;
-            right: 16px;
-            font-size: 0.85rem;
-            color: #2563eb;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-
-        .project-card-container:hover::after {
-            opacity: 1;
-        }
-    </style>
-
 </head>
 
 <body>
 
-    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
-                <div class="flex justify-start lg:w-0 lg:flex-1">
-                    <img alt="DEFI Madagascar" class="img-responsive logo"
-                        src="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
-                </div>
+<!-- HEADER -->
+<header class="bg-white shadow-sm fixed w-full top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+            <div class="flex justify-start lg:w-0 lg:flex-1">
+                <img alt="DEFI Madagascar" class="img-responsive logo"
+                     src="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
+            </div>
 
-                <div class="-mr-2 -my-2 md:hidden">
-                    <button id="mobile-menu-button"
+            <div class="-mr-2 -my-2 md:hidden">
+                <button id="mobile-menu-button"
                         class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
 
-                <nav class="hidden md:flex space-x-10">
-                    <a href="index.html#home"
-                        class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Accueil</a>
+            <nav class="hidden md:flex space-x-10">
+                <a href="index.html#home" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Accueil</a>
+                <a href="index.html#about" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">À propos</a>
+                <a href="index.html#services" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Projets</a>
+                <a href="index.html#testimonials" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Équipe</a>
+                <a href="index.html#valeurs" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Valeurs</a>
+                <a href="index.html#contact" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Contact</a>
+            </nav>
 
-                    <a href="index.html#about"
-                        class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">À propos</a>
+            <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                <a href="#donation"
+                   class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700">
+                    Faire un don
+                </a>
+            </div>
+        </div>
 
-                    <a href="index.html#services"
-                        class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Projets</a>
-
-                    <a href="index.html#testimonials"
-                        class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Équipe</a>
-
-                    <a href="index.html#valeurs"
-                        class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Valeurs</a>
-
-                    <a href="index.html#contact"
-                        class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Contact</a>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <div class="pt-5 pb-6 px-5 bg-white shadow-lg rounded-lg">
+                <nav class="grid gap-y-8">
+                    <a href="index.html#home" class="text-base font-medium text-gray-900 hover:text-gray-700">Accueil</a>
+                    <a href="index.html#about" class="text-base font-medium text-gray-900 hover:text-gray-700">À propos</a>
+                    <a href="index.html#services" class="text-base font-medium text-gray-900 hover:text-gray-700">Projets</a>
+                    <a href="index.html#testimonials" class="text-base font-medium text-gray-900 hover:text-gray-700">Équipe</a>
+                    <a href="index.html#valeurs" class="text-base font-medium text-gray-900 hover:text-gray-700">Valeurs</a>
+                    <a href="index.html#contact" class="text-base font-medium text-gray-900 hover:text-gray-700">Contact</a>
                 </nav>
 
-                <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                    <a href="#donation"
-                        class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700 transition-colors">
+                <div class="mt-6">
+                    <a href="index.html#donation"
+                       class="w-full flex items-center justify-center px-4 py-2 rounded-md text-white bg-green-600 hover:bg-green-700">
                         Faire un don
                     </a>
                 </div>
             </div>
-
-            <!-- Mobile menu -->
-            <div id="mobile-menu" class="mobile-menu md:hidden">
-                <div class="pt-5 pb-6 px-5 bg-white shadow-lg rounded-lg">
-                    <nav class="grid gap-y-8">
-                        <a href="index.html#home"
-                            class="text-base font-medium text-gray-900 hover:text-gray-700">Accueil</a>
-
-                        <a href="index.html#about" class="text-base font-medium text-gray-900 hover:text-gray-700">À
-                            propos</a>
-
-                        <a href="index.html#services"
-                            class="text-base font-medium text-gray-900 hover:text-gray-700">Projets</a>
-
-                        <a href="index.html#testimonials"
-                            class="text-base font-medium text-gray-900 hover:text-gray-700">Équipe</a>
-
-                        <a href="index.html#valeurs"
-                            class="text-base font-medium text-gray-900 hover:text-gray-700">Valeurs</a>
-
-                        <a href="index.html#contact"
-                            class="text-base font-medium text-gray-900 hover:text-gray-700">Contact</a>
-                    </nav>
-
-                    <div class="mt-6">
-                        <a href="index.html#donation"
-                            class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700">
-                            Faire un don
-                        </a>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </header>
-    <section id="services" class="py-16">
-        <h2 style="text-align:center; margin-bottom:1rem;">TOUS LES PROJETS</h2>
-        <div id="projects-container"></div>
-    </section>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+    </div>
+</header>
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('open');
-        });
+<!-- PAGE CONTENT -->
+<section id="services" class="py-16">
+    <h2 style="text-align:center; margin-bottom:1rem;">TOUS LES PROJETS</h2>
+    <div id="projects-container"></div>
+</section>
 
-        // Close mobile menu when clicking on links
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-            });
-        });
-        document.addEventListener("DOMContentLoaded", async () => {
-            const API_URL = "https://defi-admin-back-end.onrender.com/api/items";
-            const container = document.getElementById("projects-container");
-
-            try {
-                const response = await axios.get(API_URL);
-                const items = response.data;
-
-                container.innerHTML = ""; // vider avant d'ajouter
-
-                items.forEach(item => {
-                    const card = document.createElement("div");
-                    card.className = "project-card-container";
-
-                    // Click pour redirection vers la page détails
-                    card.addEventListener("click", () => {
-                        window.location.href = `details.html?id=${item.id}`;
-                    });
-
-                    // Créer un petit aperçu (preview) du contenu
-                    const preview = item.contenu.length > 100
-                        ? item.contenu.substring(0, 100) + "..."
-                        : item.contenu;
-
-                    card.innerHTML = `
-                <img src="${item.imageUrl || 'assets/placeholder.jpg'}" alt="${item.name}" class="project-card">
-                <div class="card-content">
-                  <h3 class="card-title">${item.name}</h3>
-                  <p>${preview}</p>
-                </div>
-            `;
-
-                    container.appendChild(card);
-                });
-
-            } catch (err) {
-                console.error("Erreur de chargement :", err);
-                container.innerHTML = '<p style="color:red;">Impossible de charger les projets.</p>';
-            }
-        });
-    </script>
+<!-- SCRIPTS -->
+<script src="js/menu.js"></script>
+<script src="js/projects.js"></script>
 
 </body>
-
 </html>

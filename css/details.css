@@ -1,0 +1,106 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #f5f4f2;
+    font-family: "Georgia", serif;
+}
+
+/* Wrapper */
+.article-wrapper {
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Container */
+.article-container {
+    background: white;
+    padding: 40px;
+    max-width: 750px;
+    width: 100%;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+/* Image */
+.article-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+/* Title */
+.article-title {
+    font-size: 2.4rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #1e293b;
+}
+
+/* Meta */
+.article-meta {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 15px;
+}
+
+/* Main text */
+.article-content {
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: #374151;
+    white-space: pre-line;
+}
+
+/* Retour button */
+.back-btn {
+    margin-top: 35px;
+    display: inline-block;
+    background-color: #334155;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    background-color: #1e293b;
+}
+
+/* Header link styles */
+.nav-link {
+    text-base: 1rem;
+    font-weight: 500;
+    color: #64748b;
+    transition: 0.2s;
+}
+
+.nav-link:hover {
+    color: #0f172a;
+}
+
+.mobile-nav-link {
+    font-size: 1rem;
+    color: #0f172a;
+    transition: 0.2s;
+}
+
+.btn-don {
+    padding: 10px 20px;
+    border-radius: 6px;
+    background: #16a34a;
+    color: white;
+    transition: 0.2s;
+}
+
+.btn-don:hover {
+    background: #15803d;
+}

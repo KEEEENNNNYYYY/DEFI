@@ -1,0 +1,104 @@
+/* RESET SIMPLE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", Arial, sans-serif;
+    background: #f3f4f6;
+    padding: 2rem 1rem;
+}
+
+/* Container responsive */
+section h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+}
+
+#projects-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    #projects-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    #projects-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* CARD */
+.project-card-container {
+    background: #ffffff;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: 1px solid #e5e7eb;
+    position: relative;
+}
+
+.project-card-container:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+    border-color: #d1d5db;
+}
+
+/* Image */
+.project-card {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background: #e2e8f0;
+}
+
+/* Content */
+.card-content {
+    padding: 1.4rem 1.6rem;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.4rem;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.35rem;
+    margin-top: 0.3rem;
+}
+
+/* Badge action */
+.project-card-container::after {
+    content: "Voir plus →";
+    position: absolute;
+    bottom: 12px;
+    right: 16px;
+    font-size: 0.85rem;
+    color: #2563eb;
+    opacity: 0;
+    transition: 0.2s ease;
+}
+
+.project-card-container:hover::after {
+    opacity: 1;
+}
