@@ -741,3 +741,40 @@ html {
     margin: 0 auto 2rem auto;
     color: #555;
 }
+/* Liens navbar */
+.navbar .navbar-nav .nav-link {
+    margin-left: 30px;
+    padding: 0;
+    outline: none;
+    color: var(--bs-dark);
+    font-size: 18px;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+/* Hover / active */
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: var(--bs-primary);
+}
+
+/* Icône flèche du dropdown */
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+/* Dropdown menu */
+.navbar .dropdown-menu {
+    border-radius: 0;
+}
+
+/* Dropdown items hover */
+.navbar .dropdown-menu .dropdown-item:hover,
+.navbar .dropdown-menu .dropdown-item.active {
+    color: var(--bs-white);
+    background: var(--bs-primary);
+}
