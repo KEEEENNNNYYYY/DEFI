@@ -8,8 +8,9 @@
 
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/hero.css">
     <link rel="icon" type="image/png"
-        href="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
+          href="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
 
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,212 +24,296 @@
 
 <body class="min-h-screen bg-gradient-to-br from-green-50 to-indigo-100">
 
-    <!-- Header -->
-    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
-                <div class="flex justify-start lg:w-0 lg:flex-1">
-                    <img alt="DEFI Madagascar" class="img-responsive logo"
-                        src="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
-                </div>
+<!-- Header -->
+<header class="glass-navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+            <div class="flex justify-start lg:w-0 lg:flex-1">
+                <img alt="DEFI Madagascar" class="img-responsive logo"
+                     src="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
+            </div>
 
-                <div class="-mr-2 -my-2 md:hidden">
-                    <button id="mobile-menu-button"
+            <div class="-mr-2 -my-2 md:hidden">
+                <button id="mobile-menu-button"
                         class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="hidden md:flex space-x-10 glass-nav-links">
+                <a href="#home"
+                   class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Accueil</a>
+                <a href="#about" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">A
+                    propos</a>
+                <a href="#services"
+                   class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Projets</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        Pages
+                    </a>
+                    <div class="dropdown-menu bg-light mt-2">
+                        <a href="feature.html" class="dropdown-item">Features</a>
+                        <a href="team.html" class="dropdown-item">Our Team</a>
+                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        <a href="404.html" class="dropdown-item">404 Page</a>
+                    </div>
                 </div>
 
-                <nav class="hidden md:flex space-x-10">
-                    <a href="#home"
-                        class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Accueil</a>
-                    <a href="#about" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">A
-                        propos</a>
-                    <a href="#services"
-                        class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Projets</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            Pages
-                        </a>
-                        <div class="dropdown-menu bg-light mt-2">
-                            <a href="feature.html" class="dropdown-item">Features</a>
-                            <a href="team.html" class="dropdown-item">Our Team</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="404.html" class="dropdown-item">404 Page</a>
-                        </div>
-                    </div>
+                <a href="#testimonials"
+                   class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Equipe</a>
+                <a href="#valeurs"
+                   class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Valeurs</a>
+                <a href="#contact"
+                   class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Contact </a>
+            </nav>
+
+            <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                <a href="#donation"
+                   class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700 transition-colors">
+                    Faire un don
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <div class="pt-5 pb-6 px-5 bg-white shadow-lg rounded-lg">
+                <nav class="grid gap-y-8">
+                    <a href="#home" class="text-base font-medium text-gray-900 hover:text-gray-700">Accueil</a>
+                    <a href="#about" class="text-base font-medium text-gray-900 hover:text-gray-700">A propos</a>
+                    <a href="#services" class="text-base font-medium text-gray-900 hover:text-gray-700">Projets</a>
 
                     <a href="#testimonials"
-                        class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Equipe</a>
-                    <a href="#valeurs"
-                        class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Valeurs</a>
-                    <a href="#contact"
-                        class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Contact </a>
+                       class="text-base font-medium text-gray-900 hover:text-gray-700">Equipe</a>
+                    <a href="#valeurs" class="text-base font-medium text-gray-900 hover:text-gray-700">Valeurs</a>
+                    <a href="#contact" class="text-base font-medium text-gray-900 hover:text-gray-700">Contact</a>
                 </nav>
-
-                <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                <div class="mt-6">
                     <a href="#donation"
-                        class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700 transition-colors">
+                       class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700">
                         Faire un don
                     </a>
                 </div>
             </div>
-
-            <!-- Mobile menu -->
-            <div id="mobile-menu" class="mobile-menu md:hidden">
-                <div class="pt-5 pb-6 px-5 bg-white shadow-lg rounded-lg">
-                    <nav class="grid gap-y-8">
-                        <a href="#home" class="text-base font-medium text-gray-900 hover:text-gray-700">Accueil</a>
-                        <a href="#about" class="text-base font-medium text-gray-900 hover:text-gray-700">A propos</a>
-                        <a href="#services" class="text-base font-medium text-gray-900 hover:text-gray-700">Projets</a>
-
-                        <a href="#testimonials"
-                            class="text-base font-medium text-gray-900 hover:text-gray-700">Equipe</a>
-                        <a href="#valeurs" class="text-base font-medium text-gray-900 hover:text-gray-700">Valeurs</a>
-                        <a href="#contact" class="text-base font-medium text-gray-900 hover:text-gray-700">Contact</a>
-                    </nav>
-                    <div class="mt-6">
-                        <a href="#donation"
-                            class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700">
-                            Faire un don
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- Fog sous la navbar -->
-            <div class="pointer-events-none fixed top-16 left-0 w-full h-16 bg-gradient-to-b from-white/90 to-transparent z-40"></div>
-
         </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative overflow-hidden  pt-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ">
-                <div class="text-center lg:text-left fade-in-left">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                        Porter l’espoir au <span class="text-green-600">cœur de Madagascar</span>
-                    </h1>
-                    <p class="mt-6 text-xl text-gray-600 leading-relaxed">
-                        Enracinons notre présent, pour un futur plus fort.
-                    </p>
-                    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="#donation"
-                            class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition-all duration-200 transform hover:scale-105 shadow-lg">
-                            Nous supporter
-                            <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
-                    </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<div class="carousel">
+    <div class="list">
+        <div class="item" style="background-image: url('assets/800_5cda75b3deffb.jpg');">
+            <div class="content">
+                <div class="title">Transformer l’espoir en</div>
+                <div class="name">actions concrètes</div>
+                <div class="des">Construisons ensemble un futur où chaque voix compte.</div>
+                <div class="btn">
+                    <button>See More</button>
+                    <button>Subscribe</button>
                 </div>
-
-                <div class="fixed right-0 translate-x-[-7rem] rotate-[20deg] opacity-80 -z-10">
-
-                <!-- Masonry avec translations importantes -->
-                    <div class="grid grid-cols-3 gap-4">
-
-                        <!-- Colonne 1 -->
-                        <img src="./assets/2000_5ce54778d2560.jpg"
-                             class="w-40 h-64 object-cover rounded-xl shadow-md -translate-y-6 ">
-                        <img src="./assets/2000_5ce54778d2560.jpg"
-                             class="w-40 h-64 object-cover rounded-xl shadow-md translate-y-4">
-                        <img src="./assets/2000_5ce54778d2560.jpg"
-                             class="w-40 h-64 object-cover rounded-xl shadow-md translate-y-16">
-
-                        <!-- Colonne 1 -->
-                        <img src="./assets/2000_5ce54778d2560.jpg"
-                             class="w-40 h-64 object-cover rounded-xl shadow-md -translate-y-6">
-                        <img src="./assets/2000_5ce54778d2560.jpg"
-                             class="w-40 h-64 object-cover rounded-xl shadow-md translate-y-4">
-                        <img src="./assets/2000_5ce54778d2560.jpg"
-                             class="w-40 h-64 object-cover rounded-xl shadow-md translate-y-16">
-
-                        <!-- Colonne 1 -->
-                        <img src="./assets/2000_5ce54778d2560.jpg"
-                             class="w-40 h-64 object-cover rounded-xl shadow-md -translate-y-6">
-                        <img src="./assets/2000_5ce54778d2560.jpg"
-                             class="w-40 h-64 object-cover rounded-xl shadow-md translate-y-4">
-                        <img src="./assets/2000_5ce54778d2560.jpg"
-                             class="w-40 h-64 object-cover rounded-xl shadow-md translate-y-16">
-                    </div>
-
-                    <!-- Cercles décoratifs -->
-                    <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-yellow-400 rounded-full opacity-20 animate-pulse"></div>
-                    <div class="absolute -top-4 -right-4 w-16 h-16 bg-purple-400 rounded-full opacity-20 animate-pulse"
-                         style="animation-delay: 0.3s;"></div>
-
-                </div>
-
             </div>
+        </div>
+
+        <div class="item" style="background-image: url('assets/800_5cda75619d802.jpg');">
+            <div class="content">
+                <div class="title">Investir aujourd’hui pour</div>
+                <div class="name">les générations de demain</div>
+                <div class="des">Chaque action compte pour transformer durablement les vies à Madagascar.</div>
+                <div class="btn">
+                    <button>See More</button>
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="item" style="background-image: url('assets/800_5cdc003c680f4.jpg');">
+            <div class="content">
+                <div class="title">Agir ensemble pour</div>
+                <div class="name">un Madagascar plus fort</div>
+                <div class="des">La solidarité est la clé d’un développement équitable et durable.</div>
+
+                <div class="btn">
+                    <button>See More</button>
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="item" style="background-image: url('assets/800_5dd0de7f2ef61.jpg');">
+            <div class="content">
+                <div class="title">Ancrés dans nos valeurs,</div>
+                <div class="name">tournés vers l’avenir</div>
+                <div class="des">Développer les communautés locales en respectant leur identité.</div>
+
+                <div class="btn">
+                    <button>See More</button>
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ajoute les autres items du carousel ici -->
 
     </div>
 
-    </section>
+    <div class="arrows">
+        <button class="prev"><</button>
+        <button class="next">></button>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="relative py-16 bg-white z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+    <div class="timeRunning"></div>
+</div>
 
-            <!-- ===== LIGNE 1 : Image gauche / Texte droite ===== -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-                <!-- Card 1 --> <div class="relative h-72 rounded-xl overflow-hidden scale-in stagger-1 group"> <img src="./assets/2000_5ce54778d2560.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"> <!-- Fog --> <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div> <!-- Content --> <div class="relative z-10 h-full flex flex-col justify-end p-6 text-white"> <h3 class="text-lg font-semibold mb-2"> Engagement communautaire </h3> <p class="text-sm text-gray-200"> Encourager la participation locale pour renforcer la solidarité et le développement durable. </p> </div> </div>
+<script>
+    var nextBtn = document.querySelector('.next');
+    var prevBtn = document.querySelector('.prev');
+    var carousel = document.querySelector('.carousel');
+    var list = document.querySelector('.list');
+    var runningTime = document.querySelector('.timeRunning');
 
-                <!-- Texte -->
-                <div class="fade-in-right">
-                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                        DEFI Madagascar est une association à but non lucratif
-                    </h2>
+    let timeRunning = 3000;
+    let timeAutoNext = 7000;
 
-                    <p class="text-lg text-gray-600">
-                        Engagée depuis plusieurs décennies pour un Madagascar évolué, prospère et indépendant,
-                        DEFI agit au cœur des communautés en mettant en œuvre des actions concrètes et durables.
-                        À travers une approche participative et inclusive, l’association accompagne les populations
-                        locales dans la protection de l’environnement, le renforcement des capacités humaines et
-                        l’amélioration des conditions de vie, afin de bâtir un avenir solidaire, résilient et respectueux
-                        des générations futures.
-                    </p>
+    nextBtn.onclick = function () {
+        showSlider('next');
+    }
+    prevBtn.onclick = function () {
+        showSlider('prev');
+    }
 
-                </div>
+    let runTimeOut;
+    let runNextAuto = setTimeout(() => {
+        nextBtn.click();
+    }, timeAutoNext);
+
+    function resetTimeAnimation() {
+        runningTime.style.animation = 'none';
+        runningTime.offsetHeight;
+        runningTime.style.animation = null;
+        runningTime.style.animation = 'runningTime 7s linear forwards';
+    }
+
+    function showSlider(type) {
+        let sliderItemsDom = list.querySelectorAll('.item');
+
+        if (type === 'next') {
+            list.appendChild(sliderItemsDom[0]);
+            carousel.classList.add('next');
+        } else {
+            list.prepend(sliderItemsDom[sliderItemsDom.length - 1]);
+            carousel.classList.add('prev');
+        }
+
+        clearTimeout(runTimeOut);
+        runTimeOut = setTimeout(() => {
+            carousel.classList.remove('next');
+            carousel.classList.remove('prev');
+        }, timeRunning);
+
+        clearTimeout(runNextAuto);
+        runNextAuto = setTimeout(() => {
+            nextBtn.click();
+        }, timeAutoNext);
+
+        resetTimeAnimation();
+    }
+
+    resetTimeAnimation();
+</script>
+
+<!-- About Section -->
+<section id="about" class="relative py-16 bg-white z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+
+        <!-- ===== LIGNE 1 : Image gauche / Texte droite ===== -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            <!-- Card 1 -->
+            <div class="relative h-72 rounded-xl overflow-hidden scale-in stagger-1 group"><img
+                    src="./assets/2000_5ce54778d2560.jpg"
+                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <!-- Fog -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                <!-- Content -->
+                <div class="relative z-10 h-full flex flex-col justify-end p-6 text-white"><h3
+                        class="text-lg font-semibold mb-2"> Engagement communautaire </h3>
+                    <p class="text-sm text-gray-200"> Encourager la participation locale pour renforcer la solidarité et
+                        le développement durable. </p></div>
             </div>
 
-            <!-- ===== LIGNE 2 : Texte gauche / Image droite ===== -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Texte -->
+            <div class="fade-in-right">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                    DEFI Madagascar est une association à but non lucratif
+                </h2>
 
-                <!-- Texte long -->
-                <div class="fade-in-left">
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">
-                        Notre histoire
-                    </h3>
+                <p class="text-lg text-gray-600">
+                    Engagée depuis plusieurs décennies pour un Madagascar évolué, prospère et indépendant,
+                    DEFI agit au cœur des communautés en mettant en œuvre des actions concrètes et durables.
+                    À travers une approche participative et inclusive, l’association accompagne les populations
+                    locales dans la protection de l’environnement, le renforcement des capacités humaines et
+                    l’amélioration des conditions de vie, afin de bâtir un avenir solidaire, résilient et respectueux
+                    des générations futures.
+                </p>
 
-                    <p class="text-gray-600 text-lg leading-relaxed">
-                        Fondée le 13 juin 1993, et animée par un profond engagement envers
-                        notre pays ainsi qu’une vision ambitieuse d’un Madagascar évolué,
-                        prospère et indépendant, nous nourrissons l’espoir de voir notre
-                        île retrouver sa luxuriance et briller de mille couleurs, tel un
-                        joyau précieux au cœur de l’océan Indien.
-                        <br><br>
-                        Nos initiatives vont bien au-delà de la reforestation, englobant
-                        également la restauration écologique, la formation professionnelle,
-                        la lutte contre la pauvreté et la promotion de la santé publique.
-                    </p>
-                </div>
+            </div>
+        </div>
 
-                <!-- Card 2 --> <div class="relative h-72 rounded-xl overflow-hidden scale-in stagger-2 group"> <img src="./assets/2000_5ce54778d2560.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"> <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div> <div class="relative z-10 h-full flex flex-col justify-end p-6 text-white"> <h3 class="text-lg font-semibold mb-2"> Éducation et insertion </h3> <p class="text-sm text-gray-200"> Favoriser l’accès à l’éducation et accompagner les jeunes vers l’emploi. </p> </div> </div>
+        <!-- ===== LIGNE 2 : Texte gauche / Image droite ===== -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            <!-- Texte long -->
+            <div class="fade-in-left">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+                    Notre histoire
+                </h3>
+
+                <p class="text-gray-600 text-lg leading-relaxed">
+                    Fondée le 13 juin 1993, et animée par un profond engagement envers
+                    notre pays ainsi qu’une vision ambitieuse d’un Madagascar évolué,
+                    prospère et indépendant, nous nourrissons l’espoir de voir notre
+                    île retrouver sa luxuriance et briller de mille couleurs, tel un
+                    joyau précieux au cœur de l’océan Indien.
+                    <br><br>
+                    Nos initiatives vont bien au-delà de la reforestation, englobant
+                    également la restauration écologique, la formation professionnelle,
+                    la lutte contre la pauvreté et la promotion de la santé publique.
+                </p>
             </div>
 
-            <!-- ===== LIGNE 3 : Image gauche / Cards droite ===== -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <!-- Card 2 -->
+            <div class="relative h-72 rounded-xl overflow-hidden scale-in stagger-2 group"><img
+                    src="./assets/2000_5ce54778d2560.jpg"
+                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                <div class="relative z-10 h-full flex flex-col justify-end p-6 text-white"><h3
+                        class="text-lg font-semibold mb-2"> Éducation et insertion </h3>
+                    <p class="text-sm text-gray-200"> Favoriser l’accès à l’éducation et accompagner les jeunes vers
+                        l’emploi. </p></div>
+            </div>
+        </div>
 
-                <!-- Card 3 --> <div class="relative h-72 rounded-xl overflow-hidden scale-in stagger-3 group"> <img src="./assets/2000_5ce54778d2560.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"> <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div> <div class="relative z-10 h-full flex flex-col justify-end p-6 text-white"> <h3 class="text-lg font-semibold mb-2"> Développement durable </h3> <p class="text-sm text-gray-200"> Mettre en œuvre des projets respectueux de l’environnement et des générations futures. </p> </div> </div>
-                <div class="space-y-4">
+        <!-- ===== LIGNE 3 : Image gauche / Cards droite ===== -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
-                    <div class="flex items-start fade-in-up stagger-1">
+            <!-- Card 3 -->
+            <div class="relative h-72 rounded-xl overflow-hidden scale-in stagger-3 group"><img
+                    src="./assets/2000_5ce54778d2560.jpg"
+                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                <div class="relative z-10 h-full flex flex-col justify-end p-6 text-white"><h3
+                        class="text-lg font-semibold mb-2"> Développement durable </h3>
+                    <p class="text-sm text-gray-200"> Mettre en œuvre des projets respectueux de l’environnement et des
+                        générations futures. </p></div>
+            </div>
+            <div class="space-y-4">
+
+                <div class="flex items-start fade-in-up stagger-1">
 
 
                         <span class="text-gray-700">
@@ -237,8 +322,8 @@
             de reboisement et de restauration des zones dégradées afin de lutter
             contre la déforestation et le changement climatique.
         </span>
-                    </div>
-                    <div class="flex items-start fade-in-up stagger-3">
+                </div>
+                <div class="flex items-start fade-in-up stagger-3">
 
 
                         <span class="text-gray-700">
@@ -247,9 +332,9 @@
             améliorer les conditions de vie des populations vulnérables et à
             favoriser leur autonomisation.
         </span>
-                    </div>
+                </div>
 
-                    <div class="flex items-start fade-in-up stagger-4">
+                <div class="flex items-start fade-in-up stagger-4">
 
 
                         <span class="text-gray-700">
@@ -258,31 +343,31 @@
             l’accès aux soins, promouvoir de bonnes pratiques sanitaires et
             renforcer le bien-être des communautés.
         </span>
-                    </div>
-
                 </div>
 
             </div>
 
         </div>
-    </section>
+
+    </div>
+</section>
 
 
-    <!-- NOS PROJETS Section -->
-    <section id="services" class="py-16">
-        <div class="text-center mb-12 fade-in-up bg-gradient-to-br from-green-50 to-indigo-100">
-            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                NOS PROJETS
-            </h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Nous développons des projets durables, respectueux des communautés et de l’environnement.
-                Des initiatives audacieuses et innovantes, portées par des esprits passionnés pour transformer notre
-                île.
-            </p>
-        </div>
-        <div id="projects-container"></div>
-        <div style="text-align:center; margin-top:2rem;">
-            <button id="see-more-btn" style="
+<!-- NOS PROJETS Section -->
+<section id="services" class="py-16">
+    <div class="text-center mb-12 fade-in-up bg-gradient-to-br from-green-50 to-indigo-100">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            NOS PROJETS
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Nous développons des projets durables, respectueux des communautés et de l’environnement.
+            Des initiatives audacieuses et innovantes, portées par des esprits passionnés pour transformer notre
+            île.
+        </p>
+    </div>
+    <div id="projects-container"></div>
+    <div style="text-align:center; margin-top:2rem;">
+        <button id="see-more-btn" style="
     background-color:#0f172a; 
     color:white; 
     padding:0.75rem 1.5rem; 
@@ -290,381 +375,382 @@
     border-radius:0.5rem;
     cursor:pointer;
     font-weight:bold;
-  ">Voir plus</button>
-        </div>
-
-    </section>
-
-    <!-- L’ÉQUIPE Section -->
-    <section id="testimonials" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 fade-in-up">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                    L’ÉQUIPE
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Derrière chaque action de DEFI Madagascar se trouve une équipe engagée, visionnaire et profondément
-                    attachée à l’avenir de notre île. Découvrez ceux qui portent cet espoir au quotidien.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow scale-in stagger-1 equipe-card">
-                    <div class="flex items-center">
-                        <img src="assets/800_67f972b943eca.jpg" alt="Volanirina Andriamananoro"
-                            class="custom-size rounded-full object-cover mr-4">
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Volanirina Andriamananoro</h4>
-                            <p class="text-gray-600 text-sm">Presidente</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 mb-6 italic">
-                        "C’est dans l’âme de chacun de nous que réside le pouvoir de
-                        transformer notre pays. Ceux qui ont la chance d’avoir une voix doivent la faire entendre pour
-                        un Madagascar plus solidaire et prospère."
-
-                    </p>
-
-                </div>
-
-                <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow scale-in stagger-1 equipe-card">
-                    <div class="flex items-center mb-4">
-                        <div class="flex items-center">
-                            <img src="assets/800_67f9747292a95_filter_67f974c813158.jpg" alt="Ange Razafindranaivo"
-                                class="custom-size rounded-full object-cover mr-4">
-                            <div>
-                                <h4 class="font-semibold text-gray-900">Ange Razafindranaivo</h4>
-                                <p class="text-gray-600 text-sm">Vice Présidente</p>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 mb-6 italic">"Chaque décision que nous prenons aujourd'hui façonne l’avenir
-                        de notre nation. Nous avons la chance de changer le destin de Madagascar, et nous ne pouvons pas
-                        l’ignorer."</p>
-
-                </div>
-
-                <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow scale-in stagger-1 equipe-card">
-                    <div class="flex items-center mb-4">
-                        <div class="flex items-center">
-                            <img src="assets/800_67f97b663a505_filter_67f97be58a6ed.jpg"
-                                alt="Koloina Jessica Andriambololona"
-                                class="custom-size rounded-full object-cover mr-4">
-                            <div>
-                                <h4 class="font-semibold text-gray-900">Koloina Jessica Andriambololona</h4>
-                                <p class="text-gray-600 text-sm">Secrétaire Générale</p>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 mb-6 italic">"Aider l’autre, c’est faire grandir notre nation. Chaque geste
-                        de solidarité, chaque moment partagé, construit un Madagascar plus fort, plus unifié."</p>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Nos valeurs section -->
-    <div class="container">
-        <div class="hero" id="valeurs">
-            <h1>Nos valeurs</h1>
-        </div>
-
-        <!-- Carousel Section -->
-        <div class="carousel-section">
-            <div class="carousel-container">
-                <!-- Navigation Buttons -->
-                <button class="carousel-nav-btn prev" onclick="goToPrevious()">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="15,18 9,12 15,6"></polyline>
-                    </svg>
-                </button>
-
-                <button class="carousel-nav-btn next" onclick="goToNext()">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9,18 15,12 9,6"></polyline>
-                    </svg>
-                </button>
-
-                <!-- Carousel Container -->
-                <div class="carousel-viewport">
-                    <div class="carousel-track" id="carouselTrack">
-                        <!-- Cards will be generated by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Dots Indicator -->
-                <div class="carousel-indicators" id="indicators">
-                    <!-- Indicators will be generated by JavaScript -->
-                </div>
-
-                <!-- Progress Bar -->
-                <div class="progress-container">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Donation Section -->
-        <div class="donation-section" id="donation">
-            <div class="donation-container">
-                <div class="donation-title">
-                    <h2>Soutenez-nous</h2>
-                    <p>Votre soutien contribue directement à nos actions.</p>
-                </div>
-
-                <div class="donation-content">
-                    <!-- Image + overlay -->
-                    <div class="donation-image">
-                        <img src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=800&q=80"
-                            alt="Support our mission" />
-                        <div class="donation-image-overlay">
-                            <div>
-                                <h3>Chaque geste compte</h3>
-                                <p>Merci pour votre soutien 🙏</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Simple Donation Info (no forms) -->
-                    <div class="donation-form">
-                        <h3>Faire un don par Mobile Money</h3>
-                        <p class="subtitle">
-                            Pour soutenir notre mission, vous pouvez envoyer votre contribution
-                            directement par Mobile Money. Merci de nous accompagner ❤️
-                        </p>
-
-                        <div class="mt-6 space-y-4">
-
-                            <!-- Orange Money -->
-                            <div class="flex flex-col p-4 bg-orange-100 rounded-xl shadow-sm border border-orange-300">
-                                <span class="text-orange-600 font-semibold text-lg">Orange Money</span>
-                                <span class="text-2xl font-bold mt-1 text-orange-700">+261 12 345 67</span>
-                                <span class="text-sm text-gray-500 mt-1">Nom du compte : DEFI Madagascar</span>
-                            </div>
-
-                            <!-- Telma -->
-                            <div class="flex flex-col p-4 bg-yellow-100 rounded-xl shadow-sm border border-yellow-300">
-                                <span class="text-yellow-700 font-semibold text-lg">MVola (Telma)</span>
-                                <span class="text-2xl font-bold mt-1 text-yellow-800">+261 45 678 90</span>
-                                <span class="text-sm text-gray-500 mt-1">Nom du compte : DEFI Madagascar</span>
-                            </div>
-
-                            <!-- Airtel Money -->
-                            <div class="flex flex-col p-4 bg-red-100 rounded-xl shadow-sm border border-red-300">
-                                <span class="text-red-600 font-semibold text-lg">Airtel Money</span>
-                                <span class="text-2xl font-bold mt-1 text-red-700">+261 98 765 43</span>
-                                <span class="text-sm text-gray-500 mt-1">Nom du compte : DEFI Madagascar</span>
-                            </div>
-
-                        </div>
-
-                        <div class="trust-indicators mt-6">
-                            <p>🔒 Votre don est sécurisé</p>
-                            <p>🤝 Merci de soutenir notre association</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+  ">Voir plus
+        </button>
     </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 fade-in-up">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                    Contactez-nous
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Pour toute information, veuillez nous contacter via les coordonnées ci-dessous ou remplir le
-                    formulaire.
+</section>
+
+<!-- L’ÉQUIPE Section -->
+<section id="testimonials" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 fade-in-up">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                L’ÉQUIPE
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Derrière chaque action de DEFI Madagascar se trouve une équipe engagée, visionnaire et profondément
+                attachée à l’avenir de notre île. Découvrez ceux qui portent cet espoir au quotidien.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow scale-in stagger-1 equipe-card">
+                <div class="flex items-center">
+                    <img src="assets/800_67f972b943eca.jpg" alt="Volanirina Andriamananoro"
+                         class="custom-size rounded-full object-cover mr-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-900">Volanirina Andriamananoro</h4>
+                        <p class="text-gray-600 text-sm">Presidente</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-6 italic">
+                    "C’est dans l’âme de chacun de nous que réside le pouvoir de
+                    transformer notre pays. Ceux qui ont la chance d’avoir une voix doivent la faire entendre pour
+                    un Madagascar plus solidaire et prospère."
+
                 </p>
+
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="fade-in-left">
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Coordonnées</h3>
-                    <p class="text-gray-600 mb-8">
-                        Nous sommes situés dans le Village Emmergent d’Ambolomanjakarivo, au cœur de la Commune Rurale
-                        de Soamahamanina. Vous pouvez nous joindre par email, téléphone ou WhatsApp.
+            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow scale-in stagger-1 equipe-card">
+                <div class="flex items-center mb-4">
+                    <div class="flex items-center">
+                        <img src="assets/800_67f9747292a95_filter_67f974c813158.jpg" alt="Ange Razafindranaivo"
+                             class="custom-size rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Ange Razafindranaivo</h4>
+                            <p class="text-gray-600 text-sm">Vice Présidente</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-6 italic">"Chaque décision que nous prenons aujourd'hui façonne l’avenir
+                    de notre nation. Nous avons la chance de changer le destin de Madagascar, et nous ne pouvons pas
+                    l’ignorer."</p>
+
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow scale-in stagger-1 equipe-card">
+                <div class="flex items-center mb-4">
+                    <div class="flex items-center">
+                        <img src="assets/800_67f97b663a505_filter_67f97be58a6ed.jpg"
+                             alt="Koloina Jessica Andriambololona"
+                             class="custom-size rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Koloina Jessica Andriambololona</h4>
+                            <p class="text-gray-600 text-sm">Secrétaire Générale</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-6 italic">"Aider l’autre, c’est faire grandir notre nation. Chaque geste
+                    de solidarité, chaque moment partagé, construit un Madagascar plus fort, plus unifié."</p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Nos valeurs section -->
+<div class="container">
+    <div class="hero" id="valeurs">
+        <h1>Nos valeurs</h1>
+    </div>
+
+    <!-- Carousel Section -->
+    <div class="carousel-section">
+        <div class="carousel-container">
+            <!-- Navigation Buttons -->
+            <button class="carousel-nav-btn prev" onclick="goToPrevious()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15,18 9,12 15,6"></polyline>
+                </svg>
+            </button>
+
+            <button class="carousel-nav-btn next" onclick="goToNext()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+            </button>
+
+            <!-- Carousel Container -->
+            <div class="carousel-viewport">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Cards will be generated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Dots Indicator -->
+            <div class="carousel-indicators" id="indicators">
+                <!-- Indicators will be generated by JavaScript -->
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donation Section -->
+    <div class="donation-section" id="donation">
+        <div class="donation-container">
+            <div class="donation-title">
+                <h2>Soutenez-nous</h2>
+                <p>Votre soutien contribue directement à nos actions.</p>
+            </div>
+
+            <div class="donation-content">
+                <!-- Image + overlay -->
+                <div class="donation-image">
+                    <img src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=800&q=80"
+                         alt="Support our mission"/>
+                    <div class="donation-image-overlay">
+                        <div>
+                            <h3>Chaque geste compte</h3>
+                            <p>Merci pour votre soutien 🙏</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simple Donation Info (no forms) -->
+                <div class="donation-form">
+                    <h3>Faire un don par Mobile Money</h3>
+                    <p class="subtitle">
+                        Pour soutenir notre mission, vous pouvez envoyer votre contribution
+                        directement par Mobile Money. Merci de nous accompagner ❤️
                     </p>
 
-                    <div class="space-y-4 mb-8">
-                        <div class="flex items-center fade-in-up stagger-1">
-                            <svg class="h-6 w-6 text-green-600 mr-4" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                            <span class="text-gray-700">association@defi-madagascar.org</span>
+                    <div class="mt-6 space-y-4">
+
+                        <!-- Orange Money -->
+                        <div class="flex flex-col p-4 bg-orange-100 rounded-xl shadow-sm border border-orange-300">
+                            <span class="text-orange-600 font-semibold text-lg">Orange Money</span>
+                            <span class="text-2xl font-bold mt-1 text-orange-700">+261 12 345 67</span>
+                            <span class="text-sm text-gray-500 mt-1">Nom du compte : DEFI Madagascar</span>
                         </div>
-                        <div class="flex items-center fade-in-up stagger-2">
-                            <svg class="h-6 w-6 text-green-600 mr-4" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                            </svg>
-                            <span class="text-gray-700">WhatsApp +261-3400 133 00</span>
+
+                        <!-- Telma -->
+                        <div class="flex flex-col p-4 bg-yellow-100 rounded-xl shadow-sm border border-yellow-300">
+                            <span class="text-yellow-700 font-semibold text-lg">MVola (Telma)</span>
+                            <span class="text-2xl font-bold mt-1 text-yellow-800">+261 45 678 90</span>
+                            <span class="text-sm text-gray-500 mt-1">Nom du compte : DEFI Madagascar</span>
                         </div>
-                        <div class="flex items-center fade-in-up stagger-3">
-                            <svg class="h-6 w-6 text-green-600 mr-4" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            <span class="text-gray-700">Village Emmergent d’Ambolomanjakarivo RN1 - PK64, Commune Rurale
+
+                        <!-- Airtel Money -->
+                        <div class="flex flex-col p-4 bg-red-100 rounded-xl shadow-sm border border-red-300">
+                            <span class="text-red-600 font-semibold text-lg">Airtel Money</span>
+                            <span class="text-2xl font-bold mt-1 text-red-700">+261 98 765 43</span>
+                            <span class="text-sm text-gray-500 mt-1">Nom du compte : DEFI Madagascar</span>
+                        </div>
+
+                    </div>
+
+                    <div class="trust-indicators mt-6">
+                        <p>🔒 Votre don est sécurisé</p>
+                        <p>🤝 Merci de soutenir notre association</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Contact Section -->
+<section id="contact" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 fade-in-up">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                Contactez-nous
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Pour toute information, veuillez nous contacter via les coordonnées ci-dessous ou remplir le
+                formulaire.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="fade-in-left">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-6">Coordonnées</h3>
+                <p class="text-gray-600 mb-8">
+                    Nous sommes situés dans le Village Emmergent d’Ambolomanjakarivo, au cœur de la Commune Rurale
+                    de Soamahamanina. Vous pouvez nous joindre par email, téléphone ou WhatsApp.
+                </p>
+
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-center fade-in-up stagger-1">
+                        <svg class="h-6 w-6 text-green-600 mr-4" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <span class="text-gray-700">association@defi-madagascar.org</span>
+                    </div>
+                    <div class="flex items-center fade-in-up stagger-2">
+                        <svg class="h-6 w-6 text-green-600 mr-4" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <span class="text-gray-700">WhatsApp +261-3400 133 00</span>
+                    </div>
+                    <div class="flex items-center fade-in-up stagger-3">
+                        <svg class="h-6 w-6 text-green-600 mr-4" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="text-gray-700">Village Emmergent d’Ambolomanjakarivo RN1 - PK64, Commune Rurale
                                 de Soamahamanina</span>
-                        </div>
-                        <div class="flex items-center fade-in-up stagger-4">
-                            <svg class="h-6 w-6 text-green-600 mr-4" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M8 7V3m8 4V3m-9 8h10m-11 4h12m-14 4h16M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2h-1M4 5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <span class="text-gray-700">Lun-Ven : 08:00 - 19:00</span>
-                        </div>
+                    </div>
+                    <div class="flex items-center fade-in-up stagger-4">
+                        <svg class="h-6 w-6 text-green-600 mr-4" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M8 7V3m8 4V3m-9 8h10m-11 4h12m-14 4h16M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2h-1M4 5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <span class="text-gray-700">Lun-Ven : 08:00 - 19:00</span>
                     </div>
                 </div>
-                <div class="fade-in-right">
-                    <form id="contact-form" class="bg-white rounded-xl shadow-lg p-8">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nom</label>
-                                <input type="text" id="from_name" name="from_name"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                                    required />
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                <input type="email" id="from_email" name="from_email"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                                    required />
-                            </div>
+            </div>
+            <div class="fade-in-right">
+                <form id="contact-form" class="bg-white rounded-xl shadow-lg p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nom</label>
+                            <input type="text" id="from_name" name="from_name"
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                                   required/>
                         </div>
-
-                        <div class="mb-6">
-                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Sujet</label>
-                            <input type="text" id="subject" name="subject"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                                required />
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="from_email" name="from_email"
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                                   required/>
                         </div>
+                    </div>
 
-                        <div class="mb-6">
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                            <textarea id="message-text" name="message" rows="5" placeholder="Leave a message of support"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                                required></textarea>
-                        </div>
+                    <div class="mb-6">
+                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Sujet</label>
+                        <input type="text" id="subject" name="subject"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                               required/>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <textarea id="message-text" name="message" rows="5" placeholder="Leave a message of support"
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                                  required></textarea>
+                    </div>
 
 
-                        <button type="submit"
+                    <button type="submit"
                             class="w-full bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition-colors flex items-center justify-center">
-                            Envoyer le message
-                            <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-
+                        Envoyer le message
+                        <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                        </svg>
+                    </button>
+                </form>
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="fade-in-up stagger-1">
-                    <h3 class="text-2xl font-bold mb-4">DEFI Madagascar</h3>
-                    <p class="text-gray-300 mb-6">
-                        Une association engagée pour l’environnement, l’éducation et le développement durable à
-                        Madagascar depuis 1993.
-                    </p>
-                </div>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="fade-in-up stagger-1">
+                <h3 class="text-2xl font-bold mb-4">DEFI Madagascar</h3>
+                <p class="text-gray-300 mb-6">
+                    Une association engagée pour l’environnement, l’éducation et le développement durable à
+                    Madagascar depuis 1993.
+                </p>
+            </div>
 
-                <div class="fade-in-up stagger-2">
-                    <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-300 hover:text-white transition-colors">Accueil</a></li>
-                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">À propos</a></li>
-                        <li><a href="#services" class="text-gray-300 hover:text-white transition-colors">Projets</a>
-                        </li>
-                        <li><a href="#testimonials" class="text-gray-300 hover:text-white transition-colors">Équipe</a>
-                        </li>
-                        <li><a href="#valeurs" class="text-gray-300 hover:text-white transition-colors">Valeurs</a></li>
-                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
+            <div class="fade-in-up stagger-2">
+                <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="text-gray-300 hover:text-white transition-colors">Accueil</a></li>
+                    <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">À propos</a></li>
+                    <li><a href="#services" class="text-gray-300 hover:text-white transition-colors">Projets</a>
+                    </li>
+                    <li><a href="#testimonials" class="text-gray-300 hover:text-white transition-colors">Équipe</a>
+                    </li>
+                    <li><a href="#valeurs" class="text-gray-300 hover:text-white transition-colors">Valeurs</a></li>
+                    <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
 
-                <div class="fade-in-up stagger-4">
-                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
-                    <div class="space-y-4">
-                        <div class="flex items-center">
-                            <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                </path>
-                            </svg>
-                            <span class="text-gray-300">association@defi-madagascar.org</span>
-                        </div>
-                        <div class="flex items-center">
-                            <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
-                                </path>
-                            </svg>
-                            <span class="text-gray-300">+261-3400 133 00</span>
-                        </div>
-                        <div class="flex items-start">
-                            <svg class="h-5 w-5 text-green-400 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                                </path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                            <span class="text-gray-300">Village Emmergent d’Ambolomanjakarivo RN1 <br> PK64, Commune
+            <div class="fade-in-up stagger-4">
+                <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        <span class="text-gray-300">association@defi-madagascar.org</span>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                            </path>
+                        </svg>
+                        <span class="text-gray-300">+261-3400 133 00</span>
+                    </div>
+                    <div class="flex items-start">
+                        <svg class="h-5 w-5 text-green-400 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span class="text-gray-300">Village Emmergent d’Ambolomanjakarivo RN1 <br> PK64, Commune
                                 Rurale de Soamahamanina</span>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <hr class="my-8 border-gray-700">
+        <hr class="my-8 border-gray-700">
 
-            <div class="flex flex-col md:flex-row justify-between items-center fade-in-up">
-                <p class="text-gray-300 text-sm">
-                    Copyright © 2025 . All rights reserved.
-                </p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Privacy Policy</a>
-                    <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Terms of Service</a>
-                    <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Cookie Policy</a>
-                </div>
+        <div class="flex flex-col md:flex-row justify-between items-center fade-in-up">
+            <p class="text-gray-300 text-sm">
+                Copyright © 2025 . All rights reserved.
+            </p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Terms of Service</a>
+                <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Cookie Policy</a>
             </div>
         </div>
-    </footer>
-    <div id="notification" class="notification"></div>
+    </div>
+</footer>
+<div id="notification" class="notification"></div>
 
-    <script src="js/carousel.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/scroll-animations.js"></script>
-    <script src="js/email.js"></script>
-    <script src="js/donation.js"></script>
-    <script src="js/api-projects.js"></script>
-    <script src="js/main.js"></script>
+<script src="js/carousel.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/scroll-animations.js"></script>
+<script src="js/email.js"></script>
+<script src="js/donation.js"></script>
+<script src="js/api-projects.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 

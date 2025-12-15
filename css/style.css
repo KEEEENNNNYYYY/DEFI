@@ -10,6 +10,7 @@ body {
     background-color: #ffffff;
     color: #0f172a;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
@@ -75,7 +76,7 @@ body {
     display: block;
 }
 
-/* Carousel Section */
+/* Carousel Section
 .carousel-section {
     padding: 0 1rem 4rem;
 }
@@ -130,7 +131,7 @@ body {
     transition: transform 0.5s ease-in-out;
     gap: 1.5rem;
     padding: 2rem 1rem;
-}
+} */
 
 /* Card Styles */
 .card {
@@ -777,4 +778,52 @@ html {
 .navbar .dropdown-menu .dropdown-item.active {
     color: var(--bs-white);
     background: var(--bs-primary);
+}
+
+/* ===== Glassmorphism Navbar ===== */
+.glass-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Navbar text color (white) ===== */
+.glass-nav-links a {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+/* Hover */
+.glass-nav-links a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Dropdown bootstrap */
+.glass-nav-links .nav-link {
+    color: #ffffff !important;
+}
+
+/* Caret dropdown */
+.glass-nav-links .dropdown-toggle::after {
+    border-top-color: #ffffff;
+}
+.dropdown-menu {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.dropdown-menu .dropdown-item {
+    color: #111;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background: rgba(0, 0, 0, 0.05);
 }
