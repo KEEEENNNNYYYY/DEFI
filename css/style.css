@@ -827,3 +827,27 @@ html {
 .dropdown-menu .dropdown-item:hover {
     background: rgba(0, 0, 0, 0.05);
 }
+/* ===== Navbar après scroll (style clair) ===== */
+.glass-navbar.scrolled {
+    background: #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Liens deviennent gris */
+.glass-navbar.scrolled .glass-nav-links a,
+.glass-navbar.scrolled .glass-nav-links .nav-link {
+    color: #6b7280 !important; /* gris Tailwind */
+}
+
+/* Hover */
+.glass-navbar.scrolled .glass-nav-links a:hover {
+    color: #111827 !important;
+}
+
+/* Caret dropdown */
+.glass-navbar.scrolled .dropdown-toggle::after {
+    border-top-color: #6b7280;
+}
