@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="icon" type="image/png"
           href="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
 
@@ -31,16 +32,16 @@
 
 <!-- Header -->
 <header class="glass-navbar">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
-            <div class="flex justify-start lg:w-0 lg:flex-1">
-                <img alt="DEFI Madagascar" class="img-responsive logo"
-                     src="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
+    <div class="nav-container">
+        <div class="nav-inner">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png" alt="DEFI Madagascar" class="logo">
             </div>
 
-            <div class="-mr-2 -my-2 md:hidden">
-                <button id="mobile-menu-button"
-                        class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100">
+            <!-- Mobile Button -->
+            <div class="mobile-button-container">
+                <button id="mobile-menu-button" class="mobile-button">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M4 6h16M4 12h16M4 18h16"></path>
@@ -48,29 +49,14 @@
                 </button>
             </div>
 
-            <nav class="hidden md:flex space-x-10 glass-nav-links">
-                <a href="#home"
-                   class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Accueil</a>
-                <a href="#about" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors"> ! </a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle text-base font-medium text-gray-500 hover:text-gray-900 transition-colors" data-bs-toggle="dropdown">
-                        A
-                        propos
-                    </a>
-                    <div class="dropdown-menu bg-light mt-2">
-                        <a href="feature.html" class="dropdown-item">Features</a>
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
-                <a href="#services"
-                   class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Projets</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        Pages
-                    </a>
-                    <div class="dropdown-menu bg-light mt-2">
+            <!-- Nav Links Desktop -->
+            <nav class="nav-links">
+                <a href="#home">Accueil</a>
+                <a href="#about">!</a>
+
+                <div class="nav-item">
+                    <a href="#" class="dropdown-toggle">A propos</a>
+                    <div class="dropdown-menu">
                         <a href="feature.html" class="dropdown-item">Features</a>
                         <a href="team.html" class="dropdown-item">Our Team</a>
                         <a href="testimonial.html" class="dropdown-item">Testimonial</a>
@@ -78,38 +64,40 @@
                     </div>
                 </div>
 
-                <a href="#testimonials"
-                   class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Equipe</a>
-                <a href="#valeurs"
-                   class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Valeurs</a>
-                <a href="#contact"
-                   class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">Contact </a>
+                <a href="#services">Projets</a>
+
+                <div class="nav-item">
+                    <a href="#" class="dropdown-toggle">Pages</a>
+                    <div class="dropdown-menu">
+                        <a href="feature.html" class="dropdown-item">Features</a>
+                        <a href="team.html" class="dropdown-item">Our Team</a>
+                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        <a href="404.html" class="dropdown-item">404 Page</a>
+                    </div>
+                </div>
+
+                <a href="#testimonials">Equipe</a>
+                <a href="#valeurs">Valeurs</a>
+                <a href="#contact">Contact</a>
             </nav>
 
-            <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                <a href="#donation"
-                   class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700 transition-colors">
-                    Faire un don
-                </a>
-            </div>
+            <!-- Bouton Don -->
+            <a href="#donation" class="nav-donation">Faire un don</a>
         </div>
 
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="mobile-menu md:hidden">
-            <div class="pt-5 pb-6 px-5 bg-white shadow-lg rounded-lg">
-                <nav class="grid gap-y-8">
-                    <a href="#home" class="text-base font-medium text-gray-900 hover:text-gray-700">Accueil</a>
-                    <a href="#about" class="text-base font-medium text-gray-900 hover:text-gray-700">A propos</a>
-                    <a href="#services" class="text-base font-medium text-gray-900 hover:text-gray-700">Projets</a>
-
-                    <a href="#testimonials"
-                       class="text-base font-medium text-gray-900 hover:text-gray-700">Equipe</a>
-                    <a href="#valeurs" class="text-base font-medium text-gray-900 hover:text-gray-700">Valeurs</a>
-                    <a href="#contact" class="text-base font-medium text-gray-900 hover:text-gray-700">Contact</a>
+        <div id="mobile-menu" class="mobile-menu">
+            <div>
+                <nav>
+                    <a href="#home">Accueil</a>
+                    <a href="#about">A propos</a>
+                    <a href="#services">Projets</a>
+                    <a href="#testimonials">Equipe</a>
+                    <a href="#valeurs">Valeurs</a>
+                    <a href="#contact">Contact</a>
                 </nav>
             </div>
         </div>
-
     </div>
 </header>
 
