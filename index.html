@@ -51,28 +51,38 @@
 
             <!-- Nav Links Desktop -->
             <nav class="nav-links">
-                <a href="#home">Accueil</a>
-                <a href="#about">!</a>
-
-                <div class="nav-item">
-                    <a href="#" class="dropdown-toggle">A propos</a>
-                    <div class="dropdown-menu">
-                        <a href="feature.html" class="dropdown-item">Features</a>
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
-
                 <a href="#services">Projets</a>
 
-                <div class="nav-item">
-                    <a href="#" class="dropdown-toggle">Pages</a>
-                    <div class="dropdown-menu">
-                        <a href="feature.html" class="dropdown-item">Features</a>
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
+                <div class="nav-item nav-mega">
+                    <button class="dropdown-toggle" data-mega="about">
+                        A propos
+                    </button>
+
+                    <div class="mega-dropdown" id="mega-about">
+                        <div class="mega-container">
+
+                            <div class="mega-column">
+                                <h3>Notre organisation</h3>
+                                <a href="#">Mission</a>
+                                <a href="#">Vision</a>
+                                <a href="#">Historique</a>
+                            </div>
+
+                            <div class="mega-column">
+                                <h3>Nos actions</h3>
+                                <a href="#">Projets</a>
+                                <a href="#">Impact</a>
+                                <a href="#">Rapports</a>
+                            </div>
+
+                            <div class="mega-column">
+                                <h3>Transparence</h3>
+                                <a href="#">Gouvernance</a>
+                                <a href="#">Finances</a>
+                                <a href="#">Partenaires</a>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
@@ -80,9 +90,6 @@
                 <a href="#valeurs">Valeurs</a>
                 <a href="#contact">Contact</a>
             </nav>
-
-            <!-- Bouton Don -->
-            <a href="#donation" class="nav-donation">Faire un don</a>
         </div>
 
         <!-- Mobile menu -->
@@ -100,39 +107,63 @@
         </div>
     </div>
 </header>
+<script>
+    const toggles = document.querySelectorAll('.dropdown-toggle');
+    const dropdowns = document.querySelectorAll('.mega-dropdown');
+
+    toggles.forEach(toggle => {
+        toggle.addEventListener('click', e => {
+            e.stopPropagation();
+
+            const targetId = 'mega-' + toggle.dataset.mega;
+            const targetDropdown = document.getElementById(targetId);
+
+            // fermer tous les autres
+            dropdowns.forEach(d => {
+                if (d !== targetDropdown) d.classList.remove('open');
+            });
+
+            // toggle actuel
+            targetDropdown.classList.toggle('open');
+        });
+    });
+
+    // clic en dehors → ferme tout
+    document.addEventListener('click', () => {
+        dropdowns.forEach(d => d.classList.remove('open'));
+    });
+</script>
 
 <!-- Hero Section -->
 <div class="carousel">
     <div class="list">
         <div class="item" style="background-image: url('assets/800_5cda75b3deffb.jpg');">
             <div class="content">
-                <div class="title">Transformer l’espoir en</div>
-                <div class="name">actions concrètes</div>
-                <div class="des">Construisons ensemble un futur où chaque voix compte.</div>
+                <div class="title">Développement économique </div>
+                <div class="name">et social</div>
+                <div class="des">Créons des opportunités durables pour sortir de la précarité.</div>
                 <div class="btn">
                     <button>See More</button>
-                    <button>Subscribe</button>
                 </div>
             </div>
         </div>
 
         <div class="item" style="background-image: url('assets/800_5cda75619d802.jpg');">
             <div class="content">
-                <div class="title">Investir aujourd’hui pour</div>
-                <div class="name">les générations de demain</div>
-                <div class="des">Chaque action compte pour transformer durablement les vies à Madagascar.</div>
+                <div class="title">Valorisons la culture</div>
+                <div class="name"> et tourisme</div>
+                <div class="des">Préserver et faire rayonner le patrimoine unique de Madagascar.</div>
                 <div class="btn">
                     <button>See More</button>
-                    <button>Subscribe</button>
                 </div>
             </div>
         </div>
 
         <div class="item" style="background-image: url('assets/800_5cdc003c680f4.jpg');">
             <div class="content">
-                <div class="title">Agir ensemble pour</div>
-                <div class="name">un Madagascar plus fort</div>
-                <div class="des">La solidarité est la clé d’un développement équitable et durable.</div>
+                <div class="title">Protection de l'environnement</div>
+                <div class="name"> et énergies vertes</div>
+                <div class="des">Agir pour la résilience écologique et la transition énergétique locale.</div>
 
                 <div class="btn">
                     <button>See More</button>
@@ -143,16 +174,27 @@
 
         <div class="item" style="background-image: url('assets/800_5dd0de7f2ef61.jpg');">
             <div class="content">
-                <div class="title">Ancrés dans nos valeurs,</div>
-                <div class="name">tournés vers l’avenir</div>
-                <div class="des">Développer les communautés locales en respectant leur identité.</div>
+                <div class="title">Amélioration de la santé</div>
+                <div class="name"> physique et mentale</div>
+                <div class="des">Garantir l'accès aux soins et au bien-être pour tous.</div>
 
                 <div class="btn">
                     <button>See More</button>
-                    <button>Subscribe</button>
                 </div>
             </div>
         </div>
+
+        <div class="item" style="background-image: url('assets/800_5dd0de7f2ef61.jpg');">
+        <div class="content">
+            <div class="title">Émergence des jeunes </div>
+            <div class="name"> Malagasy</div>
+            <div class="des">Accompagner la nouvelle génération porteuse d'innovations et de vision pour l'avenir du pays.</div>
+
+            <div class="btn">
+                <button>See More</button>
+            </div>
+        </div>
+    </div>
 
         <!-- Ajoute les autres items du carousel ici -->
 
