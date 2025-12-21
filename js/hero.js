@@ -5,7 +5,7 @@ var list = document.querySelector('.list');
 var runningTime = document.querySelector('.timeRunning');
 
 let timeRunning = 3000;
-let timeAutoNext = 7000;
+let timeAutoNext = 14000;
 
 nextBtn.onclick = function () {
     showSlider('next');
@@ -23,7 +23,7 @@ function resetTimeAnimation() {
     runningTime.style.animation = 'none';
     runningTime.offsetHeight;
     runningTime.style.animation = null;
-    runningTime.style.animation = 'runningTime 7s linear forwards';
+    runningTime.style.animation = 'runningTime 14s linear forwards';
 }
 
 function showSlider(type) {
