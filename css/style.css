@@ -4,18 +4,58 @@
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
-
+/* ===============================
+   VARIABLES
+================================ */
+:root {
+    --primary: #16a34a;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --white: #ffffff;
+}
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #ffffff;
-    color: #0f172a;
-    line-height: 1.6;
-    overflow-x: hidden;
+    min-height: 100vh;
+    /*background-image: url("../assets/magicpattern-mesh-gradient-1766784198452.png");*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}.mobile-warning {
+     position: fixed;
+     inset: 0;
+     width: 100vw;
+     height: 100vh;
+
+     background-color: #4caf50;
+     z-index: 9999;
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+
+     text-align: center;
+     padding: 1.5rem;
+ }
+
+.mobile-warning h1 {
+    color: #fff;
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    font-weight: 600;
+    line-height: 1.3;
+}
+@media (min-width: 768px) {
+    .mobile-warning {
+        display: none;
+    }
 }
 
 .container {
     min-height: 100vh;
-    background-color: #ffffff;
+    background-color: transparent;
 }
 
 /* Hero Section */

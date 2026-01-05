@@ -1,0 +1,220 @@
+/* === section === */
+.about {
+    position: relative;
+    padding: 4rem 0; /* py-16 */
+    z-index: 50;
+}
+
+/* max-w-7xl + padding responsive */
+.about-container {
+    max-width: 100dvw; /* 1280px */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* space-y-6 */
+    margin-left: 2rem;
+}
+
+@media (min-width: 640px) {
+    .about-container {
+        padding-left: 1.5rem; /* sm:px-6 */
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .about-container {
+        padding-left: 2rem; /* lg:px-8 */
+        padding-right: 2rem;
+    }
+}
+
+/* === grids === */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem; /* gap-12 */
+    border-bottom: 1px dashed #16a34a;
+    margin-top: 1rem;
+}
+
+.about-center {
+    align-items: center;
+}
+
+.about-start {
+    align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+    .about-grid {
+        grid-template-columns: repeat(2, 1fr); /* lg:grid-cols-2 */
+    }
+}
+
+/* === cards === */
+.about-card {
+    position: relative;
+    height: 18rem; /* h-72 */
+    overflow: hidden;
+
+}
+
+.about-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease; /* duration-500 */
+}
+
+.about-card:hover img {
+    transform: scale(1.05); /* group-hover:scale-105 */
+}
+
+/* gradient overlay */
+.about-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.7),
+            rgba(0,0,0,0.4),
+            transparent
+    );
+}
+
+/* card content */
+.about-card-content {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    padding: 1.5rem; /* p-6 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #ffffff;
+}
+
+.about-card-content h3 {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.about-card-content p {
+    font-size: 0.875rem; /* text-sm */
+    color: #e5e7eb; /* text-gray-200 */
+}
+
+/* === text === */
+.about-title {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700;
+    color: #111827; /* text-gray-900 */
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+@media (min-width: 1024px) {
+    .about-title {
+        font-size: 2.25rem; /* lg:text-4xl */
+    }
+}
+
+.about-subtitle {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.about-paragraph {
+    font-size: 1.125rem; /* text-lg */
+    color: #4b5563; /* text-gray-600 */
+}
+
+.about-paragraph.long {
+    line-height: 1.625; /* leading-relaxed */
+}
+
+/* === list === */
+.about-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* space-y-4 */
+}
+.about-grid h2 {
+    color : #16a34a ;
+}
+.about-list span {
+    color: #374151; /* text-gray-700 */
+}
+.about-list strong {
+    color:#16a34a;
+}
+.about-line {
+     position: relative;
+     height: 600px;
+     margin-bottom: 6rem;
+ }
+.about-image {
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+    z-index: 1;
+    background: #000;
+    margin-top: 5%;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            to top,
+            rgba(0,0,0,.7),
+            rgba(0,0,0,.3),
+            transparent
+    );
+}
+.about-text {
+    position: absolute;
+    top: 0;
+    right: 10%;
+    width: 22%;
+    height: 47%;
+    background: #16a34a;
+    padding: 1.5rem;
+    padding-top: 1.25rem;
+    z-index: 2;
+    border-radius: 1.25rem;
+
+    box-shadow: 0 25px 50px rgba(0,0,0,.15);
+}
+
+.about-text h3 {
+    font-size: 1.4rem;
+    margin-bottom: .75rem;
+    font-weight: bolder;
+    color: white;
+}
+
+.about-text p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+}
+
+
+.about-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: #16a34a solid 10px;
+
+}
