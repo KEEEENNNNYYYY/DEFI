@@ -95,26 +95,6 @@ body {
     height: 100%;
 }
 
-/* Conteneur principal de la carte */
-.project-card-container {
-    height: 400px;
-    /* tu peux ajuster cette valeur selon tes besoins */
-    background: #ffffff;
-    border-radius: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Image projet occupant 50% de la hauteur */
-.project-card {
-    width: 100%;
-    height: 50%;
-    object-fit: cover;
-    display: block;
-}
 
 /* Carousel Section
 .carousel-section {
@@ -728,28 +708,6 @@ html {
     #projects-container {
         grid-template-columns: repeat(3, 1fr);
     }
-}
-
-/* Carte */
-.project-card-container {
-    background: #ffffff;
-    border-radius: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card-container:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2);
-}
-
-.project-card {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
 }
 
 .card-content {

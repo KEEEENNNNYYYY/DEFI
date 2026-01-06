@@ -1,12 +1,36 @@
-/* Container responsive */
-section h2 {
+/* ===============================
+   SECTION PROJETS
+================================ */
+
+.projects-section {
+    background-color: blue;
+    width: 100dvw;
+}
+
+.projects-header {
+    text-align: center;
+    background: linear-gradient(135deg, #f9fafb, #4bff00);
+    width: 700px;
+
+}
+
+.projects-header h2 {
     font-size: 2.2rem;
     font-weight: 700;
     color: #0f172a;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
 }
+
+.projects-header p {
+    font-size: 1.25rem;
+    color: #6b7280;
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+/* ===============================
+   GRID PROJETS
+================================ */
 
 #projects-container {
     max-width: 1200px;
@@ -14,6 +38,7 @@ section h2 {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
+    background-color: red;
 }
 
 @media (min-width: 768px) {
@@ -28,7 +53,10 @@ section h2 {
     }
 }
 
-/* CARD */
+/* ===============================
+   CARD PROJET
+================================ */
+
 .project-card-container {
     background: #ffffff;
     border-radius: 1.2rem;
@@ -47,7 +75,6 @@ section h2 {
     border-color: #d1d5db;
 }
 
-/* Image */
 .project-card {
     width: 100%;
     height: 220px;
@@ -55,7 +82,6 @@ section h2 {
     background: #e2e8f0;
 }
 
-/* Content */
 .card-content {
     padding: 1.4rem 1.6rem;
 }
@@ -71,10 +97,9 @@ section h2 {
     font-size: 0.95rem;
     color: #475569;
     line-height: 1.35rem;
-    margin-top: 0.3rem;
 }
 
-/* Badge action */
+/* Badge */
 .project-card-container::after {
     content: "Voir plus →";
     position: absolute;
@@ -88,4 +113,28 @@ section h2 {
 
 .project-card-container:hover::after {
     opacity: 1;
+}
+
+/* ===============================
+   BOUTON VOIR PLUS
+================================ */
+
+.see-more-wrapper {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+#see-more-btn {
+    background-color: #0f172a;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+#see-more-btn:hover {
+    background-color: #020617;
 }
