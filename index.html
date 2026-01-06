@@ -316,43 +316,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- LIGNE 3-->
-        <div class="about-grid about-start">
-            <div class="about-card scale-in stagger-3">
-                <img src="./assets/2000_5ce54778d2560.jpg" alt="">
-                <div class="about-gradient"></div>
-                <div class="about-card-content">
-                    <h3>Développement durable</h3>
-                    <p>
-                        Mettre en œuvre des projets respectueux de l’environnement et des générations futures.
-                    </p>
-                </div>
-            </div>
-
-            <div class="about-list">
-                <div class="fade-in-up stagger-1">
-                    <span>
-                        <strong>Protection de l’environnement et reforestation :</strong>
-                         Mise en œuvre d’actions concrètes de préservation des écosystèmes, de reboisement et de restauration des zones dégradées afin de lutter contre la déforestation et le changement climatique.
-                    </span>
-                </div>
-
-                <div class="fade-in-up stagger-3">
-                    <span>
-                        <strong>Lutte contre la pauvreté :</strong>
-                        Mise en place d’initiatives sociales et économiques destinées à améliorer les conditions de vie des populations vulnérables et à favoriser leur autonomisation.
-                    </span>
-                </div>
-
-                <div class="fade-in-up stagger-4">
-                    <span>
-                        <strong>Santé et bien-être :</strong>
-                         Sensibilisation, prévention et actions de terrain pour améliorer l’accès aux soins, promouvoir de bonnes pratiques sanitaires et renforcer le bien-être des communautés.
-                    </span>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -360,7 +323,7 @@
 <section class="impact">
     <!-- Title -->
     <div class="impact-title">
-        <h2>Quels sont les impacts réels d’une association caritative ?</h2>
+        <h2>Quels sont les impacts réels de DEFI ?</h2>
     </div>
 
     <!-- Main content -->
@@ -368,52 +331,81 @@
 
         <!-- Text -->
         <div class="impact-text">
-            <p>
+            <p id="impact-description">
                 Notre association agit concrètement pour améliorer les conditions
                 de vie des communautés locales à travers des actions durables.
             </p>
 
             <div class="see-more">
-                <a href="#">See more</a>
+                <a id="impact-link" href="#">See more</a>
             </div>
         </div>
 
         <!-- Video -->
         <div class="impact-video">
-            <div class="video-placeholder">
-                Vidéo
-            </div>
+            <video id="impact-video" controls>
+                <source src="videos/developpement.mp4" type="video/mp4" class="video-placeholder">
+            </video>
         </div>
 
         <!-- Tags -->
         <div class="impact-tags">
-            <div class="tag">Développement </div>
-            <div class="tag">Santé</div>
-            <div class="tag">Environnement</div>
-            <div class="tag">Culture </div>
-            <div class="tag">Jeunesse</div>
+            <div class="tag active"
+                 data-video="videos/developpement.mp4"
+                 data-text="Création d’opportunités économiques et sociales durables pour améliorer les conditions de vie."
+                 data-link="developpement.html">
+                Développement
+            </div>
+
+            <div class="tag"
+                 data-video="videos/sante.mp4"
+                 data-text="Amélioration de l’accès aux soins et promotion du bien-être physique et mental."
+                 data-link="sante.html">
+                Santé
+            </div>
+
+            <div class="tag"
+                 data-video="videos/environnement.mp4"
+                 data-text="Protection des écosystèmes et transition vers des solutions énergétiques durables."
+                 data-link="environnement.html">
+                Environnement
+            </div>
+
+            <div class="tag"
+                 data-video="videos/culture.mp4"
+                 data-text="Encourager et soutenir les jeunes dans le développement de leurs idées novatrices tout en les sensibilisant à leur rôle actif dans la société, afin de créer une génération responsable, créative et citoyenne."
+                 data-link="culture.html">
+                Culture
+            </div>
+
+            <div class="tag"
+                 data-video="videos/jeunesse.mp4"
+                 data-text="Mettre en lumière et préserver les richesses culturelles et touristiques de Madagascar, en promouvant leur authenticité et en favorisant leur transmission aux générations futures tout en soutenant le développement local."
+                 data-link="jeunesse.html">
+                Jeunesse
+            </div>
         </div>
 
     </div>
 </section>
-    <!-- NOS projects Section
+
+<!-- NOS projects Section
 <section id="Impacts" class="impact-section">
-    <div class="impact-header fade-in-up">
-        <h2>Quels sont les impacts réels de DEFI ?</h2>
+<div class="impact-header fade-in-up">
+    <h2>Quels sont les impacts réels de DEFI ?</h2>
 
-    </div>-->
+</div>-->
 
+<!--
+    <div id="projects-container"></div>
 
-    <!--
-        <div id="projects-container"></div>
-
-        <div class="see-more-wrapper">
-            <button id="see-more-btn">Voir plus</button>
-        </div>
+    <div class="see-more-wrapper">
+        <button id="see-more-btn">Voir plus</button>
+    </div>
 </section>-->
 
-<!-- L’ÉQUIPE Section -->
-<section id="testimonials" class="py-16 bg-white">
+<!-- Galerie Section -->
+<section id="Galerie" class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 fade-in-up">
             <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -774,6 +766,8 @@
 </footer>
 <div id="notification" class="notification"></div>
 
+
+<script src="js/impact.js"></script>
 <script src="js/carousel.js"></script>
 <script src="js/menu.js"></script>
 <script src="js/scroll-animations.js"></script>

@@ -24,6 +24,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    overflow-x: hidden;
 }.mobile-warning {
      position: fixed;
      inset: 0;
