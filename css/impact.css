@@ -74,14 +74,6 @@
     height: 100%;
 }
 
-/* Vidéo elle-même */
-#impact-video {
-    width: 100%;           /* prend toute la largeur du container */
-    height: 100%;          /* prend toute la hauteur */
-    min-height: 260px;     /* même hauteur que le placeholder */
-    object-fit: cover;     /* recouvre le container sans déformation */
-    background: #e0e0e0;  /* couleur de fallback si la vidéo ne charge pas */
-}
 
 /* Tags container */
 .impact-tags {
@@ -107,3 +99,56 @@
     font-weight: bold;
 }
 
+
+.impact-video-item.active {
+    display: block;
+}
+
+.tag {
+    cursor: pointer;
+}
+
+.tag.active {
+    background: #1f7a3f;
+    color: #fff;
+}
+.impact-video {
+    position: relative;
+}
+
+.impact-video::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25); /* léger assombrissement */
+    pointer-events: none;
+    border-radius: 12px;
+}
+.impact-video {
+    flex: 1;
+    background-color: red;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.impact-video-item {
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;     /* remplit le cadre */
+    object-position: center; /* centre la vidéo */
+    border-radius: 12px;
+}
+
+.impact-video-item.active {
+    display: block;
+}

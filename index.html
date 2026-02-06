@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/impact.css">
     <link rel="stylesheet" href="css/carousel.css">
+    <link rel="stylesheet" href="css/gallery.css">
     <link rel="icon" type="image/png"
           href="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
 
@@ -41,6 +42,7 @@
         <div class="nav-inner">
             <!-- Logo -->
             <div class="logo-container">
+                <a href="#home"></a>
                 <img src="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png"
                      alt="DEFI Madagascar" class="logo">
             </div>
@@ -88,28 +90,25 @@
                                 <h3>Notre organisation</h3>
                                 <a href="#">Qui sommes-nous ?</a>
                                 <a href="#">Historique</a>
-                                <a href="#">Notre equipe</a>
+                                <a href="#equipe">Notre equipe</a>
                             </div>
 
                             <div class="mega-column">
                                 <h3>Nos actions</h3>
                                 <a href="#">Projets</a>
-                                <a href="#">Impact</a>
+                                <a href="#impact">Impact</a>
                                 <a href="#">Nos missions</a>
                             </div>
 
                             <div class="mega-column">
                                 <h3>Nos sieges</h3>
                                 <a href="#">village immergeant de manjakarivo</a>
-                                <a href="#">sieges 1</a>
-                                <a href="#">sieges 2</a>
-
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <a href="#testimonials">Gallerie</a>
+                <a href="#gallerie">Gallerie</a>
                 <div class="nav-item nav-mega">
                     <button class="dropdown-toggle" data-mega="contact">
                         Contact
@@ -120,9 +119,9 @@
 
                             <div class="mega-column">
                                 <h3>Contact</h3>
-                                <a href="#">Je fais un don pour soutenir les actions sur le terrain</a>
-                                <a href="#">Mon entreprise/organisation souhaite devenir partenaire</a>
-                                <a href="#">Je prends contact pour en savoir plus</a>
+                                <a href="#don">Je fais un don pour soutenir les actions sur le terrain</a>
+                                <a href="#contact">Mon entreprise/organisation souhaite devenir partenaire</a>
+                                <a href="#contact">Je prends contact pour en savoir plus</a>
 
                             </div>
                         </div>
@@ -174,7 +173,7 @@
 </script>
 
 <!-- Hero Section -->
-<div class="carousel">
+<div class="carousel" id="home">
     <div class="list">
         <div class="item" style="background-image: url('assets/DSC_0021.JPG');">
             <div class="content">
@@ -321,13 +320,12 @@
 </section>
 
 <!-- NOS IMPACTS Section -->
-<section class="impact">
-    <!-- Title -->
+<section id="impact" class="impact">
+
     <div class="impact-title">
         <h2>Quels sont les impacts réels de DEFI ?</h2>
     </div>
 
-    <!-- Main content -->
     <div class="impact-content">
 
         <!-- Text -->
@@ -338,144 +336,164 @@
             </p>
 
             <div class="see-more">
-                <a id="impact-link" href="#">See more</a>
+                <a id="impact-link" href="developpement.html">See more</a>
             </div>
         </div>
 
-        <!-- Video -->
         <div class="impact-video">
-            <video id="impact-video" controls>
-                <source src="videos/developpement.mp4" type="video/mp4" class="video-placeholder">
+
+            <video class="impact-video-item active"
+                   data-tag="developpement"
+                   autoplay muted loop playsinline>
+                <source src="assets/DSC_0705.MOV" type="video/mp4">
             </video>
+
+            <video class="impact-video-item"
+                   data-tag="sante"
+                   autoplay muted loop playsinline>
+                <source src="assets/sante.mp4" type="video/mp4">
+            </video>
+
+            <video class="impact-video-item"
+                   data-tag="environnement"
+                   autoplay muted loop playsinline>
+                <source src="assets/DSC_0705.MOV" type="video/mp4">
+            </video>
+
+            <video class="impact-video-item"
+                   data-tag="culture"
+                   autoplay muted loop playsinline>
+                <source src="assets/culture.mp4" type="video/mp4">
+            </video>
+
+            <video class="impact-video-item"
+                   data-tag="jeunesse"
+                   autoplay muted loop playsinline>
+                <source src="assets/jeunesse.mp4" type="video/mp4">
+            </video>
+
         </div>
 
         <!-- Tags -->
         <div class="impact-tags">
+
             <div class="tag active"
-                 data-video="videos/developpement.mp4"
+                 data-tag="developpement"
                  data-text="Création d’opportunités économiques et sociales durables pour améliorer les conditions de vie."
                  data-link="developpement.html">
                 Développement
             </div>
 
             <div class="tag"
-                 data-video="videos/sante.mp4"
+                 data-tag="sante"
                  data-text="Amélioration de l’accès aux soins et promotion du bien-être physique et mental."
                  data-link="sante.html">
                 Santé
             </div>
 
             <div class="tag"
-                 data-video="videos/environnement.mp4"
+                 data-tag="environnement"
                  data-text="Protection des écosystèmes et transition vers des solutions énergétiques durables."
                  data-link="environnement.html">
                 Environnement
             </div>
 
             <div class="tag"
-                 data-video="videos/culture.mp4"
-                 data-text="Encourager et soutenir les jeunes dans le développement de leurs idées novatrices tout en les sensibilisant à leur rôle actif dans la société, afin de créer une génération responsable, créative et citoyenne."
+                 data-tag="culture"
+                 data-text="Encourager et soutenir les jeunes dans le développement de leurs idées novatrices."
                  data-link="culture.html">
                 Culture
             </div>
 
             <div class="tag"
-                 data-video="videos/jeunesse.mp4"
-                 data-text="Mettre en lumière et préserver les richesses culturelles et touristiques de Madagascar, en promouvant leur authenticité et en favorisant leur transmission aux générations futures tout en soutenant le développement local."
+                 data-tag="jeunesse"
+                 data-text="Mettre en lumière les richesses culturelles et touristiques de Madagascar."
                  data-link="jeunesse.html">
                 Jeunesse
             </div>
+
         </div>
 
     </div>
 </section>
+<script>
+    const tags = document.querySelectorAll('.impact-tags .tag');
+    const videos = document.querySelectorAll('.impact-video-item');
+    const description = document.getElementById('impact-description');
+    const link = document.getElementById('impact-link');
 
-<!-- NOS projects Section
-<section id="Impacts" class="impact-section">
-<div class="impact-header fade-in-up">
-    <h2>Quels sont les impacts réels de DEFI ?</h2>
+    // init
+    videos.forEach(video => {
+        video.playbackRate = 0.5;
+        video.muted = true;
+        video.loop = true;
+    });
 
-</div>-->
+    tags.forEach(tag => {
+        tag.addEventListener('click', () => {
 
-<!--
-    <div id="projects-container"></div>
+            tags.forEach(t => t.classList.remove('active'));
+            tag.classList.add('active');
 
-    <div class="see-more-wrapper">
-        <button id="see-more-btn">Voir plus</button>
-    </div>
-</section>-->
+            const selectedTag = tag.dataset.tag;
+
+            videos.forEach(video => {
+                video.pause();
+                video.classList.remove('active');
+
+                if (video.dataset.tag === selectedTag) {
+                    video.classList.add('active');
+                    video.currentTime = 0;
+                    video.play();
+                }
+            });
+
+            description.textContent = tag.dataset.text;
+            link.href = tag.dataset.link;
+        });
+    });
+</script>
 
 <!-- Galerie Section -->
-<section id="Galerie" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12 fade-in-up">
-            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                L’ÉQUIPE
-            </h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Derrière chaque action de DEFI Madagascar se trouve une équipe engagée, visionnaire et profondément
-                attachée à l’avenir de notre île. Découvrez ceux qui portent cet espoir au quotidien.
-            </p>
+<div id="gallerie" class="screen">
+    <div class="gallery-title-container">
+        <h1>Gallerie</h1>
+    </div>
+
+    <div class="gallery-container">
+        <div class="picture wide">
+            <img src="assets/DSC_0010.JPG" alt="">
+            <span class="picture-title">103D5300</span>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow scale-in stagger-1 equipe-card">
-                <div class="flex items-center">
-                    <img src="assets/800_67f972b943eca.jpg" alt="Volanirina Andriamananoro"
-                         class="custom-size rounded-full object-cover mr-4">
-                    <div>
-                        <h4 class="font-semibold text-gray-900">Volanirina Andriamananoro</h4>
-                        <p class="text-gray-600 text-sm">Presidente</p>
-                    </div>
-                </div>
-                <p class="text-gray-700 mb-6 italic">
-                    "C’est dans l’âme de chacun de nous que réside le pouvoir de
-                    transformer notre pays. Ceux qui ont la chance d’avoir une voix doivent la faire entendre pour
-                    un Madagascar plus solidaire et prospère."
-
-                </p>
-
-            </div>
-
-            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow scale-in stagger-1 equipe-card">
-                <div class="flex items-center mb-4">
-                    <div class="flex items-center">
-                        <img src="assets/800_67f9747292a95_filter_67f974c813158.jpg" alt="Ange Razafindranaivo"
-                             class="custom-size rounded-full object-cover mr-4">
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Ange Razafindranaivo</h4>
-                            <p class="text-gray-600 text-sm">Vice Présidente</p>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-gray-700 mb-6 italic">"Chaque décision que nous prenons aujourd'hui façonne l’avenir
-                    de notre nation. Nous avons la chance de changer le destin de Madagascar, et nous ne pouvons pas
-                    l’ignorer."</p>
-
-            </div>
-
-            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow scale-in stagger-1 equipe-card">
-                <div class="flex items-center mb-4">
-                    <div class="flex items-center">
-                        <img src="assets/800_67f97b663a505_filter_67f97be58a6ed.jpg"
-                             alt="Koloina Jessica Andriambololona"
-                             class="custom-size rounded-full object-cover mr-4">
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Koloina Jessica Andriambololona</h4>
-                            <p class="text-gray-600 text-sm">Secrétaire Générale</p>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-gray-700 mb-6 italic">"Aider l’autre, c’est faire grandir notre nation. Chaque geste
-                    de solidarité, chaque moment partagé, construit un Madagascar plus fort, plus unifié."</p>
-
-            </div>
+        <div class="picture">
+            <img src="assets/DSC_0053.JPG" alt="">
+            <span class="picture-title">103D5300</span>
+        </div>
+        <div class="picture wide">
+            <img src="assets/DSC_0218.JPG" alt="">
+            <span class="picture-title">Ambassade de chine et DEFI Madagascar </span>
+        </div>
+        <div class="picture">
+            <img src="assets/DSC_0111.JPG" alt="">
+            <span class="picture-title">103D5300</span>
+        </div>
+        <div class="picture">
+            <img src="assets/DSC_0351.JPG" alt="">
+            <span class="picture-title">08 MARS AMBOLOMANJAKARIVO</span>
+        </div>
+        <div class="picture wide">
+            <img src="assets/DSC_0400.JPG" alt="">
+            <span class="picture-title">08 MARS AMBOLOMANJAKARIVO</span>
+        </div>
+        <div class="picture">
+            <img src="assets/DSC_0448.JPG" alt="">
+            <span class="picture-title">101D5300</span>
         </div>
     </div>
-</section>
+</div>
 
 <!-- Nos valeurs section -->
-<div class="container">
+<div id="equipe" class="container">
     <div class="hero" id="valeurs">
         <h1>Nos valeurs</h1>
     </div>
@@ -501,70 +519,6 @@
         <div class="buttons-container">
             <button class="arrow left">‹</button>
             <button class="arrow right">›</button>
-        </div>
-    </div>
-
-
-    <!-- Donation Section -->
-    <div class="donation-section" id="donation">
-        <div class="donation-container">
-            <div class="donation-title">
-                <h2>Soutenez-nous</h2>
-                <p>Votre soutien contribue directement à nos actions.</p>
-            </div>
-
-            <div class="donation-content">
-                <!-- Image + overlay -->
-                <div class="donation-image">
-                    <img src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=800&q=80"
-                         alt="Support our mission"/>
-                    <div class="donation-image-overlay">
-                        <div>
-                            <h3>Chaque geste compte</h3>
-                            <p>Merci pour votre soutien 🙏</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Simple Donation Info (no forms) -->
-                <div class="donation-form">
-                    <h3>Faire un don par Mobile Money</h3>
-                    <p class="subtitle">
-                        Pour soutenir notre mission, vous pouvez envoyer votre contribution
-                        directement par Mobile Money. Merci de nous accompagner ❤️
-                    </p>
-
-                    <div class="mt-6 space-y-4">
-
-                        <!-- Orange Money -->
-                        <div class="flex flex-col p-4 bg-orange-100 rounded-xl shadow-sm border border-orange-300">
-                            <span class="text-orange-600 font-semibold text-lg">Orange Money</span>
-                            <span class="text-2xl font-bold mt-1 text-orange-700">+261 12 345 67</span>
-                            <span class="text-sm text-gray-500 mt-1">Nom du compte : DEFI Madagascar</span>
-                        </div>
-
-                        <!-- Telma -->
-                        <div class="flex flex-col p-4 bg-yellow-100 rounded-xl shadow-sm border border-yellow-300">
-                            <span class="text-yellow-700 font-semibold text-lg">MVola (Telma)</span>
-                            <span class="text-2xl font-bold mt-1 text-yellow-800">+261 45 678 90</span>
-                            <span class="text-sm text-gray-500 mt-1">Nom du compte : DEFI Madagascar</span>
-                        </div>
-
-                        <!-- Airtel Money -->
-                        <div class="flex flex-col p-4 bg-red-100 rounded-xl shadow-sm border border-red-300">
-                            <span class="text-red-600 font-semibold text-lg">Airtel Money</span>
-                            <span class="text-2xl font-bold mt-1 text-red-700">+261 98 765 43</span>
-                            <span class="text-sm text-gray-500 mt-1">Nom du compte : DEFI Madagascar</span>
-                        </div>
-
-                    </div>
-
-                    <div class="trust-indicators mt-6">
-                        <p>🔒 Votre don est sécurisé</p>
-                        <p>🤝 Merci de soutenir notre association</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
