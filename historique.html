@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/historique.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -15,93 +17,6 @@
 
     <script src="js/navbar-scroll.js" defer></script>
 
-    <style>
-        :root {
-            --primary: #16a34a;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-400: #9ca3af;
-            --gray-500: #6b7280;
-            --gray-700: #374151;
-            --gray-900: #111827;
-            --white: #ffffff;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: var(--gray-50);
-            color: var(--gray-700);
-            line-height: 1.8;
-        }
-
-        .history-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        /* Image historique */
-        .history-image {
-            width: 100%;
-            height: 400px;
-            background-image: url("assets/histoire.jpg"); /* à remplacer */
-            background-size: cover;
-            background-position: center;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-bottom: 50px;
-        }
-
-        /* Texte */
-        .history-text h1 {
-            font-size: 36px;
-            color: var(--gray-900);
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .history-text h1::after {
-            content: "";
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary);
-            margin-top: 10px;
-        }
-
-        .history-text h2 {
-            font-size: 22px;
-            color: var(--primary);
-            margin-top: 40px;
-            margin-bottom: 15px;
-        }
-
-        .history-text p {
-            margin-bottom: 18px;
-            text-align: justify;
-            color: var(--gray-700);
-        }
-
-        .highlight {
-            background-color: var(--gray-100);
-            padding: 20px;
-            border-left: 5px solid var(--primary);
-            border-radius: 6px;
-            margin: 30px 0;
-            color: var(--gray-700);
-        }
-
-        @media (max-width: 768px) {
-            .history-image {
-                height: 260px;
-            }
-
-            .history-text h1 {
-                font-size: 28px;
-            }
-        }
-    </style>
 </head>
 <body>
 
@@ -109,12 +24,14 @@
 <header class="glass-navbar">
     <div class="nav-container">
         <div class="nav-inner">
-
+            <!-- Logo -->
             <div class="logo-container">
+                <a href="#home"></a>
                 <img src="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png"
                      alt="DEFI Madagascar" class="logo">
             </div>
 
+            <!-- Mobile Button -->
             <div class="mobile-button-container">
                 <button id="mobile-menu-button" class="mobile-button">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -124,46 +41,120 @@
                 </button>
             </div>
 
+            <!-- Nav Links Desktop -->
             <nav class="nav-links">
                 <div class="nav-item nav-mega">
-                    <button class="dropdown-toggle" data-mega="actualites">Actualité</button>
+                    <button class="dropdown-toggle" data-mega="actualites">
+                        Actualité
+                    </button>
+
                     <div class="mega-dropdown" id="mega-actualites">
                         <div class="mega-container">
+
                             <div class="mega-column">
                                 <h3>Actualité</h3>
                                 <a href="#">Recentes missions</a>
                                 <a href="#">Revue de presse</a>
                                 <a href="#">Article de presse</a>
+
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="nav-item nav-mega">
-                    <button class="dropdown-toggle" data-mega="about">A propos</button>
+                    <button class="dropdown-toggle" data-mega="about">
+                        A propos
+                    </button>
+
                     <div class="mega-dropdown" id="mega-about">
                         <div class="mega-container">
+
                             <div class="mega-column">
                                 <h3>Notre organisation</h3>
                                 <a href="#">Qui sommes-nous ?</a>
                                 <a href="#">Historique</a>
                                 <a href="#equipe">Notre equipe</a>
                             </div>
+
                             <div class="mega-column">
                                 <h3>Nos actions</h3>
                                 <a href="#">Projets</a>
                                 <a href="#impact">Impact</a>
                                 <a href="#">Nos missions</a>
                             </div>
+
+                            <div class="mega-column">
+                                <h3>Nos sieges</h3>
+                                <a href="#">village immergeant de manjakarivo</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <a href="#gallerie">Gallerie</a>
+                <div class="nav-item nav-mega">
+                    <button class="dropdown-toggle" data-mega="contact">
+                        Contact
+                    </button>
+
+                    <div class="mega-dropdown" id="mega-contact">
+                        <div class="mega-container">
+
+                            <div class="mega-column">
+                                <h3>Contact</h3>
+                                <a href="#don">Je fais un don pour soutenir les actions sur le terrain</a>
+                                <a href="#contact">Mon entreprise/organisation souhaite devenir partenaire</a>
+                                <a href="#contact">Je prends contact pour en savoir plus</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </nav>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu">
+            <div>
+                <nav>
+                    <a href="#home">Accueil</a>
+                    <a href="#about">A propos</a>
+                    <a href="#services">Projets</a>
+                    <a href="#testimonials">Equipe</a>
+                    <a href="#valeurs">Valeurs</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
         </div>
     </div>
 </header>
+<script>
+    const toggles = document.querySelectorAll('.dropdown-toggle');
+    const dropdowns = document.querySelectorAll('.mega-dropdown');
+
+    toggles.forEach(toggle => {
+        toggle.addEventListener('click', e => {
+            e.stopPropagation();
+
+            const targetId = 'mega-' + toggle.dataset.mega;
+            const targetDropdown = document.getElementById(targetId);
+
+            // fermer tous les autres
+            dropdowns.forEach(d => {
+                if (d !== targetDropdown) d.classList.remove('open');
+            });
+
+            // toggle actuel
+            targetDropdown.classList.toggle('open');
+        });
+    });
+
+    // clic en dehors → ferme tout
+    document.addEventListener('click', () => {
+        dropdowns.forEach(d => d.classList.remove('open'));
+    });
+</script>
 
 <!-- CONTENU HISTORIQUE -->
 <main class="history-container">
@@ -227,6 +218,8 @@
     </section>
 
 </main>
+
+
 <footer class="bg-gray-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
