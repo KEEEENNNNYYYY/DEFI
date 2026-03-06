@@ -153,10 +153,10 @@
     color:#16a34a;
 }
 .about-line {
-     position: relative;
-     height: 600px;
-     margin-bottom: 6rem;
- }
+    position: relative;
+    height: 600px;
+    margin-bottom: 6rem;
+}
 .about-image {
     position: absolute;
     width: 100%;
@@ -217,4 +217,465 @@
     object-fit: cover;
     border: #16a34a solid 10px;
 
+}
+/* ─── DEMO: fake dark hero bottom edge ─── */
+.fake-hero-bottom {
+    height: 80px;
+    background: linear-gradient(to bottom, #0a0f0d, #111a14);
+    width: 100%;
+}
+
+/* ════════════════════════
+   VARIABLES
+════════════════════════ */
+:root {
+    --lime:       #14FF72CB;
+    --lime-solid: #14ff72;
+    --lime-glow:  rgba(20,255,114,.22);
+    --green-deep: #16a34a;
+    --dark:       #0a0f0d;
+    --dark-2:     #111a14;
+    --dark-3:     #1a2d20;
+    --cream:      #fafaf7;
+    --ink:        #0d1f13;
+    --gray:       #4b5563;
+    --white:      #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ════════════════════════════════════════
+   TRANSITION — div supprimée côté HTML,
+   le pont visuel est maintenant géré
+   directement par .about::before
+════════════════════════════════════════ */
+.about-transition { display: none; }
+
+/* ════════════════════════════════════════
+   SECTION WRAPPER
+   Le fond vert foncé en forme de trapèze
+   part du bord supérieur (ras du hero) et
+   se coupe en diagonale sous le bloc
+   mission — lien visuel direct avec
+   l'image plein-écran du carousel.
+════════════════════════════════════════ */
+.about {
+    position: relative;
+    background: var(--cream);
+    overflow: hidden;
+    width: 100vw;
+    padding-bottom: 7rem;
+}
+
+/*
+   Trapèze vert foncé :
+   - Pleine largeur, hauteur ~680px
+     (couvre tout le bloc mission)
+   - Coin haut-gauche et haut-droit
+     collés au sommet de la section
+     (raccord parfait avec le hero)
+   - Diagonale montant de gauche
+     vers la droite : bas-gauche à 100%,
+     bas-droite à 55% → trapèze qui
+     s'effile vers la droite comme
+     dans le sketch
+*/
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 680px;
+    background: var(--dark-3);
+    clip-path: polygon(0 0, 100% 0, 100% 55%, 0 100%);
+    z-index: 0;
+}
+
+/* scanline lime en haut — écho de la timeRunning bar du hero */
+.about::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(to right, transparent, var(--lime-solid), transparent);
+    animation: scanline 3.5s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes scanline {
+    0%   { opacity: 0; transform: scaleX(.2); }
+    50%  { opacity: 1; transform: scaleX(1);  }
+    100% { opacity: 0; transform: scaleX(.2); }
+}
+
+/* ghost word — flotte sur le fond vert foncé */
+.about-ghost {
+    position: absolute;
+    top: 0;
+    left: -1rem;
+    font-family: 'Turret Road', sans-serif;
+    font-size: clamp(5rem, 13vw, 12rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(20,255,114,.09);
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.about-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* ── eyebrow ── */
+.about-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    padding-top: 3rem;
+    margin-bottom: 3rem;
+}
+.about-eyebrow i {
+    display: block;
+    width: 2.5rem; height: 2px;
+    background: var(--lime-solid);
+    font-style: normal;
+}
+.about-eyebrow span {
+    font-family: 'Turret Road', sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--lime-solid);
+}
+
+/* ════════════════════════
+   BLOC 1 — Mission
+   Flotte sur le fond trapézoïdal
+   vert foncé de .about::before
+════════════════════════ */
+.block-mission {
+    display: grid;
+    grid-template-columns: 55% 1fr;
+    min-height: 500px;
+    margin-bottom: 7rem;
+    /* léger espace en haut pour que le fond
+       trapézoïdal soit visible au-dessus */
+    margin-top: 1rem;
+}
+
+.mission-img {
+    position: relative;
+    overflow: hidden;
+    background: var(--dark);
+}
+.mission-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: .72;
+    display: block;
+    transition: opacity .6s ease, transform .8s cubic-bezier(.25,.46,.45,.94);
+}
+.mission-img:hover img { opacity: .88; transform: scale(1.04); }
+.mission-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,15,13,.75) 0%, rgba(10,15,13,.2) 60%, transparent 100%);
+}
+/* lime tag — same color as hero .title */
+.mission-tag {
+    position: absolute;
+    bottom: 2rem; left: 2rem; z-index: 5;
+    font-family: 'Turret Road', sans-serif;
+    font-size: .62rem; font-weight: 700;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--dark);
+    background: var(--lime-solid);
+    padding: .45rem 1rem;
+    border-radius: 2px;
+}
+
+/* dark text panel — fond semi-transparent,
+   laisse percevoir le vert du trapèze */
+.mission-text {
+    background: rgb(23, 39, 27);
+    padding: 4rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    border-left: 3px solid var(--lime-solid);
+}
+.mission-text::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, var(--lime-glow) 0%, transparent 65%);
+    pointer-events: none;
+}
+.mission-text h2 {
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -.01em;
+    line-height: 1.25;
+    color: var(--white);
+    margin-bottom: 1.75rem;
+}
+.mission-text h2 em {
+    font-style: normal;
+    color: var(--lime-solid);
+}
+.mission-text p {
+    font-size: .95rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,.68);
+    font-weight: 300;
+}
+
+/* ════════════════════════
+   BLOC 2 — Histoire
+   Full-width dark band (hero
+   slide vibe) + floating card
+════════════════════════ */
+.block-histoire {
+    position: relative;
+    margin-bottom: 8rem;
+}
+
+.histoire-band {
+    position: relative;
+    height: 460px;
+    background: var(--dark);
+    overflow: hidden;
+    /* diagonal bottom — same language as transition band */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+.histoire-band img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: .5;
+    transition: transform .8s ease;
+    display: block;
+}
+.histoire-band:hover img { transform: scale(1.03); }
+.histoire-band::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(10,15,13,.88) 0%, rgba(10,15,13,.3) 55%, transparent 100%);
+}
+
+/* year filigrane — same as ghost word style */
+.histoire-year {
+    position: absolute;
+    bottom: 3.5rem; left: 3rem; z-index: 4;
+    font-family: 'Turret Road', sans-serif;
+    font-size: clamp(5rem, 11vw, 9rem);
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(20,255,114,.3);
+    line-height: 1;
+    letter-spacing: -.03em;
+    pointer-events: none;
+}
+
+/* floating white card — light contrast to dark band */
+.histoire-card {
+    position: absolute;
+    bottom: -3.5rem; right: 4%;
+    width: 44%;
+    background: var(--white);
+    padding: 3rem 2.75rem;
+    box-shadow: 0 40px 100px rgba(10,15,13,.2);
+    z-index: 5;
+    border-top: 3px solid var(--lime-solid);
+}
+.histoire-card h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+}
+.histoire-card h2 span { color: var(--green-deep); }
+.histoire-card p {
+    font-size: .9rem;
+    line-height: 1.85;
+    color: var(--gray);
+    font-weight: 300;
+}
+
+/* ════════════════════════
+   BLOC 3 — Piliers
+   Full-dark triptych — pure
+   hero carousel slide energy
+════════════════════════ */
+/* ════════════════════════════════════════
+   BLOC 3 — Piliers
+   Trapèze INVERSÉ pleine largeur écran.
+   S'échappe du max-width du .about-wrap
+   via margin négatifs + 100vw trick.
+════════════════════════════════════════ */
+.block-piliers {
+    position: relative;
+    margin-top: 7rem;
+    padding-bottom: 5rem;
+    /* s'échappe du padding du .about-wrap */
+    margin-left: -2.5rem;
+    margin-right: -2.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+/*
+   Pseudo-élément trapèze inversé plein écran :
+   left: 50% + translateX(-50%) = centré sur
+   le viewport même depuis un parent contraint
+*/
+.block-piliers::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    background: var(--dark-3);
+    clip-path: polygon(0 45%, 100% 0%, 100% 100%, 0 100%);
+    z-index: 0;
+}
+
+.piliers-heading {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.piliers-heading h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--ink);
+}
+.piliers-heading h2 span { color: var(--lime-solid); }
+
+.piliers-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--dark);
+}
+
+.pilier-card {
+    position: relative;
+    height: 440px;
+    overflow: hidden;
+    background: var(--dark);
+    cursor: pointer;
+}
+.pilier-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: .58;
+    transition: opacity .5s ease, transform .7s cubic-bezier(.25,.46,.45,.94);
+    display: block;
+}
+.pilier-card:hover img { opacity: .38; transform: scale(1.07); }
+/* hero-style gradient */
+.pilier-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10,15,13,.96) 0%, rgba(10,15,13,.4) 50%, transparent 100%);
+}
+.pilier-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 3;
+    padding: 2.25rem 2rem;
+    color: var(--white);
+}
+.pilier-num {
+    font-family: 'Turret Road', sans-serif;
+    font-size: 3rem; font-weight: 800;
+    color: var(--lime-solid);
+    opacity: .22; line-height: 1;
+    display: block;
+    margin-bottom: -.2rem;
+    transition: opacity .3s ease;
+}
+.pilier-card:hover .pilier-num { opacity: .75; }
+.pilier-content h3 {
+    font-size: 1rem; font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: .65rem;
+}
+.pilier-content p {
+    font-size: .82rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,.68);
+    font-weight: 300;
+    max-width: 26ch;
+}
+/* lime slide bottom — echoes hero button border */
+.pilier-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 3px;
+    background: var(--lime-solid);
+    transition: width .4s ease;
+    z-index: 4;
+}
+.pilier-card:hover::before { width: 100%; }
+
+/* ─── ANIMATIONS (mirror hero @keyframes animate) ─── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+    to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+@keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleReveal {
+    from { opacity: 0; transform: scale(.97); }
+    to   { opacity: 1; transform: scale(1); }
+}
+.anim-up    { animation: fadeUp      .9s cubic-bezier(.25,.46,.45,.94) both; }
+.anim-left  { animation: fadeLeft    .9s cubic-bezier(.25,.46,.45,.94) both; }
+.anim-scale { animation: scaleReveal .9s cubic-bezier(.25,.46,.45,.94) both; }
+.d1 { animation-delay: .1s; }
+.d2 { animation-delay: .25s; }
+.d3 { animation-delay: .4s; }
+.d4 { animation-delay: .55s; }
+.d5 { animation-delay: .7s; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+    .block-mission { grid-template-columns: 1fr; min-height: auto; }
+    .mission-img { height: 360px; }
+    .mission-text { padding: 3rem 2rem; border-left: none; border-top: 3px solid var(--lime-solid); }
+    .histoire-card {
+        position: relative; bottom: auto; right: auto;
+        width: 100%; margin-top: -2rem;
+    }
+    .piliers-grid { grid-template-columns: 1fr; }
+    .pilier-card { height: 300px; }
+}
+@media (max-width: 640px) {
+    .about-wrap { padding: 0 1.25rem; }
+    .histoire-year { font-size: 4rem; }
 }
