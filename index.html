@@ -325,139 +325,147 @@
 </section>
 
 <!-- NOS IMPACTS Section -->
+<!-- ════════════════════════════════
+     NOS IMPACTS Section
+     CSS : css/impact.css
+     JS  : js/impact.js
+════════════════════════════════ -->
 <section id="impact" class="impact">
 
-    <div class="impact-title">
-        <h2>Quels sont les impacts réels de DEFI ?</h2>
-    </div>
+    <!-- ── background decorative elements ── -->
+    <div class="impact-bg-ghost">IMPACT</div>
 
-    <div class="impact-content">
+    <div class="impact-wrap">
 
-        <!-- Text -->
-        <div class="impact-text">
-            <p id="impact-description">
-                Notre association agit concrètement pour améliorer les conditions
-                de vie des communautés locales à travers des actions durables.
-            </p>
-
-            <div class="see-more">
-                <a id="impact-link" href="developpement.html">See more</a>
+        <!-- ── header ── -->
+        <div class="impact-header">
+            <div class="impact-eyebrow">
+                <i></i>
+                <span>Nos résultats</span>
             </div>
+            <h2 class="impact-title">
+                Quels sont les impacts<br>
+                <em>réels de DEFI ?</em>
+            </h2>
         </div>
 
-        <div class="impact-video">
+        <!-- ── main layout ── -->
+        <div class="impact-body">
 
-            <video class="impact-video-item active"
-                   data-tag="developpement"
-                   autoplay muted loop playsinline>
-                <source src="assets/DSC_0705.MOV" type="video/mp4">
-            </video>
+            <!-- LEFT : tags navigation -->
+            <nav class="impact-tags" aria-label="Domaines d'impact">
+                <button class="impact-tag active"
+                        data-tag="developpement"
+                        data-text="Création d'opportunités économiques et sociales durables pour améliorer les conditions de vie."
+                        data-link="developpement.html">
+                    <span class="tag-num">01</span>
+                    <span class="tag-label">Développement</span>
+                    <span class="tag-arrow">→</span>
+                </button>
 
-            <video class="impact-video-item"
-                   data-tag="sante"
-                   autoplay muted loop playsinline>
-                <source src="assets/sante.mp4" type="video/mp4">
-            </video>
+                <button class="impact-tag"
+                        data-tag="sante"
+                        data-text="Amélioration de l'accès aux soins et promotion du bien-être physique et mental."
+                        data-link="sante.html">
+                    <span class="tag-num">02</span>
+                    <span class="tag-label">Santé</span>
+                    <span class="tag-arrow">→</span>
+                </button>
 
-            <video class="impact-video-item"
-                   data-tag="environnement"
-                   autoplay muted loop playsinline>
-                <source src="assets/DSC_0705.MOV" type="video/mp4">
-            </video>
+                <button class="impact-tag"
+                        data-tag="environnement"
+                        data-text="Protection des écosystèmes et transition vers des solutions énergétiques durables."
+                        data-link="environnement.html">
+                    <span class="tag-num">03</span>
+                    <span class="tag-label">Environnement</span>
+                    <span class="tag-arrow">→</span>
+                </button>
 
-            <video class="impact-video-item"
-                   data-tag="culture"
-                   autoplay muted loop playsinline>
-                <source src="assets/culture.mp4" type="video/mp4">
-            </video>
+                <button class="impact-tag"
+                        data-tag="culture"
+                        data-text="Encourager et soutenir les jeunes dans le développement de leurs idées novatrices."
+                        data-link="culture.html">
+                    <span class="tag-num">04</span>
+                    <span class="tag-label">Culture</span>
+                    <span class="tag-arrow">→</span>
+                </button>
 
-            <video class="impact-video-item"
-                   data-tag="jeunesse"
-                   autoplay muted loop playsinline>
-                <source src="assets/jeunesse.mp4" type="video/mp4">
-            </video>
+                <button class="impact-tag"
+                        data-tag="jeunesse"
+                        data-text="Mettre en lumière les richesses culturelles et touristiques de Madagascar."
+                        data-link="jeunesse.html">
+                    <span class="tag-num">05</span>
+                    <span class="tag-label">Jeunesse</span>
+                    <span class="tag-arrow">→</span>
+                </button>
+            </nav>
+
+            <!-- CENTER : video stage -->
+            <div class="impact-stage">
+
+                <!-- video stack -->
+                <div class="impact-video-stack">
+                    <video class="impact-video active" data-tag="developpement"
+                           autoplay muted loop playsinline>
+                        <source src="assets/DSC_0705.MOV" type="video/mp4">
+                    </video>
+                    <video class="impact-video" data-tag="sante"
+                           autoplay muted loop playsinline>
+                        <source src="assets/sante.mp4" type="video/mp4">
+                    </video>
+                    <video class="impact-video" data-tag="environnement"
+                           autoplay muted loop playsinline>
+                        <source src="assets/DSC_0705.MOV" type="video/mp4">
+                    </video>
+                    <video class="impact-video" data-tag="culture"
+                           autoplay muted loop playsinline>
+                        <source src="assets/culture.mp4" type="video/mp4">
+                    </video>
+                    <video class="impact-video" data-tag="jeunesse"
+                           autoplay muted loop playsinline>
+                        <source src="assets/jeunesse.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- gradient overlays -->
+                <div class="impact-stage-overlay"></div>
+
+                <!-- active tag label on video -->
+                <div class="impact-stage-label">
+                    <span class="stage-label-num">01</span>
+                    <span class="stage-label-text">Développement</span>
+                </div>
+
+                <!-- progress bar -->
+                <div class="impact-progress">
+                    <div class="impact-progress-fill"></div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT : description + cta -->
+            <div class="impact-info">
+                <p class="impact-description" id="impact-description">
+                    Création d'opportunités économiques et sociales durables
+                    pour améliorer les conditions de vie.
+                </p>
+                <a class="impact-cta" id="impact-link" href="developpement.html">
+                    <span>Voir plus</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+
+                <!-- mini stat -->
+                <div class="impact-stat">
+                    <span class="stat-num">30<em>+</em></span>
+                    <span class="stat-label">années d'engagement<br>sur le terrain</span>
+                </div>
+            </div>
 
         </div>
-
-        <!-- Tags -->
-        <div class="impact-tags">
-
-            <div class="tag active"
-                 data-tag="developpement"
-                 data-text="Création d’opportunités économiques et sociales durables pour améliorer les conditions de vie."
-                 data-link="developpement.html">
-                Développement
-            </div>
-
-            <div class="tag"
-                 data-tag="sante"
-                 data-text="Amélioration de l’accès aux soins et promotion du bien-être physique et mental."
-                 data-link="sante.html">
-                Santé
-            </div>
-
-            <div class="tag"
-                 data-tag="environnement"
-                 data-text="Protection des écosystèmes et transition vers des solutions énergétiques durables."
-                 data-link="environnement.html">
-                Environnement
-            </div>
-
-            <div class="tag"
-                 data-tag="culture"
-                 data-text="Encourager et soutenir les jeunes dans le développement de leurs idées novatrices."
-                 data-link="culture.html">
-                Culture
-            </div>
-
-            <div class="tag"
-                 data-tag="jeunesse"
-                 data-text="Mettre en lumière les richesses culturelles et touristiques de Madagascar."
-                 data-link="jeunesse.html">
-                Jeunesse
-            </div>
-
-        </div>
-
     </div>
 </section>
-<script>
-    const tags = document.querySelectorAll('.impact-tags .tag');
-    const videos = document.querySelectorAll('.impact-video-item');
-    const description = document.getElementById('impact-description');
-    const link = document.getElementById('impact-link');
-
-    // init
-    videos.forEach(video => {
-        video.playbackRate = 0.5;
-        video.muted = true;
-        video.loop = true;
-    });
-
-    tags.forEach(tag => {
-        tag.addEventListener('click', () => {
-
-            tags.forEach(t => t.classList.remove('active'));
-            tag.classList.add('active');
-
-            const selectedTag = tag.dataset.tag;
-
-            videos.forEach(video => {
-                video.pause();
-                video.classList.remove('active');
-
-                if (video.dataset.tag === selectedTag) {
-                    video.classList.add('active');
-                    video.currentTime = 0;
-                    video.play();
-                }
-            });
-
-            description.textContent = tag.dataset.text;
-            link.href = tag.dataset.link;
-        });
-    });
-</script>
 
 <!-- Galerie Section -->
 <div id="gallerie" class="screen">

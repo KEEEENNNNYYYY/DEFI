@@ -264,7 +264,7 @@
     background: var(--cream);
     overflow: hidden;
     width: 100vw;
-    padding-bottom: 7rem;
+    padding-bottom: 0; /* le bloc piliers gère son propre espace */
 }
 
 /*
@@ -528,18 +528,21 @@
 .block-piliers {
     position: relative;
     margin-top: 7rem;
-    padding-bottom: 5rem;
+    padding-bottom: 0; /* aucun espace cream sous les cartes */
     /* s'échappe du padding du .about-wrap */
     margin-left: -2.5rem;
     margin-right: -2.5rem;
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+    /* descend jusqu'au bord bas de .about */
+    margin-bottom: 0;
 }
 
 /*
-   Pseudo-élément trapèze inversé plein écran :
-   left: 50% + translateX(-50%) = centré sur
-   le viewport même depuis un parent contraint
+   Trapèze inversé plein écran :
+   height: calc(100% + 40px) déborde légèrement
+   vers le bas pour qu'il n'y ait aucun pixel
+   cream visible entre .about et .impact
 */
 .block-piliers::before {
     content: '';
@@ -548,7 +551,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 100vw;
-    height: 100%;
+    height: calc(100% + 40px); /* déborde de 40px vers le bas */
     background: var(--dark-3);
     clip-path: polygon(0 45%, 100% 0%, 100% 100%, 0 100%);
     z-index: 0;

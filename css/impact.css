@@ -1,154 +1,468 @@
-/* Section impact */
+/* ════════════════════════════════════════
+   IMPACT SECTION
+   Style : editorial sombre, vidéo au
+   centre, accent lime #14ff72, Poppins +
+   Turret Road — continuité avec la hero.
+════════════════════════════════════════ */
+
+/* ── variables locales (héritent du :root global) ── */
 .impact {
-    width: 100dvw;
-    padding:40px;
-    background: #ffffff;
-    height: 75dvh;
+    --lime:        #14ff72;
+    --lime-dim:    rgba(20, 255, 114, .15);
+    --lime-glow:   rgba(20, 255, 114, .25);
+    --dark:        #0a0f0d;
+    --dark-2:      #111a14;
+    --dark-3:      #1a2d20;
+    --green-deep:  #16a34a;
+    --cream:       #fafaf7;
+    --ink:         #0d1f13;
+    --gray:        #4b5563;
+    --white:       #ffffff;
 }
 
-/* Title container (700px) */
-.impact-title {
-    max-width: 700px;
-    margin-bottom: 30px;
+/* ════════════════════════
+   SECTION WRAPPER
+════════════════════════ */
+.impact {
+    position: relative;
+    background: var(--dark-3); /* identique au trapèze des piliers = jointure invisible */
+    overflow: hidden;
+    /* réduit le padding-top : le trapèze des piliers amène déjà de l'espace */
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0;
+    padding: 7.5% 0 5rem;
 }
 
-.impact-title h2 {
-    font-size: 28px;
-    font-weight: 600;
+/* ghost word décoratif — en filigrane */
+.impact-bg-ghost {
+    position: absolute;
+    top: -2rem;
+    right: -2rem;
+    font-family: 'Turret Road', sans-serif;
+    font-size: clamp(6rem, 15vw, 14rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(20, 255, 114, .05);
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 0;
+    line-height: 1;
 }
 
-/* Main layout */
+/* bruit de texture subtil */
+.impact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: .5;
+    z-index: 0;
+}
 
-.impact-content {
+.impact-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ════════════════════════
+   HEADER
+════════════════════════ */
+.impact-header {
+    margin-bottom: 3.5rem;
+}
+
+.impact-eyebrow {
     display: flex;
-    gap: 30px;
-    align-items: stretch; /* la vidéo et le texte auront la même hauteur */
-    height: 100%;         /* important pour que la vidéo suive la hauteur */
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1.25rem;
 }
 
-/* Text container */
-.impact-text {
-    width: 250px;
+.impact-eyebrow i {
+    display: block;
+    width: 2.5rem;
+    height: 2px;
+    background: var(--lime);
+    font-style: normal;
+    flex-shrink: 0;
+}
+
+.impact-eyebrow span {
+    font-family: 'Turret Road', sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--lime);
+}
+
+.impact-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    color: var(--white);
+}
+
+.impact-title em {
+    font-style: normal;
+    color: var(--lime);
+}
+
+/* ════════════════════════
+   BODY LAYOUT
+   Tags | Vidéo | Info
+   1fr  | 2fr   | 1fr
+════════════════════════ */
+.impact-body {
+    display: grid;
+    grid-template-columns: 220px 1fr 260px;
+    gap: 2rem;
+    align-items: stretch;
+    min-height: 520px;
+}
+
+/* ════════════════════════
+   LEFT — TAGS NAV
+════════════════════════ */
+.impact-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 1px solid rgba(255,255,255,.08);
+    padding-left: 0;
+}
+
+.impact-tag {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: 1rem 1.25rem;
+    background: none;
+    border: none;
+    border-left: 2px solid transparent;
+    cursor: pointer;
+    text-align: left;
+    transition: all .3s ease;
+    position: relative;
+    margin-left: -1px; /* overlaps the container border-left */
+}
+
+.impact-tag:hover {
+    background: rgba(20, 255, 114, .04);
+    border-left-color: rgba(20, 255, 114, .4);
+}
+
+.impact-tag.active {
+    background: rgba(20, 255, 114, .08);
+    border-left-color: var(--lime);
+}
+
+.tag-num {
+    font-family: 'Turret Road', sans-serif;
+    font-size: .65rem;
+    font-weight: 700;
+    color: rgba(255,255,255,.25);
+    min-width: 1.5rem;
+    transition: color .3s ease;
+}
+
+.impact-tag.active .tag-num,
+.impact-tag:hover .tag-num {
+    color: var(--lime);
+}
+
+.tag-label {
+    font-size: .9rem;
+    font-weight: 500;
+    color: rgba(255,255,255,.5);
+    flex: 1;
+    transition: color .3s ease;
+    letter-spacing: .02em;
+}
+
+.impact-tag.active .tag-label {
+    color: var(--white);
+    font-weight: 700;
+}
+
+.impact-tag:hover .tag-label {
+    color: rgba(255,255,255,.85);
+}
+
+.tag-arrow {
+    font-size: .85rem;
+    color: transparent;
+    transition: color .3s ease, transform .3s ease;
+}
+
+.impact-tag.active .tag-arrow {
+    color: var(--lime);
+}
+
+.impact-tag:hover .tag-arrow {
+    color: rgba(20, 255, 114, .6);
+    transform: translateX(3px);
+}
+
+/* ════════════════════════
+   CENTER — VIDEO STAGE
+════════════════════════ */
+.impact-stage {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--dark-2);
+    min-height: 480px;
+}
+
+/* video stack */
+.impact-video-stack {
+    position: absolute;
+    inset: 0;
+}
+
+.impact-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: opacity .7s cubic-bezier(.25,.46,.45,.94);
+    display: block; /* override old display:none */
+}
+
+.impact-video.active {
+    opacity: 1;
+}
+
+/* gradient overlay : assombrit bas + gauche */
+.impact-stage-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+            linear-gradient(to top,  rgba(10,15,13,.85) 0%, transparent 45%),
+            linear-gradient(to right, rgba(10,15,13,.5) 0%, transparent 40%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* coin haut-droit : accent lime */
+.impact-stage::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 3px;
+    height: 60px;
+    background: var(--lime);
+    z-index: 5;
+}
+.impact-stage::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--lime);
+    z-index: 5;
+}
+
+/* label actif sur la vidéo */
+.impact-stage-label {
+    position: absolute;
+    bottom: 3rem;
+    left: 2rem;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.stage-label-num {
+    font-family: 'Turret Road', sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(20, 255, 114, .3);
+    line-height: 1;
+    display: block;
+}
+
+.stage-label-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: rgba(255,255,255,.9);
+}
+
+/* barre de progression en bas */
+.impact-progress {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: rgba(255,255,255,.1);
+    z-index: 5;
+}
+
+.impact-progress-fill {
+    height: 100%;
+    width: 20%; /* 1/5 tags, mis à jour par JS */
+    background: var(--lime);
+    transition: width .4s cubic-bezier(.25,.46,.45,.94);
+}
+
+/* ════════════════════════
+   RIGHT — INFO PANEL
+════════════════════════ */
+.impact-info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 1rem 0;
+    border-left: 1px solid rgba(255,255,255,.08);
+    padding-left: 2rem;
 }
 
-.impact-text p {
-    line-height: 1.6;
-    color: #333;
-}
-
-.see-more {
-    margin-top: 20px;
-}
-
-.see-more a {
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-    border: 1px solid #000;
-    padding: 8px 14px;
-    display: inline-block;
-}
-
-/* Video container */
-
-.video-placeholder {
-    width: 100%;
-    height: 100%;
-    min-height: 260px;
-    background: #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-
-}/* Video container */
-.impact-video {
-    flex: 1;              /* prend tout l’espace disponible */
-    background-color: red;
-    display: flex;         /* pour centrer la vidéo si besoin */
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-
-/* Tags container */
-.impact-tags {
-    width: 180px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.tag {
-    border: 1px solid #000;
-    padding: 10px;
-    text-align: center;
-    font-size: 14px;
-}.impact-tags .tag {
-     cursor: pointer;
-     opacity: 0.6;
-     transition: 0.3s;
- }
-
-.impact-tags .tag.active {
-    opacity: 1;
-    font-weight: bold;
-}
-
-
-.impact-video-item.active {
-    display: block;
-}
-
-.tag {
-    cursor: pointer;
-}
-
-.tag.active {
-    background: #1f7a3f;
-    color: #fff;
-}
-.impact-video {
-    position: relative;
-}
-
-.impact-video::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.25); /* léger assombrissement */
-    pointer-events: none;
-    border-radius: 12px;
-}
-.impact-video {
+.impact-description {
+    font-size: .98rem;
+    line-height: 1.85;
+    color: rgba(255,255,255,.65);
+    font-weight: 300;
     flex: 1;
-    background-color: red;
-    position: relative;
+    /* smooth text swap */
+    transition: opacity .4s ease;
+}
 
-    display: flex;
+.impact-description.transitioning {
+    opacity: 0;
+}
+
+/* CTA */
+.impact-cta {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-
-    height: 100%;
-    overflow: hidden;
-    border-radius: 12px;
+    gap: .6rem;
+    margin-top: 2rem;
+    padding: .7rem 1.4rem;
+    background: transparent;
+    border: 1.5px solid var(--lime);
+    color: var(--lime);
+    font-family: 'Turret Road', sans-serif;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background .25s ease, color .25s ease;
 }
 
-.impact-video-item {
-    display: none;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;     /* remplit le cadre */
-    object-position: center; /* centre la vidéo */
-    border-radius: 12px;
+.impact-cta:hover {
+    background: var(--lime);
+    color: var(--dark);
 }
 
-.impact-video-item.active {
-    display: block;
+.impact-cta svg {
+    transition: transform .25s ease;
+}
+
+.impact-cta:hover svg {
+    transform: translateX(4px);
+}
+
+/* stat bloc */
+.impact-stat {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,.08);
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.stat-num {
+    font-family: 'Turret Road', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+}
+
+.stat-num em {
+    font-style: normal;
+    color: var(--lime);
+    font-size: 2rem;
+}
+
+.stat-label {
+    font-size: .8rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,.45);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+/* ════════════════════════
+   RESPONSIVE
+════════════════════════ */
+@media (max-width: 1024px) {
+    .impact-body {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .impact-stage {
+        grid-column: 1 / -1;
+        min-height: 380px;
+    }
+
+    .impact-tags {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,.08);
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-left: 0;
+        padding-top: 1rem;
+        gap: .5rem;
+    }
+
+    .impact-tag {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        padding: .6rem 1rem;
+        margin-left: 0;
+    }
+
+    .impact-tag.active {
+        border-bottom-color: var(--lime);
+        border-left-color: transparent;
+    }
+
+    .impact-info {
+        border-left: none;
+        padding-left: 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255,255,255,.08);
+    }
+}
+
+@media (max-width: 640px) {
+    .impact { padding: 4rem 0 3.5rem; }
+    .impact-wrap { padding: 0 1.25rem; }
+    .impact-body { grid-template-columns: 1fr; }
+    .impact-stage { min-height: 300px; grid-column: auto; }
+    .impact-title { font-size: 1.8rem; }
+    .impact-bg-ghost { font-size: 5rem; }
 }
