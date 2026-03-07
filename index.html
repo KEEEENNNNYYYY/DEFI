@@ -36,9 +36,6 @@
 <script src="js/navbar-scroll.js" defer></script>
 
 <body class="min-h-screen ">
-<div class="mobile-warning">
-    <h1>Version mobile bientot disponible</h1>
-</div>
 <!-- Header -->
 <header class="glass-navbar">
     <div class="nav-container">
@@ -461,7 +458,6 @@
     </div>
 </section>
 
-<!-- Galerie Section -->
 <!-- ════════════════════════════════
      GALERIE Section
      CSS : css/gallery.css
@@ -541,38 +537,40 @@
 
     </div>
 </section>
-<!-- Nos valeurs section -->
-<div id="equipe" class="container">
-    <div class="hero" id="valeurs">
-        <h1>Nos valeurs</h1>
+<!-- ════════════════════════════════
+     NOS VALEURS Section
+════════════════════════════════ -->
+<section id="equipe" class="valeurs">
+    <div class="valeurs-ghost">VALEURS</div>
+    <div class="valeurs-wrap">
+        <div class="valeurs-header">
+            <div class="valeurs-eyebrow"><i></i><span>Ce qui nous guide</span></div>
+            <h2 class="valeurs-title" id="valeurs">Nos <em>valeurs</em></h2>
+        </div>
     </div>
-
     <div class="slider-container">
-        <div class="slide slide-1" style="background-image: url('assets/pic1.png')">
-        </div>
-        <div class="slide slide-2" style="background-image: url('assets/pic2.png')">
-        </div>
-        <div class="slide slide-3" style="background-image: url('assets/pic3.png')">
-        </div>
-        <div class="slide slide-4" style="background-image: url('assets/pic4.png')">
-        </div>
-        <div class="slide slide-5" style="background-image: url('assets/pic5.png')">
-        </div>
-        <div class="slide slide-6" style="background-image: url('assets/pic6.png')">
-        </div>
-        <div class="slide slide-7" style="background-image: url('assets/pic7.png')">
-        </div>
-        <div class="slide slide-8" style="background-image: url('assets/pic8.png')">
-        </div>
-
+        <div class="slide slide-1" style="background-image: url('assets/pic1.png')"></div>
+        <div class="slide slide-2" style="background-image: url('assets/pic2.png')"></div>
+        <div class="slide slide-3" style="background-image: url('assets/pic3.png')"></div>
+        <div class="slide slide-4" style="background-image: url('assets/pic4.png')"></div>
+        <div class="slide slide-5" style="background-image: url('assets/pic5.png')"></div>
+        <div class="slide slide-6" style="background-image: url('assets/pic6.png')"></div>
+        <div class="slide slide-7" style="background-image: url('assets/pic7.png')"></div>
+        <div class="slide slide-8" style="background-image: url('assets/pic8.png')"></div>
         <div class="buttons-container">
-            <button class="arrow left">‹</button>
-            <button class="arrow right">›</button>
+            <button class="arrow left" aria-label="Précédent">&#x2039;</button>
+            <button class="arrow right" aria-label="Suivant">&#x203a;</button>
         </div>
     </div>
-
-</div>
-
+    <div class="valeurs-wrap">
+        <div class="slider-progress"><div class="slider-progress-fill"></div></div>
+        <div class="slider-counter">
+            <span class="counter-current">1</span>
+            <span class="counter-sep">/</span>
+            <span class="counter-total">8</span>
+        </div>
+    </div>
+</section>
 <!-- Footer -->
 <footer class="bg-gray-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

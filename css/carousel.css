@@ -1,140 +1,343 @@
-@import url('https://fonts.googleapis.com/css?family=Tajawal');
+/* ════════════════════════════════════════
+   NOS VALEURS / CAROUSEL SECTION
+   Disposition : 3 cartes portrait visibles
+   (centrale + 2 partielles), système slide-N.
+   Style : dark, accent lime, Poppins + Turret Road.
+════════════════════════════════════════ */
 
+/* ════════════════════════
+   SECTION WRAPPER
+════════════════════════ */
+.valeurs {
+    position: relative;
+    background: var(--dark-3);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    padding-bottom: 5rem;
+}
+
+/* triangle raccord gallery(cream) → valeurs(dark) */
+.valeurs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 200px;
+    background: var(--cream, #fafaf7);
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* scanline lime en haut */
+.valeurs::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(to right, transparent, #14ff72, transparent);
+    animation: val-scan 4.5s ease-in-out infinite;
+    z-index: 10;
+    pointer-events: none;
+}
+@keyframes val-scan {
+    0%   { opacity: 0; transform: scaleX(.2); }
+    50%  { opacity: 1; transform: scaleX(1); }
+    100% { opacity: 0; transform: scaleX(.2); }
+}
+
+/* ghost word filigrane */
+.valeurs-ghost {
+    position: absolute;
+    bottom: 1rem;
+    left: -1rem;
+    font-family: 'Turret Road', sans-serif;
+    font-size: clamp(5rem, 13vw, 12rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(20, 255, 114, .04);
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 1;
+    line-height: 1;
+}
+
+/* ════════════════════════
+   WRAP + HEADER
+════════════════════════ */
+.valeurs-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.valeurs-header {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+}
+
+.valeurs-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1rem;
+}
+.valeurs-eyebrow i {
+    display: block;
+    width: 2.5rem;
+    height: 2px;
+    background: #14ff72;
+    font-style: normal;
+    flex-shrink: 0;
+}
+.valeurs-eyebrow span {
+    font-family: 'Turret Road', sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #14ff72;
+}
+
+.valeurs-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -.03em;
+    line-height: 1;
+    color: #ffffff;
+}
+.valeurs-title em {
+    font-style: normal;
+    color: #14ff72;
+}
+
+/* ════════════════════════
+   CAROUSEL WRAPPER
+   Déborde du max-width pour
+   être pleine largeur
+════════════════════════ */
 .slider-container {
     position: relative;
     width: 100%;
-    max-width: 1200px;
-    height: 480px;
-    margin: auto;
+    /* hauteur des cartes portrait + overflow caché */
+    height: 680px;
     overflow: hidden;
+    /* espace pour voir les cartes partielles sur les côtés */
+    padding: 0;
+}
+
+/* ── CARTES (slides) ──
+   Toutes positionnées absolument.
+   Le JS fait tourner les classes slide-1…8.
+   slide-1 = active (centre)
+   slide-2 = droite partielle
+   slide-8 = gauche partielle
+   slide-3…7 = cachées
+*/
+.slide {
+    position: absolute;
+    top: 0;
+    width: 340px;
+    height: 640px;
+    background-size: cover;
+    background-position: center top;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform .5s cubic-bezier(.4,0,.2,1),
+    opacity  .5s cubic-bezier(.4,0,.2,1),
+    left     .5s cubic-bezier(.4,0,.2,1);
+    cursor: pointer;
+    /* bord subtil */
+    outline: 1px solid rgba(255,255,255,.06);
+}
+
+/* ── positions selon le numéro de slide ──
+   Calculées depuis le centre du container.
+   La carte active (slide-1) est centrée.
+   slide-2 = 1 à droite, slide-3 = 2 à droite, etc.
+   slide-8 = 1 à gauche, slide-7 = 2 à gauche, etc.
+*/
+
+/* centre */
+.slide-1 {
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    z-index: 4;
+    outline: 2px solid rgba(20, 255, 114, .4);
+    box-shadow: 0 0 40px rgba(20, 255, 114, .08),
+    0 20px 60px rgba(0,0,0,.6);
+}
+
+/* 1er à droite — partiellement visible */
+.slide-2 {
+    left: calc(50% + 330px);
+    transform: translateX(0) scale(0.88);
+    opacity: 0.55;
+    z-index: 3;
+    transform-origin: left center;
+}
+
+/* 2e à droite — très peu visible */
+.slide-3 {
+    left: calc(50% + 600px);
+    transform: scale(0.78);
+    opacity: 0.2;
+    z-index: 2;
+    transform-origin: left center;
+}
+
+/* cachées */
+.slide-4,
+.slide-5,
+.slide-6 {
+    left: calc(50% + 900px);
+    opacity: 0;
+    z-index: 1;
+    transform: scale(0.7);
+}
+
+/* 1er à gauche — partiellement visible */
+.slide-8 {
+    left: calc(50% - 330px - 340px);
+    transform: translateX(0) scale(0.88);
+    opacity: 0.55;
+    z-index: 3;
+    transform-origin: right center;
+}
+
+/* 2e à gauche — très peu visible */
+.slide-7 {
+    left: calc(50% - 600px - 340px);
+    transform: scale(0.78);
+    opacity: 0.2;
+    z-index: 2;
+    transform-origin: right center;
+}
+
+/* ── overlay latéral pour effacer les bords ── */
+.slider-container::before,
+.slider-container::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 120px;
+    z-index: 8;
+    pointer-events: none;
+}
+.slider-container::before {
+    left: 0;
+}
+.slider-container::after {
+    right: 0;
+}
+
+/* ════════════════════════
+   NAVIGATION — flèches
+   positionnées de part et d'autre
+   de la carte active
+════════════════════════ */
+.buttons-container {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 1rem;
+}
+
+.arrow {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(10,15,13,.7);
+    border: 1.5px solid rgba(20,255,114,.45);
+    color: #14ff72;
+    font-size: 1.5rem;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background .25s, border-color .25s, transform .2s;
+    backdrop-filter: blur(10px);
+    line-height: 1;
+    padding-bottom: 2px;
 }
-
-/* ===== SLIDES ===== */
-.slide {
-    position: absolute;
-    width: 18%;
-    height: 380px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    opacity: 0;
-    transition: all 0.4s ease;
-}
-
-/* ===== POSITIONS SYMÉTRIQUES ===== */
-.slide-1 { transform: translateX(-220%); opacity: 1; }
-.slide-2 { transform: translateX(-110%); opacity: 1; }
-.slide-3 { transform: translateX(0);     opacity: 1; }
-.slide-4 { transform: translateX(110%);  opacity: 1; }
-.slide-5 { transform: translateX(220%);  opacity: 1; }
-
-/* ===== CONTENU OPTIONNEL ===== */
-.slide .content {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 45%;
-    background: white;
-    text-align: center;
-    padding: 12px;
-}
-
-/* ===== RESPONSIVE ===== */
-
-/* Tablette */
-@media (max-width: 900px) {
-    .slide {
-        width: 28%;
-        height: 340px;
-    }
-
-    .slide-1 { transform: translateX(-140%); }
-    .slide-2 { transform: translateX(0); }
-    .slide-3 { transform: translateX(140%); }
-    .slide-4,
-    .slide-5 { opacity: 0; }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-    .slider-container {
-        height: 380px;
-    }
-
-    .slide {
-        width: 80%;
-        height: 300px;
-    }
-
-    .slide-1,
-    .slide-2,
-    .slide-4,
-    .slide-5 { opacity: 0; }
-
-    .slide-3 {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-h2 {
-    margin: -40px 0 0;
-}
-
-img.circle {
-    object-fit: cover;
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    transform: translateY(calc(-50% - 10px));
-}
-
-.buttons-container {
-    position: absolute;
-    bottom: 0;
-}
-
-.arrow {
-    background: transparent;
-    border-radius: 50%;
-    border: 1px solid #fff;
-    cursor: pointer;
-    color: #fff;
-    width: 50px;
-    height: 50px;
-    margin: 30px 20px 0;
-}
-
-.circle {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    object-fit: cover;
-    transform: translateY(-50%);
-}
-
-/* 🔥 Boutons */
-.buttons-container {
-    position: absolute;
-    bottom: 10px;
-}
-
-.arrow {
-    width: 50px;
-    height: 50px;
-    margin: 0 10px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    font-size: 26px;
-    color: white;
-    background: #16a34a;
-    transition: background 0.3s;
-}
-
 .arrow:hover {
-    background: #15803d;
+    background: #14ff72;
+    border-color: #14ff72;
+    color: #0a0f0d;
+    transform: scale(1.1);
+}
+.arrow:active { transform: scale(.95); }
+
+/* ════════════════════════
+   BARRE DE PROGRESSION
+════════════════════════ */
+.slider-progress {
+    margin-top: 2rem;
+    height: 2px;
+    background: rgba(255,255,255,.08);
+    width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 2;
+}
+.slider-progress-fill {
+    height: 100%;
+    background: #14ff72;
+    transition: width .5s cubic-bezier(.25,.46,.45,.94);
+    width: 12.5%;
+}
+
+/* COUNTER */
+.slider-counter {
+    text-align: center;
+    margin-top: 1.25rem;
+    font-family: 'Turret Road', sans-serif;
+    position: relative;
+    z-index: 2;
+}
+.counter-current {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+.counter-sep   { font-size: .9rem; color: rgba(255,255,255,.2); margin: 0 .2rem; }
+.counter-total { font-size: .9rem; color: rgba(255,255,255,.2); }
+
+/* ════════════════════════
+   RESPONSIVE
+════════════════════════ */
+@media (max-width: 900px) {
+    .slider-container { height: 580px; }
+    .slide { width: 280px; height: 540px; }
+
+    .slide-2 { left: calc(50% + 270px); }
+    .slide-8 { left: calc(50% - 270px - 280px); }
+    .slide-3 { left: calc(50% + 520px); }
+    .slide-7 { left: calc(50% - 520px - 280px); }
+}
+
+@media (max-width: 640px) {
+    .valeurs-wrap     { padding: 0 1.25rem; }
+    .slider-container { height: 520px; }
+    .slide            { width: 240px; height: 470px; }
+
+    .slide-2 { left: calc(50% + 230px); opacity: .35; }
+    .slide-8 { left: calc(50% - 230px - 240px); opacity: .35; }
+    .slide-3, .slide-7 { opacity: 0; }
+
+    .valeurs-ghost  { display: none; }
+    .slider-progress { width: 240px; }
 }
