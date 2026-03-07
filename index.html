@@ -1,45 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DEFI-Madagascar</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png"
+          href="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Turret+Road:wght@400;500;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/impact.css">
     <link rel="stylesheet" href="css/carousel.css">
     <link rel="stylesheet" href="css/gallery.css">
-    <link rel="icon" type="image/png"
-          href="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Turret+Road:wght@400;500;700;800&display=swap" rel="stylesheet">
-
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
+    <!-- Scripts (defer = non bloquants) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script defer src="js/navbar.js"></script>
+    <script defer src="js/hero.js"></script>
+    <script defer src="js/navbar-scroll.js"></script>
+    <script defer src="js/impact.js"></script>
+    <script defer src="js/video-lazyload.js"></script>
+    <script defer src="js/carousel.js"></script>
+    <script defer src="js/menu.js"></script>
 </head>
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Scripts locaux -->
-<script src="js/hero.js" defer></script>
-<script src="js/navbar-scroll.js" defer></script>
+<body class="min-h-screen">
 
-<body class="min-h-screen ">
-<!-- Header -->
+<!-- ════════════════════════════════
+     HEADER / NAVBAR
+════════════════════════════════ -->
 <header class="glass-navbar">
     <div class="nav-container">
         <div class="nav-inner">
+
             <!-- Logo -->
             <div class="logo-container">
                 <a href="#home"></a>
@@ -47,7 +53,7 @@
                      alt="DEFI Madagascar" class="logo">
             </div>
 
-            <!-- Mobile Button -->
+            <!-- Bouton menu mobile -->
             <div class="mobile-button-container">
                 <button id="mobile-menu-button" class="mobile-button">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -57,49 +63,41 @@
                 </button>
             </div>
 
-            <!-- Nav Links Desktop -->
+            <!-- Navigation desktop -->
             <nav class="nav-links">
-                <div class="nav-item nav-mega">
-                    <button class="dropdown-toggle" data-mega="actualites">
-                        Actualité
-                    </button>
 
+                <!-- Actualité -->
+                <div class="nav-item nav-mega">
+                    <button class="dropdown-toggle" data-mega="actualites">Actualité</button>
                     <div class="mega-dropdown" id="mega-actualites">
                         <div class="mega-container">
-
                             <div class="mega-column">
                                 <h3>Actualité</h3>
                                 <a href="#">Recentes missions</a>
                                 <a href="#">Revue de presse</a>
                                 <a href="#">Article de presse</a>
-
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- A propos -->
                 <div class="nav-item nav-mega">
-                    <button class="dropdown-toggle" data-mega="about">
-                        A propos
-                    </button>
-
+                    <button class="dropdown-toggle" data-mega="about">A propos</button>
                     <div class="mega-dropdown" id="mega-about">
                         <div class="mega-container">
-
                             <div class="mega-column">
                                 <h3>Notre organisation</h3>
                                 <a href="#">Qui sommes-nous ?</a>
                                 <a href="#">Historique</a>
                                 <a href="#equipe">Notre equipe</a>
                             </div>
-
                             <div class="mega-column">
                                 <h3>Nos actions</h3>
                                 <a href="#">Projets</a>
                                 <a href="#impact">Impact</a>
                                 <a href="#">Nos missions</a>
                             </div>
-
                             <div class="mega-column">
                                 <h3>Nos sieges</h3>
                                 <a href="#">village immergeant de manjakarivo</a>
@@ -109,28 +107,26 @@
                 </div>
 
                 <a href="#gallerie">Gallerie</a>
-                <div class="nav-item nav-mega">
-                    <button class="dropdown-toggle" data-mega="contact">
-                        Contact
-                    </button>
 
+                <!-- Contact -->
+                <div class="nav-item nav-mega">
+                    <button class="dropdown-toggle" data-mega="contact">Contact</button>
                     <div class="mega-dropdown" id="mega-contact">
                         <div class="mega-container">
-
                             <div class="mega-column">
                                 <h3>Contact</h3>
                                 <a href="#don">Je fais un don pour soutenir les actions sur le terrain</a>
                                 <a href="#contact">Mon entreprise/organisation souhaite devenir partenaire</a>
                                 <a href="#contact">Je prends contact pour en savoir plus</a>
-
                             </div>
                         </div>
                     </div>
                 </div>
+
             </nav>
         </div>
 
-        <!-- Mobile menu -->
+        <!-- Menu mobile -->
         <div id="mobile-menu" class="mobile-menu">
             <div>
                 <nav>
@@ -145,36 +141,13 @@
         </div>
     </div>
 </header>
-<script>
-    const toggles = document.querySelectorAll('.dropdown-toggle');
-    const dropdowns = document.querySelectorAll('.mega-dropdown');
 
-    toggles.forEach(toggle => {
-        toggle.addEventListener('click', e => {
-            e.stopPropagation();
-
-            const targetId = 'mega-' + toggle.dataset.mega;
-            const targetDropdown = document.getElementById(targetId);
-
-            // fermer tous les autres
-            dropdowns.forEach(d => {
-                if (d !== targetDropdown) d.classList.remove('open');
-            });
-
-            // toggle actuel
-            targetDropdown.classList.toggle('open');
-        });
-    });
-
-    // clic en dehors → ferme tout
-    document.addEventListener('click', () => {
-        dropdowns.forEach(d => d.classList.remove('open'));
-    });
-</script>
-
-<!-- Hero Section -->
+<!-- ════════════════════════════════
+     HERO — Carousel principal
+════════════════════════════════ -->
 <div class="carousel" id="home">
     <div class="list">
+
         <div class="item" style="background-image: url('assets/DSC_0021.JPG');">
             <div class="content">
                 <div class="title">Développement économique</div>
@@ -202,7 +175,6 @@
                 <div class="title">Protection de l'environnement</div>
                 <div class="name"> et énergies vertes</div>
                 <div class="des">Agir pour la résilience écologique et la transition énergétique locale.</div>
-
                 <div class="btn">
                     <button>See More</button>
                     <button>Subscribe</button>
@@ -215,7 +187,6 @@
                 <div class="title">Amélioration de la santé</div>
                 <div class="name"> physique et mentale</div>
                 <div class="des">Garantir l'accès aux soins et au bien-être pour tous.</div>
-
                 <div class="btn">
                     <button>See More</button>
                 </div>
@@ -225,14 +196,16 @@
     </div>
 
     <div class="arrows">
-        <button class="prev"><</button>
-        <button class="next">></button>
+        <button class="prev">&lt;</button>
+        <button class="next">&gt;</button>
     </div>
 
     <div class="timeRunning"></div>
 </div>
 
-<!-- about Section -->
+<!-- ════════════════════════════════
+     ABOUT
+════════════════════════════════ -->
 <div class="about-transition"></div>
 <section id="about" class="about">
 
@@ -240,16 +213,16 @@
 
     <div class="about-wrap">
 
-        <!-- eyebrow -->
+        <!-- Eyebrow -->
         <div class="about-eyebrow anim-up d1">
             <i></i>
             <span>Qui sommes-nous</span>
         </div>
 
-        <!-- ── BLOC 1 : Mission ── -->
+        <!-- Bloc 1 : Mission -->
         <div class="block-mission anim-scale d2">
             <div class="mission-img">
-                <img src="./assets/DSC_0859.jpg" alt="Développement durable à Madagascar">
+                <img loading="lazy" src="./assets/DSC_0859.jpg" alt="Développement durable à Madagascar">
                 <span class="mission-tag">Fondée en 1993</span>
             </div>
             <div class="mission-text">
@@ -264,10 +237,10 @@
             </div>
         </div>
 
-        <!-- ── BLOC 2 : Histoire ── -->
+        <!-- Bloc 2 : Histoire -->
         <div class="block-histoire anim-up d2">
             <div class="histoire-band">
-                <img src="./assets/DSC_0133.jpg" alt="Histoire de DEFI Madagascar">
+                <img loading="lazy" src="./assets/DSC_0133.jpg" alt="Histoire de DEFI Madagascar">
                 <div class="histoire-year">1993</div>
             </div>
             <div class="histoire-card anim-left d3">
@@ -284,14 +257,14 @@
             </div>
         </div>
 
-        <!-- ── BLOC 3 : Piliers ── -->
+        <!-- Bloc 3 : Piliers -->
         <div class="block-piliers">
             <div class="piliers-heading anim-up d2">
                 <h2>Nos <span>3</span> piliers</h2>
             </div>
             <div class="piliers-grid">
                 <div class="pilier-card anim-up d3">
-                    <img src="./assets/DSC_0859.jpg" alt="Développement durable">
+                    <img loading="lazy" src="./assets/DSC_0859.jpg" alt="Développement durable">
                     <div class="pilier-content">
                         <span class="pilier-num">01</span>
                         <h3>Développement durable</h3>
@@ -299,7 +272,7 @@
                     </div>
                 </div>
                 <div class="pilier-card anim-up d4">
-                    <img src="./assets/DSC_0133.jpg" alt="Éducation et insertion">
+                    <img loading="lazy" src="./assets/DSC_0133.jpg" alt="Éducation et insertion">
                     <div class="pilier-content">
                         <span class="pilier-num">02</span>
                         <h3>Éducation &amp; insertion</h3>
@@ -307,7 +280,7 @@
                     </div>
                 </div>
                 <div class="pilier-card anim-up d5">
-                    <img src="./assets/DSC_0859.jpg" alt="Santé et communauté">
+                    <img loading="lazy" src="./assets/DSC_0859.jpg" alt="Santé et communauté">
                     <div class="pilier-content">
                         <span class="pilier-num">05</span>
                         <h3>Santé &amp; communauté</h3>
@@ -320,15 +293,15 @@
     </div>
 </section>
 
-<!-- NOS IMPACTS Section -->
+<!-- ════════════════════════════════
+     IMPACT
+════════════════════════════════ -->
 <section id="impact" class="impact">
 
-    <!-- ── background decorative elements ── -->
     <div class="impact-bg-ghost">IMPACT</div>
 
     <div class="impact-wrap">
 
-        <!-- ── header ── -->
         <div class="impact-header">
             <div class="impact-eyebrow">
                 <i></i>
@@ -340,10 +313,9 @@
             </h2>
         </div>
 
-        <!-- ── main layout ── -->
         <div class="impact-body">
 
-            <!-- LEFT : tags navigation -->
+            <!-- Navigation tags -->
             <nav class="impact-tags" aria-label="Domaines d'impact">
                 <button class="impact-tag active"
                         data-tag="developpement"
@@ -353,7 +325,6 @@
                     <span class="tag-label">Développement</span>
                     <span class="tag-arrow">→</span>
                 </button>
-
                 <button class="impact-tag"
                         data-tag="sante"
                         data-text="Amélioration de l'accès aux soins et promotion du bien-être physique et mental."
@@ -362,7 +333,6 @@
                     <span class="tag-label">Santé</span>
                     <span class="tag-arrow">→</span>
                 </button>
-
                 <button class="impact-tag"
                         data-tag="environnement"
                         data-text="Protection des écosystèmes et transition vers des solutions énergétiques durables."
@@ -371,7 +341,6 @@
                     <span class="tag-label">Environnement</span>
                     <span class="tag-arrow">→</span>
                 </button>
-
                 <button class="impact-tag"
                         data-tag="culture"
                         data-text="Encourager et soutenir les jeunes dans le développement de leurs idées novatrices."
@@ -380,7 +349,6 @@
                     <span class="tag-label">Culture</span>
                     <span class="tag-arrow">→</span>
                 </button>
-
                 <button class="impact-tag"
                         data-tag="jeunesse"
                         data-text="Mettre en lumière les richesses culturelles et touristiques de Madagascar."
@@ -391,50 +359,41 @@
                 </button>
             </nav>
 
-            <!-- CENTER : video stage -->
+            <!-- Vidéo centrale -->
             <div class="impact-stage">
-
-                <!-- video stack -->
                 <div class="impact-video-stack">
                     <video class="impact-video active" data-tag="developpement"
-                           autoplay muted loop playsinline>
+                           autoplay muted loop playsinline preload="metadata">
                         <source src="assets/DSC_0705.MOV" type="video/mp4">
                     </video>
                     <video class="impact-video" data-tag="sante"
-                           autoplay muted loop playsinline>
-                        <source src="assets/sante.mp4" type="video/mp4">
+                           muted loop playsinline preload="none"
+                           data-src="assets/sante.mp4">
                     </video>
                     <video class="impact-video" data-tag="environnement"
-                           autoplay muted loop playsinline>
-                        <source src="assets/DSC_0705.MOV" type="video/mp4">
+                           muted loop playsinline preload="none"
+                           data-src="assets/DSC_0705.MOV">
                     </video>
                     <video class="impact-video" data-tag="culture"
-                           autoplay muted loop playsinline>
-                        <source src="assets/culture.mp4" type="video/mp4">
+                           muted loop playsinline preload="none"
+                           data-src="assets/culture.mp4">
                     </video>
                     <video class="impact-video" data-tag="jeunesse"
-                           autoplay muted loop playsinline>
-                        <source src="assets/jeunesse.mp4" type="video/mp4">
+                           muted loop playsinline preload="none"
+                           data-src="assets/jeunesse.mp4">
                     </video>
                 </div>
-
-                <!-- gradient overlays -->
                 <div class="impact-stage-overlay"></div>
-
-                <!-- active tag label on video -->
                 <div class="impact-stage-label">
                     <span class="stage-label-num">01</span>
                     <span class="stage-label-text">Développement</span>
                 </div>
-
-                <!-- progress bar -->
                 <div class="impact-progress">
                     <div class="impact-progress-fill"></div>
                 </div>
-
             </div>
 
-            <!-- RIGHT : description + cta -->
+            <!-- Description + CTA -->
             <div class="impact-info">
                 <p class="impact-description" id="impact-description">
                     Création d'opportunités économiques et sociales durables
@@ -443,11 +402,10 @@
                 <a class="impact-cta" id="impact-link" href="developpement.html">
                     <span>Voir plus</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </a>
-
-                <!-- mini stat -->
                 <div class="impact-stat">
                     <span class="stat-num">30<em>+</em></span>
                     <span class="stat-label">années d'engagement<br>sur le terrain</span>
@@ -459,86 +417,66 @@
 </section>
 
 <!-- ════════════════════════════════
-     GALERIE Section
-     CSS : css/gallery.css
+     GALERIE
 ════════════════════════════════ -->
 <section id="gallerie" class="gallery">
 
-    <!-- ghost word décoratif -->
     <div class="gallery-ghost">GALLERY</div>
 
     <div class="gallery-wrap">
 
-        <!-- header -->
         <div class="gallery-header">
             <div class="gallery-eyebrow">
                 <i></i>
                 <span>Nos moments</span>
             </div>
-            <h2 class="gallery-title">
-                Galerie<em>.</em>
-            </h2>
+            <h2 class="gallery-title">Galerie<em>.</em></h2>
         </div>
 
-        <!-- grid -->
         <div class="gallery-grid">
 
             <div class="g-item g-wide">
-                <img src="assets/DSC_0010.JPG" alt="Mission terrain">
-                <div class="g-overlay">
-                    <span class="g-label">Mission terrain</span>
-                </div>
+                <img loading="lazy" src="assets/DSC_0010.JPG" alt="Mission terrain">
+                <div class="g-overlay"><span class="g-label">Mission terrain</span></div>
             </div>
 
             <div class="g-item">
-                <img src="assets/DSC_0053.JPG" alt="Communauté locale">
-                <div class="g-overlay">
-                    <span class="g-label">Communauté locale</span>
-                </div>
+                <img loading="lazy" src="assets/DSC_0053.JPG" alt="Communauté locale">
+                <div class="g-overlay"><span class="g-label">Communauté locale</span></div>
             </div>
 
             <div class="g-item g-wide">
-                <img src="assets/DSC_0218.JPG" alt="Ambassade de Chine et DEFI Madagascar">
-                <div class="g-overlay">
-                    <span class="g-label">Ambassade de Chine &amp; DEFI Madagascar</span>
-                </div>
+                <img loading="lazy" src="assets/DSC_0218.JPG" alt="Ambassade de Chine et DEFI Madagascar">
+                <div class="g-overlay"><span class="g-label">Ambassade de Chine &amp; DEFI Madagascar</span></div>
             </div>
 
             <div class="g-item">
-                <img src="assets/DSC_0111.JPG" alt="Actions de terrain">
-                <div class="g-overlay">
-                    <span class="g-label">Actions de terrain</span>
-                </div>
+                <img loading="lazy" src="assets/DSC_0111.JPG" alt="Actions de terrain">
+                <div class="g-overlay"><span class="g-label">Actions de terrain</span></div>
             </div>
 
             <div class="g-item">
-                <img src="assets/DSC_0351.JPG" alt="08 Mars — Ambolomanjakarivo">
-                <div class="g-overlay">
-                    <span class="g-label">08 Mars — Ambolomanjakarivo</span>
-                </div>
+                <img loading="lazy" src="assets/DSC_0351.JPG" alt="08 Mars — Ambolomanjakarivo">
+                <div class="g-overlay"><span class="g-label">08 Mars — Ambolomanjakarivo</span></div>
             </div>
 
             <div class="g-item g-wide">
-                <img src="assets/DSC_0400.JPG" alt="08 Mars — Ambolomanjakarivo">
-                <div class="g-overlay">
-                    <span class="g-label">08 Mars — Ambolomanjakarivo</span>
-                </div>
+                <img loading="lazy" src="assets/DSC_0400.JPG" alt="08 Mars — Ambolomanjakarivo">
+                <div class="g-overlay"><span class="g-label">08 Mars — Ambolomanjakarivo</span></div>
             </div>
 
             <div class="g-item">
-                <img src="assets/DSC_0448.JPG" alt="Vie associative">
-                <div class="g-overlay">
-                    <span class="g-label">Vie associative</span>
-                </div>
+                <img loading="lazy" src="assets/DSC_0448.JPG" alt="Vie associative">
+                <div class="g-overlay"><span class="g-label">Vie associative</span></div>
             </div>
 
         </div>
-        <!-- /grid -->
 
     </div>
 </section>
+
 <!-- ════════════════════════════════
-     NOS VALEURS Section
+     NOS VALEURS
 ════════════════════════════════ -->
 <section id="equipe" class="valeurs">
     <div class="valeurs-ghost">VALEURS</div>
@@ -571,75 +509,72 @@
         </div>
     </div>
 </section>
-<!-- Footer -->
+
+<!-- ════════════════════════════════
+     FOOTER
+════════════════════════════════ -->
 <footer class="bg-gray-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="fade-in-up stagger-1">
+
+            <div>
                 <h3 class="text-2xl font-bold mb-4">DEFI Madagascar</h3>
                 <p class="text-gray-300 mb-6">
-                    Une association engagée pour l’environnement, l’éducation et le développement durable à
+                    Une association engagée pour l'environnement, l'éducation et le développement durable à
                     Madagascar depuis 1993.
                 </p>
             </div>
 
-            <div class="fade-in-up stagger-2">
+            <div>
                 <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
                 <ul class="space-y-2">
-                    <li><a href="#home" class="text-gray-300 hover:text-white transition-colors">Accueil</a></li>
-                    <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">À propos</a></li>
-                    <li><a href="#services" class="text-gray-300 hover:text-white transition-colors">Projets</a>
-                    </li>
-                    <li><a href="#testimonials" class="text-gray-300 hover:text-white transition-colors">Équipe</a>
-                    </li>
-                    <li><a href="#valeurs" class="text-gray-300 hover:text-white transition-colors">Valeurs</a></li>
-                    <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                    <li><a href="#home"         class="text-gray-300 hover:text-white transition-colors">Accueil</a></li>
+                    <li><a href="#about"        class="text-gray-300 hover:text-white transition-colors">À propos</a></li>
+                    <li><a href="#services"     class="text-gray-300 hover:text-white transition-colors">Projets</a></li>
+                    <li><a href="#testimonials" class="text-gray-300 hover:text-white transition-colors">Équipe</a></li>
+                    <li><a href="#valeurs"      class="text-gray-300 hover:text-white transition-colors">Valeurs</a></li>
+                    <li><a href="#contact"      class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
                 </ul>
             </div>
 
-            <div class="fade-in-up stagger-4">
+            <div>
                 <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
                 <div class="space-y-4">
                     <div class="flex items-center">
-                        <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24"
-                             stroke="currentColor">
+                        <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                            </path>
+                                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
-                        <span class="text-gray-300">association@defi-madagascar.org</span>
+                        <span class="text-gray-300">contact@defi-madagascar.org</span>
                     </div>
                     <div class="flex items-center">
-                        <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24"
-                             stroke="currentColor">
+                        <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
-                            </path>
+                                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                         </svg>
                         <span class="text-gray-300">+261-3400 133 00</span>
                     </div>
                     <div class="flex items-start">
-                        <svg class="h-5 w-5 text-green-400 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24"
-                             stroke="currentColor">
+                        <svg class="h-5 w-5 text-green-400 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                            </path>
+                                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
-                        <span class="text-gray-300">Village Emmergent d’Ambolomanjakarivo RN1 <br> PK64, Commune
-                                Rurale de Soamahamanina</span>
+                        <span class="text-gray-300">
+                            Village Emmergent d'Ambolomanjakarivo RN1<br>
+                            PK64, Commune Rurale de Soamahamanina
+                        </span>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <hr class="my-8 border-gray-700">
 
-        <div class="flex flex-col md:flex-row justify-between items-center fade-in-up">
-            <p class="text-gray-300 text-sm">
-                Copyright © 2025 . All rights reserved.
-            </p>
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-300 text-sm">Copyright © 2025. All rights reserved.</p>
             <div class="flex space-x-6 mt-4 md:mt-0">
                 <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Privacy Policy</a>
                 <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Terms of Service</a>
@@ -648,18 +583,8 @@
         </div>
     </div>
 </footer>
+
 <div id="notification" class="notification"></div>
 
-
-<script src="js/impact.js"></script>
-<script src="js/carousel.js"></script>
-<script src="js/menu.js"></script>
-<script src="js/scroll-animations.js"></script>
-<script src="js/email.js"></script>
-<script src="js/donation.js"></script>
-<script src="js/api-projects.js"></script>
-<script src="js/main.js"></script>
-
 </body>
-
 </html>
