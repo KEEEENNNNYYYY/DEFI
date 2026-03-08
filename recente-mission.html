@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualité — DEFI Madagascar</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png"
+          href="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Turret+Road:wght@400;500;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Styles partagés avec index.html -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/header.css">
+
+    <!-- Tailwind CDN pour le footer -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f9fafb;
+            color: #111827;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* HERO */
+        .page-hero {
+            padding: 140px 2rem 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #bbf7d0, transparent 70%);
+            filter: blur(100px);
+            opacity: .35;
+            top: -200px; left: -150px;
+            pointer-events: none;
+        }
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #86efac, transparent 70%);
+            filter: blur(100px);
+            opacity: .25;
+            bottom: -100px; right: -100px;
+            pointer-events: none;
+        }
+        .ghost-text {
+            position: absolute;
+            font-family: 'Turret Road', sans-serif;
+            font-size: clamp(4rem, 14vw, 11rem);
+            font-weight: 800;
+            color: rgba(0,0,0,.035);
+            letter-spacing: .08em;
+            user-select: none;
+            pointer-events: none;
+            white-space: nowrap;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: #16a34a;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-eyebrow i { display: block; width: 28px; height: 2px; background: #16a34a; border-radius: 2px; }
+        .hero-title {
+            font-family: 'Turret Road', sans-serif;
+            font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: .03em;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-title em { font-style: normal; color: #16a34a; }
+        .hero-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #6b7280;
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.75;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* CONTENU */
+        .page-content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+        }
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            margin-bottom: 3rem;
+        }
+        .section-label h2 {
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            white-space: nowrap;
+        }
+        .section-label span { flex: 1; height: 1px; background: #e5e7eb; }
+
+        /* TIMELINE */
+        .tl-list { display: flex; flex-direction: column; gap: 0; }
+        .tl-item {
+            display: grid;
+            grid-template-columns: 15px 1fr;
+            gap: 0 1.6rem;
+            padding-bottom: 3.5rem;
+            position: relative;
+        }
+        .tl-item:not(:last-child) .tl-dot-col::after {
+            content: '';
+            position: absolute;
+            left: 7px; top: 20px; bottom: 0;
+            width: 1px;
+            background: #e5e7eb;
+        }
+        .tl-dot-col { position: relative; }
+        .tl-dot {
+            width: 15px; height: 15px;
+            border-radius: 50%;
+            border: 2px solid rgba(22,163,74,.35);
+            background: #fff;
+            position: relative;
+            z-index: 1;
+            margin-top: 3px;
+        }
+        .tl-dot.active {
+            border-color: #16a34a;
+            background: #16a34a;
+            box-shadow: 0 0 0 4px rgba(22,163,74,.12);
+        }
+        .tl-body { min-width: 0; }
+        .tl-tag {
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: #16a34a;
+            margin-bottom: .35rem;
+        }
+        .tl-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: .5rem;
+            line-height: 1.3;
+        }
+        .tl-desc {
+            font-size: .9rem;
+            font-weight: 300;
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+        .tl-img {
+            width: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+            box-shadow: 0 4px 24px rgba(0,0,0,.08);
+            margin-top: .5rem;
+        }
+        .tl-img-placeholder {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            background: #f3f4f6;
+            border: 2px dashed #d1d5db;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            color: #9ca3af;
+            font-size: .82rem;
+            margin-top: .5rem;
+        }
+        .tl-img-placeholder svg { width: 28px; height: 28px; opacity: .5; }
+        .chip-soon {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .35rem .9rem;
+            background: rgba(22,163,74,.08);
+            border: 1px solid rgba(22,163,74,.25);
+            border-radius: 50px;
+            font-size: .75rem;
+            font-weight: 600;
+            color: #16a34a;
+            letter-spacing: .06em;
+            margin-bottom: 1rem;
+        }
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            padding: .8rem 1.8rem;
+            background: #111827;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: .88rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background .2s, transform .2s;
+        }
+        .btn-back:hover { background: #16a34a; transform: translateY(-2px); }
+        .btn-back svg { width: 15px; height: 15px; }
+
+        /* Navbar fond blanc fixe + textes lisibles */
+        .glass-navbar {
+            background: #ffffff !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border-bottom: 1px solid #e5e7eb !important;
+        }
+
+        /* Textes principaux de la navbar */
+        .glass-navbar .dropdown-toggle,
+        .glass-navbar .nav-links a,
+        .glass-navbar .nav-links button {
+            color: #111827 !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-size: .9rem !important;
+            font-weight: 500 !important;
+        }
+        .glass-navbar .dropdown-toggle:hover,
+        .glass-navbar .nav-links a:hover,
+        .glass-navbar .nav-links button:hover {
+            color: #16a34a !important;
+        }
+
+        /* Icône hamburger mobile */
+        .glass-navbar .mobile-button svg,
+        .glass-navbar .mobile-button {
+            color: #111827 !important;
+            stroke: #111827 !important;
+        }
+
+        /* Mega-dropdown */
+        .glass-navbar .mega-dropdown {
+            background: #ffffff !important;
+            border: 1px solid #e5e7eb !important;
+            box-shadow: 0 8px 32px rgba(0,0,0,.10) !important;
+        }
+        .glass-navbar .mega-column h3 {
+            color: #16a34a !important;
+            font-size: .75rem !important;
+            font-weight: 700 !important;
+            letter-spacing: .1em !important;
+            text-transform: uppercase !important;
+        }
+        .glass-navbar .mega-column a {
+            color: #374151 !important;
+            font-size: .88rem !important;
+        }
+        .glass-navbar .mega-column a:hover {
+            color: #16a34a !important;
+        }
+
+        /* Menu mobile */
+        .glass-navbar .mobile-menu {
+            background: #ffffff !important;
+            border-top: 1px solid #e5e7eb !important;
+        }
+        .glass-navbar .mobile-menu a {
+            color: #111827 !important;
+        }
+        .glass-navbar .mobile-menu a:hover {
+            color: #16a34a !important;
+        }
+
+        /* Textes navbar lisibles sur fond blanc */
+        .glass-navbar .nav-links a,
+        .glass-navbar .nav-links button,
+        .glass-navbar .dropdown-toggle {
+            color: #111827 !important;
+        }
+        .glass-navbar .nav-links a:hover,
+        .glass-navbar .nav-links button:hover,
+        .glass-navbar .dropdown-toggle:hover {
+            color: #16a34a !important;
+        }
+        .glass-navbar .mobile-button {
+            color: #111827 !important;
+        }
+        .glass-navbar .mega-dropdown h3 {
+            color: #6b7280 !important;
+        }
+        .glass-navbar .mega-dropdown a {
+            color: #111827 !important;
+        }
+        .glass-navbar .mega-dropdown a:hover {
+            color: #16a34a !important;
+        }
+        .glass-navbar .mobile-menu a {
+            color: #111827 !important;
+        }
+
+        @media (max-width: 640px) {
+            .page-content { padding: 2.5rem 1.2rem 4rem; }
+            .tl-item { gap: 0 1rem; }
+        }
+    </style>
+
+    <script defer src="js/navbar.js"></script>
+    <script defer src="js/navbar-scroll.js"></script>
+    <script defer src="js/menu.js"></script>
+</head>
+
+<body>
+
+<!-- ════════════════════════════════
+     HEADER / NAVBAR — identique à index.html
+════════════════════════════════ -->
+<header class="glass-navbar">
+    <div class="nav-container">
+        <div class="nav-inner">
+
+            <div class="logo-container">
+                <a href="index.html"></a>
+                <img src="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png"
+                     alt="DEFI Madagascar" class="logo">
+            </div>
+
+            <div class="mobile-button-container">
+                <button id="mobile-menu-button" class="mobile-button">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="nav-links">
+
+                <div class="nav-item nav-mega">
+                    <button class="dropdown-toggle" data-mega="actualites">Actualité</button>
+                    <div class="mega-dropdown" id="mega-actualites">
+                        <div class="mega-container">
+                            <div class="mega-column">
+                                <h3>Actualité</h3>
+                                <a href="recente-mission.html">Recentes missions</a>
+                                <a href="recente-mission.html">Revue de presse</a>
+                                <a href="recente-mission.html">Article de presse</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-item nav-mega">
+                    <button class="dropdown-toggle" data-mega="about">A propos</button>
+                    <div class="mega-dropdown" id="mega-about">
+                        <div class="mega-container">
+                            <div class="mega-column">
+                                <h3>Notre organisation</h3>
+                                <a href="#">Qui sommes-nous ?</a>
+                                <a href="#">Historique</a>
+                                <a href="index.html#equipe">Notre equipe</a>
+                            </div>
+                            <div class="mega-column">
+                                <h3>Nos actions</h3>
+                                <a href="#">Projets</a>
+                                <a href="index.html#impact">Impact</a>
+                                <a href="#">Nos missions</a>
+                            </div>
+                            <div class="mega-column">
+                                <h3>Nos sieges</h3>
+                                <a href="#">village immergeant de manjakarivo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="index.html#gallerie">Gallerie</a>
+
+                <div class="nav-item nav-mega">
+                    <button class="dropdown-toggle" data-mega="contact">Contact</button>
+                    <div class="mega-dropdown" id="mega-contact">
+                        <div class="mega-container">
+                            <div class="mega-column">
+                                <h3>Contact</h3>
+                                <a href="index.html#don">Je fais un don pour soutenir les actions sur le terrain</a>
+                                <a href="index.html#contact">Mon entreprise/organisation souhaite devenir partenaire</a>
+                                <a href="index.html#contact">Je prends contact pour en savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu">
+            <div>
+                <nav>
+                    <a href="index.html">Accueil</a>
+                    <a href="index.html#about">A propos</a>
+                    <a href="index.html#services">Projets</a>
+                    <a href="index.html#testimonials">Equipe</a>
+                    <a href="index.html#valeurs">Valeurs</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ════════════════════════════════
+     HERO
+════════════════════════════════ -->
+<section class="page-hero">
+    <div class="ghost-text">ACTUALITÉ</div>
+    <div class="hero-eyebrow"><i></i><span>Nos dernières nouvelles</span></div>
+    <h1 class="hero-title">Récentes <em>missions</em></h1>
+    <p class="hero-subtitle">
+        Retrouvez ici les comptes-rendus de nos actions terrain, nos partenariats
+        et les moments forts de la vie associative de DEFI Madagascar.
+    </p>
+</section>
+
+<!-- ════════════════════════════════
+     TIMELINE
+════════════════════════════════ -->
+<div class="page-content">
+
+    <div class="section-label">
+        <h2>Chronologie</h2>
+        <span></span>
+    </div>
+
+    <div class="tl-list">
+
+        <!-- Entrée 1 -->
+        <div class="tl-item">
+            <div class="tl-dot-col">
+                <div class="tl-dot active"></div>
+            </div>
+            <div class="tl-body">
+                <div class="tl-tag">Mission terrain · Mars 2025</div>
+                <div class="tl-title">08 Mars — Journée internationale des droits des femmes, Ambolomanjakarivo</div>
+                <div class="tl-desc">
+                    À l'occasion du 8 mars, DEFI Madagascar a organisé une célébration au cœur du village émergent
+                    d'Ambolomanjakarivo, en présence des femmes et des jeunes filles de la communauté locale.
+                    Ateliers de sensibilisation, prises de parole et moments de partage ont marqué cette journée
+                    dédiée à l'égalité et à l'autonomisation des femmes sur le territoire.
+                </div>
+                <img class="tl-img" src="assets/55067384144_9abcd9e0fa_c.jpg"
+                     alt="08 Mars Ambolomanjakarivo — Journée des droits des femmes">
+            </div>
+        </div>
+
+        <!-- Entrée 2 -->
+        <div class="tl-item">
+            <div class="tl-dot-col">
+                <div class="tl-dot"></div>
+            </div>
+            <div class="tl-body">
+                <div class="tl-tag">Partenariat · 2024</div>
+                <div class="tl-title">Rencontre avec l'Ambassade de Chine à Madagascar</div>
+                <div class="tl-desc">
+                    DEFI Madagascar a reçu la visite de représentants de l'Ambassade de Chine dans le cadre
+                    du renforcement des liens de coopération internationale. Cette rencontre a permis d'explorer
+                    de nouvelles perspectives de collaboration autour du développement durable, de l'éducation
+                    et de l'insertion professionnelle des jeunes malgaches.
+                </div>
+                <img class="tl-img" src="assets/DSC_0042.JPG"
+                     alt="Rencontre avec l'Ambassade de Chine et DEFI Madagascar">
+            </div>
+        </div>
+
+        <!-- Entrée 3 — DSC_0053.JPG (accueil du Pape) -->
+        <div class="tl-item">
+            <div class="tl-dot-col">
+                <div class="tl-dot"></div>
+            </div>
+            <div class="tl-body">
+                <div class="tl-tag">Événement national · Septembre 2019</div>
+                <div class="tl-title">Accueil du Pape François à Madagascar</div>
+                <div class="tl-desc">
+                    Des milliers de fidèles malgaches se sont rassemblés avec une joie débordante pour accueillir
+                    le Pape François lors de sa visite apostolique à Madagascar en septembre 2019.
+                    Vêtus de blanc et agitant les drapeaux jaune et blanc du Vatican, sœurs, enfants et familles
+                    — les mains levées vers le ciel — incarnent le visage rayonnant d'un peuple uni autour de valeurs
+                    de paix, de fraternité et d'espérance. Un élan collectif profondément en résonance avec
+                    l'engagement de DEFI Madagascar auprès de ses communautés.
+                </div>
+                <img class="tl-img" src="assets/DSC_0053.JPG"
+                     alt="Accueil du Pape François à Madagascar — foule avec drapeaux du Vatican">
+            </div>
+        </div>
+
+        <!-- Entrée 4 — À venir -->
+        <div class="tl-item">
+            <div class="tl-dot-col">
+                <div class="tl-dot"></div>
+            </div>
+            <div class="tl-body">
+                <div class="chip-soon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:13px;height:13px">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Bientôt disponible
+                </div>
+                <div class="tl-title">Articles & reportages à venir</div>
+                <div class="tl-desc">
+                    Nous préparons prochainement de nouveaux récits de terrain, témoignages et revues de presse.
+                    Revenez bientôt — le terrain ne s'arrête jamais !
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <a href="index.html" class="btn-back">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        Retour à l'accueil
+    </a>
+
+</div>
+
+<!-- ════════════════════════════════
+     FOOTER — identique à index.html
+════════════════════════════════ -->
+<footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <div>
+                <h3 class="text-2xl font-bold mb-4">DEFI Madagascar</h3>
+                <p class="text-gray-300 mb-6">
+                    Une association engagée pour l'environnement, l'éducation et le développement durable à
+                    Madagascar depuis 1993.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html"              class="text-gray-300 hover:text-white transition-colors">Accueil</a></li>
+                    <li><a href="index.html#about"        class="text-gray-300 hover:text-white transition-colors">À propos</a></li>
+                    <li><a href="index.html#services"     class="text-gray-300 hover:text-white transition-colors">Projets</a></li>
+                    <li><a href="index.html#testimonials" class="text-gray-300 hover:text-white transition-colors">Équipe</a></li>
+                    <li><a href="index.html#valeurs"      class="text-gray-300 hover:text-white transition-colors">Valeurs</a></li>
+                    <li><a href="index.html#contact"      class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <span class="text-gray-300"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="02616d6c76636176426667646b2f6f6366636563716163702c6d7065">[email&#160;protected]</a></span>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <span class="text-gray-300">+261-3400 133 00</span>
+                    </div>
+                    <div class="flex items-start">
+                        <svg class="h-5 w-5 text-green-400 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="text-gray-300">
+                            Village Emmergent d'Ambolomanjakarivo RN1<br>
+                            PK64, Commune Rurale de Soamahamanina
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="my-8 border-gray-700">
+
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-300 text-sm">Copyright © 2025. All rights reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Terms of Service</a>
+                <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Cookie Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

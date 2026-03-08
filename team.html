@@ -1,81 +1,712 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Equipe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Équipe — DEFI Madagascar</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png"
+          href="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png">
+
+    <!-- Fonts — identiques à index -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Turret+Road:wght@400;500;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Styles partagés -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/header.css">
+
+    <!-- Tailwind pour le footer -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #1a2d20;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ══════════════════════════════
+           NAVBAR override (fond fixe blanc)
+        ══════════════════════════════ */
+        .glass-navbar {
+            background: #ffffff !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border-bottom: 1px solid #e5e7eb !important;
+        }
+        .glass-navbar .dropdown-toggle,
+        .glass-navbar .nav-links a,
+        .glass-navbar .nav-links button { color: #111827 !important; font-size: .9rem !important; font-weight: 500 !important; }
+        .glass-navbar .dropdown-toggle:hover,
+        .glass-navbar .nav-links a:hover,
+        .glass-navbar .nav-links button:hover { color: #16a34a !important; }
+        .glass-navbar .mobile-button svg { color: #111827 !important; stroke: #111827 !important; }
+        .glass-navbar .mega-dropdown { background: #fff !important; border: 1px solid #e5e7eb !important; box-shadow: 0 8px 32px rgba(0,0,0,.10) !important; }
+        .glass-navbar .mega-column h3 { color: #16a34a !important; font-size: .75rem !important; font-weight: 700 !important; letter-spacing: .1em !important; text-transform: uppercase !important; }
+        .glass-navbar .mega-column a { color: #374151 !important; font-size: .88rem !important; }
+        .glass-navbar .mega-column a:hover { color: #16a34a !important; }
+        .glass-navbar .mobile-menu { background: #fff !important; border-top: 1px solid #e5e7eb !important; }
+        .glass-navbar .mobile-menu a { color: #111827 !important; }
+
+        /* ══════════════════════════════
+           HERO SECTION
+        ══════════════════════════════ */
+        .team-hero {
+            position: relative;
+            min-height: 52vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 6vw 5rem;
+            overflow: hidden;
+            background: #1a2d20;
+        }
+
+        /* Grain overlay */
+        .team-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: .4;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Glow vert en haut à droite */
+        .team-hero::after {
+            content: '';
+            position: absolute;
+            width: 640px; height: 640px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(22,163,74,.22), transparent 65%);
+            top: -180px; right: -160px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-ghost {
+            position: absolute;
+            font-family: 'Turret Road', sans-serif;
+            font-size: clamp(5rem, 18vw, 16rem);
+            font-weight: 800;
+            color: rgba(255,255,255,.025);
+            letter-spacing: .06em;
+            white-space: nowrap;
+            bottom: -1rem;
+            left: 4vw;
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .7rem;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: #4ade80;
+            margin-bottom: 1.4rem;
+            opacity: 0;
+            animation: fadeUp .7s .2s ease forwards;
+        }
+        .hero-eyebrow i { display: block; width: 28px; height: 2px; background: #4ade80; border-radius: 2px; }
+
+        .hero-title {
+            font-family: 'Turret Road', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 800;
+            line-height: .95;
+            letter-spacing: .02em;
+            margin-bottom: 1.6rem;
+            opacity: 0;
+            animation: fadeUp .7s .35s ease forwards;
+        }
+        .hero-title em { font-style: normal; color: #4ade80; }
+
+        .hero-desc {
+            font-size: 1rem;
+            font-weight: 300;
+            color: rgba(255,255,255,.55);
+            max-width: 520px;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeUp .7s .5s ease forwards;
+        }
+
+        /* Ligne de séparation décorative */
+        .hero-rule {
+            position: absolute;
+            bottom: 0; left: 6vw; right: 6vw;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(74,222,128,.4), transparent);
+            z-index: 1;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ══════════════════════════════
+           SECTION ÉQUIPE
+        ══════════════════════════════ */
+        .team-section {
+            position: relative;
+            padding: 7rem 6vw 8rem;
+            background: #1a2d20;
+            overflow: hidden;
+        }
+
+        /* Glow ambiant bas gauche */
+        .team-section::before {
+            content: '';
+            position: absolute;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(22,163,74,.1), transparent 65%);
+            bottom: -100px; left: -100px;
+            pointer-events: none;
+        }
+
+        .team-section-inner { max-width: 1400px; margin: 0 auto; }
+
+        /* Section label style index */
+        .section-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            margin-bottom: 4rem;
+        }
+        .section-eyebrow span {
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.3);
+            white-space: nowrap;
+        }
+        .section-eyebrow hr {
+            flex: 1;
+            border: none;
+            border-top: 1px solid rgba(255,255,255,.08);
+        }
+
+        /* ── Grille des cartes ── */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px)  { .team-grid { grid-template-columns: 1fr; } }
+
+        /* ── Carte membre ── */
+        .member-card {
+            position: relative;
+            background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: border-color .3s, transform .3s;
+            opacity: 0;
+            animation: fadeUp .6s ease forwards;
+        }
+        .member-card:nth-child(1) { animation-delay: .1s; }
+        .member-card:nth-child(2) { animation-delay: .22s; }
+        .member-card:nth-child(3) { animation-delay: .34s; }
+
+        .member-card:hover {
+            border-color: rgba(74,222,128,.3);
+            transform: translateY(-6px);
+        }
+
+        /* Accent top */
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(74,222,128,.6), transparent);
+            opacity: 0;
+            transition: opacity .3s;
+        }
+        .member-card:hover::before { opacity: 1; }
+
+        /* Photo + infos */
+        .member-top {
+            padding: 2rem 2rem 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .member-avatar-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .member-avatar {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(74,222,128,.2);
+            display: block;
+            transition: border-color .3s;
+        }
+        .member-card:hover .member-avatar { border-color: rgba(74,222,128,.6); }
+
+        /* Numéro de position flottant */
+        .member-num {
+            position: absolute;
+            bottom: -4px; right: -4px;
+            width: 22px; height: 22px;
+            background: #16a34a;
+            border-radius: 50%;
+            font-family: 'Turret Road', sans-serif;
+            font-size: .6rem;
+            font-weight: 800;
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid #1a2d20;
+        }
+
+        .member-info { min-width: 0; }
+        .member-name {
+            font-size: .95rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.3;
+            margin-bottom: .25rem;
+        }
+        .member-role {
+            font-size: .75rem;
+            font-weight: 500;
+            color: #4ade80;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        /* Séparateur interne */
+        .member-divider {
+            height: 1px;
+            background: rgba(255,255,255,.06);
+            margin: 0 2rem;
+        }
+
+        /* Citation */
+        .member-quote {
+            padding: 1.4rem 2rem 2rem;
+            font-size: .88rem;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(255,255,255,.5);
+            line-height: 1.75;
+            position: relative;
+        }
+        .member-quote::before {
+            content: '\201C';
+            font-family: Georgia, serif;
+            font-size: 3.5rem;
+            color: rgba(74,222,128,.15);
+            line-height: 1;
+            position: absolute;
+            top: .6rem; left: 1.5rem;
+            pointer-events: none;
+        }
+        .member-quote p { padding-left: 1.2rem; position: relative; z-index: 1; }
+
+        /* Bouton Wikipedia */
+        .member-wiki-wrap {
+            padding: 0 2rem 1.8rem;
+        }
+        .member-wiki-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .55rem 1.2rem;
+            border: 1.5px solid rgba(74,222,128,.35);
+            border-radius: 50px;
+            font-size: .78rem;
+            font-weight: 600;
+            color: #4ade80;
+            text-decoration: none;
+            letter-spacing: .04em;
+            transition: background .2s, border-color .2s, color .2s;
+        }
+        .member-wiki-btn svg {
+            width: 13px; height: 13px;
+            flex-shrink: 0;
+        }
+        .member-wiki-btn:hover {
+            background: rgba(74,222,128,.12);
+            border-color: #4ade80;
+            color: #fff;
+        }
+
+        /* ══════════════════════════════
+           STAT STRIP
+        ══════════════════════════════ */
+        .stat-strip {
+            max-width: 1400px;
+            margin: 5rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        @media (max-width: 640px) { .stat-strip { grid-template-columns: 1fr; } }
+
+        .stat-item {
+            padding: 2.2rem 2rem;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,.07);
+            transition: background .25s;
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-item:hover { background: rgba(74,222,128,.04); }
+
+        .stat-num {
+            font-family: 'Turret Road', sans-serif;
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: .4rem;
+        }
+        .stat-num em { font-style: normal; color: #4ade80; }
+        .stat-label {
+            font-size: .78rem;
+            font-weight: 400;
+            color: rgba(255,255,255,.4);
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+    </style>
+
+    <script defer src="js/navbar.js"></script>
+    <script defer src="js/navbar-scroll.js"></script>
+    <script defer src="js/menu.js"></script>
 </head>
+
 <body>
 
-</body>
-</html>
-<!-- L’ÉQUIPE Section -->
-<section id="testimonials" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12 fade-in-up">
-            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                L’ÉQUIPE
-            </h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Derrière chaque action de DEFI Madagascar se trouve une équipe engagée, visionnaire et profondément
-                attachée à l’avenir de notre île. Découvrez ceux qui portent cet espoir au quotidien.
-            </p>
+<!-- ════════════════════════════════
+     NAVBAR — identique à index.html
+════════════════════════════════ -->
+<header class="glass-navbar">
+    <div class="nav-container">
+        <div class="nav-inner">
+
+            <div class="logo-container">
+                <a href="index.html"></a>
+                <img src="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png"
+                     alt="DEFI Madagascar" class="logo">
+            </div>
+
+            <div class="mobile-button-container">
+                <button id="mobile-menu-button" class="mobile-button">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="nav-links">
+                <div class="nav-item nav-mega">
+                    <button class="dropdown-toggle" data-mega="actualites">Actualité</button>
+                    <div class="mega-dropdown" id="mega-actualites">
+                        <div class="mega-container">
+                            <div class="mega-column">
+                                <h3>Actualité</h3>
+                                <a href="recente-mission.html">Recentes missions</a>
+                                <a href="recente-mission.html">Revue de presse</a>
+                                <a href="recente-mission.html">Article de presse</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-item nav-mega">
+                    <button class="dropdown-toggle" data-mega="about">A propos</button>
+                    <div class="mega-dropdown" id="mega-about">
+                        <div class="mega-container">
+                            <div class="mega-column">
+                                <h3>Notre organisation</h3>
+                                <a href="#">Qui sommes-nous ?</a>
+                                <a href="#">Historique</a>
+                                <a href="team.html">Notre equipe</a>
+                            </div>
+                            <div class="mega-column">
+                                <h3>Nos actions</h3>
+                                <a href="#">Projets</a>
+                                <a href="index.html#impact">Impact</a>
+                                <a href="#">Nos missions</a>
+                            </div>
+                            <div class="mega-column">
+                                <h3>Nos sieges</h3>
+                                <a href="#">village immergeant de manjakarivo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="index.html#gallerie">Gallerie</a>
+
+                <div class="nav-item nav-mega">
+                    <button class="dropdown-toggle" data-mega="contact">Contact</button>
+                    <div class="mega-dropdown" id="mega-contact">
+                        <div class="mega-container">
+                            <div class="mega-column">
+                                <h3>Contact</h3>
+                                <a href="index.html#don">Je fais un don pour soutenir les actions sur le terrain</a>
+                                <a href="index.html#contact">Mon entreprise/organisation souhaite devenir partenaire</a>
+                                <a href="index.html#contact">Je prends contact pour en savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow scale-in stagger-1 equipe-card">
-                <div class="flex items-center">
-                    <img src="assets/800_67f972b943eca.jpg" alt="Volanirina Andriamananoro"
-                         class="custom-size rounded-full object-cover mr-4">
-                    <div>
-                        <h4 class="font-semibold text-gray-900">Volanirina Andriamananoro</h4>
-                        <p class="text-gray-600 text-sm">Presidente</p>
-                    </div>
-                </div>
-                <p class="text-gray-700 mb-6 italic">
-                    "C’est dans l’âme de chacun de nous que réside le pouvoir de
-                    transformer notre pays. Ceux qui ont la chance d’avoir une voix doivent la faire entendre pour
-                    un Madagascar plus solidaire et prospère."
-
-                </p>
-
-            </div>
-
-            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow scale-in stagger-1 equipe-card">
-                <div class="flex items-center mb-4">
-                    <div class="flex items-center">
-                        <img src="assets/800_67f9747292a95_filter_67f974c813158.jpg" alt="Ange Razafindranaivo"
-                             class="custom-size rounded-full object-cover mr-4">
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Ange Razafindranaivo</h4>
-                            <p class="text-gray-600 text-sm">Vice Présidente</p>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-gray-700 mb-6 italic">"Chaque décision que nous prenons aujourd'hui façonne l’avenir
-                    de notre nation. Nous avons la chance de changer le destin de Madagascar, et nous ne pouvons pas
-                    l’ignorer."</p>
-
-            </div>
-
-            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow scale-in stagger-1 equipe-card">
-                <div class="flex items-center mb-4">
-                    <div class="flex items-center">
-                        <img src="assets/800_67f97b663a505_filter_67f97be58a6ed.jpg"
-                             alt="Koloina Jessica Andriambololona"
-                             class="custom-size rounded-full object-cover mr-4">
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Koloina Jessica Andriambololona</h4>
-                            <p class="text-gray-600 text-sm">Secrétaire Générale</p>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-gray-700 mb-6 italic">"Aider l’autre, c’est faire grandir notre nation. Chaque geste
-                    de solidarité, chaque moment partagé, construit un Madagascar plus fort, plus unifié."</p>
-
+        <div id="mobile-menu" class="mobile-menu">
+            <div>
+                <nav>
+                    <a href="index.html">Accueil</a>
+                    <a href="index.html#about">A propos</a>
+                    <a href="index.html#services">Projets</a>
+                    <a href="team.html">Equipe</a>
+                    <a href="index.html#valeurs">Valeurs</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
             </div>
         </div>
     </div>
+</header>
+
+<!-- ════════════════════════════════
+     HERO
+════════════════════════════════ -->
+<section class="team-hero" style="padding-top: 72px;">
+    <div class="hero-ghost">ÉQUIPE</div>
+    <div class="hero-inner">
+        <div class="hero-eyebrow"><i></i><span>Notre organisation</span></div>
+        <h1 class="hero-title">L'<em>équipe</em><br>DEFI.</h1>
+        <p class="hero-desc">
+            Derrière chaque action de DEFI Madagascar se trouve une équipe engagée,
+            visionnaire et profondément attachée à l'avenir de notre île.
+            Découvrez ceux qui portent cet espoir au quotidien.
+        </p>
+    </div>
+    <div class="hero-rule"></div>
 </section>
+
+<!-- ════════════════════════════════
+     GRILLE MEMBRES
+════════════════════════════════ -->
+<section class="team-section">
+    <div class="team-section-inner">
+
+        <div class="section-eyebrow">
+            <span>Les membres</span>
+            <hr>
+        </div>
+
+        <div class="team-grid">
+
+            <!-- Membre 1 -->
+            <div class="member-card">
+                <div class="member-top">
+                    <div class="member-avatar-wrap">
+                        <img class="member-avatar"
+                             src="assets/800_67f972b943eca.jpg"
+                             alt="Volanirina Andriamananoro">
+                        <div class="member-num">01</div>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Volanirina Andriamananoro</div>
+                        <div class="member-role">Présidente</div>
+                    </div>
+                </div>
+                <div class="member-divider"></div>
+                <div class="member-quote">
+                    <p>C'est dans l'âme de chacun de nous que réside le pouvoir de transformer notre pays.
+                        Ceux qui ont la chance d'avoir une voix doivent la faire entendre pour
+                        un Madagascar plus solidaire et prospère.</p>
+                </div>
+                <div class="member-wiki-wrap">
+                    <a class="member-wiki-btn"
+                       href="https://mg.linkedin.com/in/volanirina-andriamananoro-2a6349350"
+                       target="_blank" rel="noopener noreferrer">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                        Connaitre
+                    </a>
+                </div>
+            </div>
+
+            <!-- Membre 2 -->
+            <div class="member-card">
+                <div class="member-top">
+                    <div class="member-avatar-wrap">
+                        <img class="member-avatar"
+                             src="assets/800_67f9747292a95_filter_67f974c813158.jpg"
+                             alt="Ange Razafindranaivo">
+                        <div class="member-num">02</div>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Ange Razafindranaivo</div>
+                        <div class="member-role">Vice-Présidente</div>
+                    </div>
+                </div>
+                <div class="member-divider"></div>
+                <div class="member-quote">
+                    <p>Chaque décision que nous prenons aujourd'hui façonne l'avenir
+                        de notre nation. Nous avons la chance de changer le destin de Madagascar,
+                        et nous ne pouvons pas l'ignorer.</p>
+                </div>
+            </div>
+
+            <!-- Membre 3 -->
+            <div class="member-card">
+                <div class="member-top">
+                    <div class="member-avatar-wrap">
+                        <img class="member-avatar"
+                             src="assets/800_67f97b663a505_filter_67f97be58a6ed.jpg"
+                             alt="Koloina Jessica Andriambololona">
+                        <div class="member-num">03</div>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Koloina Jessica Andriambololona</div>
+                        <div class="member-role">Secrétaire Générale</div>
+                    </div>
+                </div>
+                <div class="member-divider"></div>
+                <div class="member-quote">
+                    <p>Aider l'autre, c'est faire grandir notre nation. Chaque geste
+                        de solidarité, chaque moment partagé, construit un Madagascar
+                        plus fort, plus unifié.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bande statistiques -->
+        <div class="stat-strip">
+            <div class="stat-item">
+                <div class="stat-num">30<em>+</em></div>
+                <div class="stat-label">Années d'engagement</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">1993</div>
+                <div class="stat-label">Année de fondation</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">3<em>+</em></div>
+                <div class="stat-label">Piliers d'action</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ════════════════════════════════
+     FOOTER — identique à index.html
+════════════════════════════════ -->
+<footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <div>
+                <h3 class="text-2xl font-bold mb-4">DEFI Madagascar</h3>
+                <p class="text-gray-300 mb-6">
+                    Une association engagée pour l'environnement, l'éducation et le développement durable à
+                    Madagascar depuis 1993.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html"              class="text-gray-300 hover:text-white transition-colors">Accueil</a></li>
+                    <li><a href="index.html#about"        class="text-gray-300 hover:text-white transition-colors">À propos</a></li>
+                    <li><a href="index.html#services"     class="text-gray-300 hover:text-white transition-colors">Projets</a></li>
+                    <li><a href="team.html"               class="text-gray-300 hover:text-white transition-colors">Équipe</a></li>
+                    <li><a href="index.html#valeurs"      class="text-gray-300 hover:text-white transition-colors">Valeurs</a></li>
+                    <li><a href="index.html#contact"      class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <span class="text-gray-300">contact@defi-madagascar.org</span>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <span class="text-gray-300">+261-3400 133 00</span>
+                    </div>
+                    <div class="flex items-start">
+                        <svg class="h-5 w-5 text-green-400 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="text-gray-300">
+                            Village Emmergent d'Ambolomanjakarivo RN1<br>
+                            PK64, Commune Rurale de Soamahamanina
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="my-8 border-gray-700">
+
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-300 text-sm">Copyright © 2025. All rights reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Terms of Service</a>
+                <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Cookie Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
