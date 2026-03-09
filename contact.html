@@ -24,6 +24,9 @@
     <!-- Scripts -->
     <script defer src="js/navbar.js"></script>
     <script defer src="js/menu.js"></script>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -36,9 +39,10 @@
         <div class="nav-inner">
 
             <div class="logo-container">
-                <a href="index.html"></a>
-                <img src="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png"
-                     alt="DEFI Madagascar" class="logo">
+                <a href="index.html" style="display:inline-block; cursor:pointer;">
+                    <img src="https://files.cdn-files-a.com/uploads/10601552/400_filter_nobg_67f7be5f53ddb.png"
+                         alt="DEFI Madagascar" class="logo" style="display:block;">
+                </a>
             </div>
 
             <div class="mobile-button-container">
@@ -196,7 +200,7 @@
                     <div class="c-item-info">
                         <div class="c-item-label">Email</div>
                         <div class="c-item-value">
-                            <a href="mailto:contact@defi-madagascar.org">contact@defi-madagascar.org</a>
+                            <a href="/cdn-cgi/l/email-protection#bad9d5d4cedbd9cefadedfdcd397d7dbdedbdddbc9d9dbc894d5c8dd"><span class="__cf_email__" data-cfemail="83e0ecedf7e2e0f7c3e7e6e5eaaeeee2e7e2e4e2f0e0e2f1adecf1e4">[email&#160;protected]</span></a>
                         </div>
                     </div>
                 </div>
@@ -273,7 +277,7 @@
 
             <!-- Formulaire -->
             <div class="c-form-wrap">
-                <form id="contact-form" class="c-form" onsubmit="handleSubmit(event)">
+                <form id="contact-form" class="c-form">
 
                     <div>
                         <div class="c-form-title">Envoyer un <em>message</em></div>
@@ -346,7 +350,7 @@
             <div>
                 <h4 style="font-size:1rem; font-weight:600; margin-bottom:1rem;">Contact Info</h4>
                 <div style="display:flex; flex-direction:column; gap:.75rem; font-size:.85rem; color:rgba(255,255,255,.45);">
-                    <span>contact@defi-madagascar.org</span>
+                    <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="11727e7f6570726551757477783c7c7075707670627270633f7e6376">[email&#160;protected]</a></span>
                     <span>+261-3400 133 00</span>
                     <span>Village Emmergent d'Ambolomanjakarivo<br>RN1 – PK64, Soamahamanina</span>
                 </div>
@@ -369,11 +373,61 @@
     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
     </svg>
-    Message envoyé avec succès !
+    <span>Message envoyé avec succès !</span>
 </div>
 
-<!-- Script contact -->
-<script src="contact.js"></script>
+<!-- EmailJS + Contact Form -->
+<script>
+    window.addEventListener("load", function() {
+
+        // Init EmailJS une fois que le SDK est bien chargé
+        emailjs.init("X1PL2aPIO9Ba30Gyc");
+
+        // Attacher l'event listener sur le formulaire
+        var form = document.getElementById("contact-form");
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            var btn = document.getElementById("submitBtn");
+            btn.disabled = true;
+            btn.textContent = "Envoi en cours…";
+
+            emailjs.sendForm("service_m395mqh", "template_2gym8bu", form)
+                .then(function() {
+                    btn.disabled = false;
+                    btn.textContent = "Envoyer le message";
+                    form.reset();
+                    showToast("Message envoyé avec succès !", false);
+                }, function(error) {
+                    console.error("EmailJS error:", JSON.stringify(error));
+                    btn.disabled = false;
+                    btn.textContent = "Envoyer le message";
+                    showToast("Erreur : " + (error.text || "échec de l'envoi"), true);
+                });
+        });
+
+        function showToast(msg, isError) {
+            var toast = document.getElementById("contactToast");
+            var icon = toast.querySelector("svg");
+            if (isError) {
+                icon.innerHTML = "<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 18L18 6M6 6l12 12'/>";
+                toast.style.borderColor = "rgba(239,68,68,0.5)";
+                toast.style.background = "#3b0f0f";
+            } else {
+                icon.innerHTML = "<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'/>";
+                toast.style.borderColor = "rgba(76,175,80,0.4)";
+                toast.style.background = "";
+            }
+            var span = toast.querySelector("span");
+            if (span) {
+                span.textContent = msg;
+            }
+            toast.classList.add("show");
+            setTimeout(function() { toast.classList.remove("show"); }, 4000);
+        }
+
+    });
+</script>
 
 </body>
 </html>
