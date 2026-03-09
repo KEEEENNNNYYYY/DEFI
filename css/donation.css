@@ -1,231 +1,596 @@
-/* Donation Section */
-.donation-section {
-    background: rgba(241, 245, 249, 0.3);
-    padding: 4rem 1rem;
-  }
+/* ═══════════════════════════════════════
+   RESET / BASE
+═══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .donation-container {
-    max-width: 32rem;
-    margin: 0 auto;
-  }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #1a2d20;
+    color: #fff;
+    overflow-x: hidden;
+}
+.glass-navbar{
+    background-color: white !important;
+    color:  #374151;
+}
 
-  .donation-title {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
-  .donation-title h2 {
-    font-size: 1.875rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: #0f172a;
-  }
-
-  .donation-title p {
-    font-size: 1.25rem;
-    color: #64748b;
-    max-width: 32rem;
-    margin: 0 auto;
-  }
-
-  .donation-card {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-  }
-
-  .donation-image {
+/* ═══════════════════════════════════════
+   DON SECTION
+═══════════════════════════════════════ */
+.don-section {
     position: relative;
-    height: 16rem;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.1));
+    background: #1a2d20;
     overflow: hidden;
-  }
+    padding: 0 0 6rem;
+    min-height: 100vh;
+}
 
-  .donation-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .donation-image-overlay {
-    position: absolute;
+/* ── Grain overlay ── */
+.don-section::before {
+    content: '';
+    position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ── Triangle blanc haut-droite ── */
+.don-tri {
+    position: absolute;
+    top: 0; right: 0;
+    width: 48%; height: 48%;
+    background: #fff;
+    clip-path: polygon(100% 0, 100% 100%, 0 0);
+    z-index: 0;
+    pointer-events: none;
+    opacity: .97;
+}
+
+/* ── Triangle blanc bas-gauche ── */
+.don-tri-bl {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 48%; height: 48%;
+    background: #fff;
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+    z-index: 0;
+    pointer-events: none;
+    opacity: .97;
+}
+
+/* ── Accent line décoratif vertical ── */
+.don-accent-v {
+    position: absolute;
+    top: 0; left: 50%;
+    width: 1px; height: 100%;
+    background: linear-gradient(to bottom, #14ff72 0%, transparent 15%, transparent 85%, #14ff72 100%);
+    opacity: .04;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Ghost text ── */
+.don-ghost {
+    position: absolute;
+    bottom: -2rem; right: -1rem;
+    font-family: 'Turret Road', sans-serif;
+    font-size: clamp(7rem, 18vw, 16rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(20,255,114,.04);
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 0;
+    line-height: 1;
+    letter-spacing: -.03em;
+}
+
+/* ── Wrap centré ── */
+.don-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* ════════════════════
+   HEADER
+════════════════════ */
+.don-header {
+    max-width: 52%;
+    padding: 4rem 0 3rem;
+    animation: fadeUp .8s ease both;
+}
+@media (max-width: 860px) { .don-header { max-width: 100%; } }
+
+.don-eyebrow {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-  }
-
-  .donation-image-overlay h2 {
-    font-size: 1.875rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-
-  .donation-image-overlay p {
-    font-size: 1.125rem;
-    opacity: 0.9;
-  }
-
-  .donation-form {
-    padding: 2rem;
-  }
-
-  .donation-form h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 0.5rem;
-    color: #0f172a;
-  }
-
-  .donation-form .subtitle {
-    text-align: center;
-    color: #64748b;
-    margin-bottom: 1.5rem;
-  }
-
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-
-  .form-label {
+    gap: .75rem;
+    margin-bottom: 1.25rem;
+}
+.don-eyebrow i {
     display: block;
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: #0f172a;
-  }
+    width: 2.8rem; height: 2px;
+    background: #14ff72;
+    font-style: normal;
+    flex-shrink: 0;
+}
+.don-eyebrow span {
+    font-family: 'Turret Road', sans-serif;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: #14ff72;
+}
 
-  .amount-buttons {
+.don-title {
+    font-size: clamp(2rem, 4vw, 3.6rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -.03em;
+    line-height: 1.02;
+    color: #fff;
+}
+.don-title em { font-style: normal; color: #14ff72; }
+
+.don-subtitle {
+    margin-top: 1.2rem;
+    font-size: .9rem;
+    font-weight: 300;
+    color: rgba(255,255,255,.4);
+    line-height: 1.8;
+    max-width: 38rem;
+}
+
+/* ════════════════════
+   STATS BAND
+════════════════════ */
+.don-stats {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem 0 2.5rem;
+    border-top: 1px solid rgba(255,255,255,.06);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    animation: fadeUp .8s .15s ease both;
+}
+.don-stat {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+}
+.don-stat-value {
+    font-family: 'Turret Road', sans-serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 800;
+    color: #14ff72;
+    letter-spacing: -.02em;
+    line-height: 1;
+}
+.don-stat-label {
+    font-size: .68rem;
+    font-weight: 500;
+    color: rgba(255,255,255,.3);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+}
+.don-stat-divider {
+    width: 1px;
+    background: rgba(255,255,255,.08);
+    align-self: stretch;
+    margin: .2rem 0;
+}
+
+/* ════════════════════
+   BODY GRID
+════════════════════ */
+.don-body {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
+    grid-template-columns: 420px 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+@media (max-width: 900px) {
+    .don-body { grid-template-columns: 1fr; }
+}
 
-  @media (min-width: 768px) {
-    .amount-buttons {
-      grid-template-columns: repeat(5, 1fr);
-    }
-  }
-
-  .amount-btn {
-    height: 3rem;
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 0.375rem;
-    font-size: 1.125rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    color: #0f172a;
-  }
-
-  .amount-btn:hover {
-    border-color: #0f172a;
-    background: #f8fafc;
-  }
-
-  .amount-btn.selected {
-    background: #0f172a;
-    border-color: #0f172a;
-    color: #ffffff;
-  }
-
-  .input-group {
+/* ════════════════════
+   IMAGE
+════════════════════ */
+.don-img-wrap {
     position: relative;
-  }
+    border-radius: 2px;
+    overflow: hidden;
+    height: 460px;
+    animation: fadeLeft .9s .2s ease both;
+}
+.don-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .9s ease;
+}
+.don-img-wrap:hover img { transform: scale(1.05); }
 
-  .input-group .currency {
+.don-img-overlay {
+    position: absolute; inset: 0;
+    background:
+            linear-gradient(to top,  rgba(5,12,7,.95) 0%,  rgba(5,12,7,.3) 45%, transparent 70%),
+            linear-gradient(to right, rgba(5,12,7,.55) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Coin vert haut-droite */
+.don-img-wrap::before {
+    content: '';
     position: absolute;
-    left: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #64748b;
-    font-size: 1.125rem;
-  }
+    top: 0; right: 0;
+    width: 3px; height: 60px;
+    background: #14ff72; z-index: 3;
+}
+.don-img-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60px; height: 3px;
+    background: #14ff72; z-index: 3;
+}
 
-  .form-input {
-    width: 100%;
-    height: 3rem;
-    padding: 0 0.75rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 0.375rem;
-    font-size: 1.125rem;
-    transition: all 0.2s;
-  }
+/* Coin vert bas-gauche */
+.don-img-corner-bl {
+    position: absolute;
+    bottom: 0; left: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+.don-img-corner-bl::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 3px; height: 40px;
+    background: rgba(20,255,114,.4);
+}
+.don-img-corner-bl::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 40px; height: 3px;
+    background: rgba(20,255,114,.4);
+}
 
-  .form-input:focus {
-    outline: none;
-    border-color: #0f172a;
-    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
-  }
+.don-img-caption {
+    position: absolute;
+    bottom: 2rem; left: 2rem;
+    z-index: 4;
+}
+.don-img-caption h3 {
+    font-family: 'Turret Road', sans-serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.7rem);
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    line-height: 1.1;
+    margin-bottom: .4rem;
+}
+.don-img-caption p {
+    font-size: .78rem;
+    color: rgba(255,255,255,.5);
+    font-weight: 300;
+    letter-spacing: .06em;
+}
 
-  .form-input.with-currency {
-    padding-left: 2rem;
-  }
+/* Badge flottant */
+.don-img-badge {
+    position: absolute;
+    top: 1.4rem; left: 1.4rem;
+    z-index: 4;
+    background: rgba(20,255,114,.12);
+    border: 1px solid rgba(20,255,114,.3);
+    border-radius: 2px;
+    padding: .35rem .75rem;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+.don-img-badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #14ff72;
+    animation: blink 1.6s ease-in-out infinite;
+}
+.don-img-badge span {
+    font-family: 'Turret Road', sans-serif;
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #14ff72;
+}
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
 
-  .donate-btn {
-    width: 100%;
-    height: 3rem;
-    background: #0f172a;
-    color: #ffffff;
-    border: none;
-    border-radius: 0.375rem;
-    font-size: 1.125rem;
+/* ════════════════════
+   PANEL DROITE
+════════════════════ */
+.don-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: .4rem;
+    animation: fadeRight .9s .3s ease both;
+}
+
+.don-panel-intro {
+    font-size: .86rem;
+    font-weight: 300;
+    color: rgba(255,255,255,.38);
+    line-height: 1.85;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    margin-bottom: .2rem;
+}
+
+.don-section-label {
+    font-family: 'Turret Road', sans-serif;
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.22);
+    margin-bottom: -.2rem;
+}
+
+/* ════════════════════
+   CARTES PAIEMENT
+════════════════════ */
+.don-card {
+    position: relative;
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    border-radius: 3px;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 14px 100%);
+    cursor: default;
+}
+.don-card:hover { transform: translateX(10px); }
+
+/* Barre gauche colorée */
+.don-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    transition: width .25s ease;
+}
+.don-card:hover::before { width: 5px; }
+
+/* Lueur au hover */
+.don-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity .3s;
+    pointer-events: none;
+}
+.don-card:hover::after { opacity: 1; }
+
+/* Orange Money */
+.don-card.orange { background: rgba(234,88,12,.08); border: 1px solid rgba(234,88,12,.22); }
+.don-card.orange::before { background: #ea580c; }
+.don-card.orange::after  { background: radial-gradient(ellipse at left center, rgba(234,88,12,.08) 0%, transparent 65%); }
+.don-card.orange .don-card-name   { color: #fb923c; }
+.don-card.orange .don-card-number { color: #fed7aa; }
+.don-card.orange .don-card-icon   { color: #fb923c; border-color: rgba(234,88,12,.25); }
+
+/* MVola */
+.don-card.yellow { background: rgba(202,138,4,.08); border: 1px solid rgba(202,138,4,.22); }
+.don-card.yellow::before { background: #ca8a04; }
+.don-card.yellow::after  { background: radial-gradient(ellipse at left center, rgba(202,138,4,.08) 0%, transparent 65%); }
+.don-card.yellow .don-card-name   { color: #facc15; }
+.don-card.yellow .don-card-number { color: #fef08a; }
+.don-card.yellow .don-card-icon   { color: #facc15; border-color: rgba(202,138,4,.25); }
+
+/* Airtel */
+.don-card.red { background: rgba(220,38,38,.08); border: 1px solid rgba(220,38,38,.22); }
+.don-card.red::before { background: #dc2626; }
+.don-card.red::after  { background: radial-gradient(ellipse at left center, rgba(220,38,38,.08) 0%, transparent 65%); }
+.don-card.red .don-card-name   { color: #f87171; }
+.don-card.red .don-card-number { color: #fecaca; }
+.don-card.red .don-card-icon   { color: #f87171; border-color: rgba(220,38,38,.25); }
+
+.don-card-icon {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+}
+.don-card-icon svg { width: 19px; height: 19px; }
+.don-card:hover .don-card-icon { background: rgba(255,255,255,.07); }
+
+.don-card-info { flex: 1; min-width: 0; }
+.don-card-name {
+    font-family: 'Turret Road', sans-serif;
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    margin-bottom: .22rem;
+}
+.don-card-number {
+    font-family: 'Turret Road', sans-serif;
+    font-size: 1.18rem;
+    font-weight: 800;
+    letter-spacing: .07em;
+    line-height: 1;
+}
+.don-card-account {
+    font-size: .68rem;
+    color: rgba(255,255,255,.24);
+    margin-top: .22rem;
+    font-weight: 300;
+    letter-spacing: .04em;
+}
+
+/* Bouton copier */
+.don-copy-btn {
+    flex-shrink: 0;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 4px;
+    padding: .42rem .75rem;
+    font-size: .65rem;
     font-weight: 600;
+    color: rgba(255,255,255,.32);
     cursor: pointer;
-    transition: all 0.2s;
-    margin-bottom: 1.5rem;
-  }
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    transition: all .2s;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
+}
+.don-copy-btn:hover {
+    background: rgba(20,255,114,.1);
+    border-color: rgba(20,255,114,.35);
+    color: #14ff72;
+}
+.don-copy-btn.copied {
+    background: rgba(20,255,114,.14);
+    border-color: rgba(20,255,114,.5);
+    color: #14ff72;
+}
 
-  .donate-btn:hover {
-    background: rgba(15, 23, 42, 0.9);
-  }
+/* ── Virement bancaire ── */
+.don-bank {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 3px;
+    margin-top: .2rem;
+}
+.don-bank-icon {
+    flex-shrink: 0;
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 8px;
+    color: rgba(255,255,255,.35);
+}
+.don-bank-icon svg { width: 18px; height: 18px; }
+.don-bank-info { flex: 1; }
+.don-bank-name {
+    font-family: 'Turret Road', sans-serif;
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.28);
+    margin-bottom: .2rem;
+}
+.don-bank-detail {
+    font-size: .78rem;
+    color: rgba(255,255,255,.38);
+    font-weight: 300;
+}
+.don-bank-contact {
+    font-size: .68rem;
+    color: rgba(20,255,114,.5);
+    font-weight: 500;
+    cursor: pointer;
+    transition: color .2s;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: .04em;
+}
+.don-bank-contact:hover { color: #14ff72; }
 
-  .donate-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+/* ════════════════════
+   TRUST BAR
+════════════════════ */
+.don-trust {
+    display: flex;
+    gap: 1.8rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255,255,255,.06);
+    flex-wrap: wrap;
+    margin-top: .2rem;
+}
+.don-trust-item {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    font-size: .7rem;
+    color: rgba(255,255,255,.28);
+    font-weight: 300;
+    letter-spacing: .04em;
+}
+.don-trust-item svg {
+    width: 13px; height: 13px;
+    color: #14ff72;
+    flex-shrink: 0;
+}
 
-  .trust-indicators {
-    text-align: center;
-    font-size: 0.875rem;
-    color: #64748b;
-    line-height: 1.6;
-  }
+/* ════════════════════
+   ANIMATIONS
+════════════════════ */
+@keyframes fadeUp    { from { opacity: 0; transform: translateY(28px); }  to { opacity: 1; transform: none; } }
+@keyframes fadeLeft  { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+@keyframes fadeRight { from { opacity: 0; transform: translateX(28px); }  to { opacity: 1; transform: none; } }
 
-  .trust-indicators p {
-    margin-bottom: 0.25rem;
-  }
+/* ════════════════════
+   MOBILE
+════════════════════ */
+@media (max-width: 600px) {
+    .don-wrap        { padding: 0 1.2rem; }
+    .don-img-wrap    { height: 300px; }
+    .don-stats       { gap: 1.2rem; }
+    .don-stat-divider { display: none; }
+    .don-card-number { font-size: 1rem; }
+}
 
-  .toast {
+/* ════════════════════
+   TOAST
+════════════════════ */
+.don-toast {
     position: fixed;
-    top: 1rem;
-    right: 1rem;
-    background: #0f172a;
-    color: #ffffff;
-    padding: 1rem 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-  }
-
-  .toast.show {
-    transform: translateX(0);
-  }
-
-  .toast.error {
-    background: #dc2626;
-  }
-
-  .toast.success {
-    background: #16a34a;
-  }
+    bottom: 2rem; right: 2rem;
+    background: #0a1a0c;
+    border: 1px solid rgba(20,255,114,.35);
+    color: #fff;
+    padding: .9rem 1.4rem;
+    border-radius: 4px;
+    font-size: .82rem;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    z-index: 9999;
+    transform: translateY(8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all .3s ease;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 8px 32px rgba(0,0,0,.5);
+}
+.don-toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+.don-toast svg { color: #14ff72; width: 15px; height: 15px; flex-shrink: 0; }

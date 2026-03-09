@@ -1,78 +1,59 @@
-let selectedAmount = null;
-const predefinedAmounts = [5, 10, 20, 50, 100];
+/**
+ * donation.js
+ * Gestion du formulaire de don — copie des numéros Mobile Money
+ */
 
-function generateAmountButtons() {
-    const container = document.getElementById('amountButtons');
-    container.innerHTML = '';
+/**
+ * Copie le numéro dans le presse-papiers et affiche le toast de confirmation.
+ * @param {HTMLButtonElement} btn    - Le bouton "Copier" cliqué
+ * @param {string}            number - Le numéro à copier
+ */
+function copyNumber(btn, number) {
+    const toast = document.getElementById('donToast');
+    const msg   = document.getElementById('donToastMsg');
 
-    predefinedAmounts.forEach(amount => {
-        const btn = document.createElement('button');
-        btn.className = 'amount-btn';
-        btn.textContent = `$${amount}`;
-        btn.onclick = () => selectAmount(amount);
-        container.appendChild(btn);
-    });
-}
+    const showFeedback = () => {
+        btn.textContent = 'Copié !';
+        btn.classList.add('copied');
 
-function selectAmount(amount) {
-    selectedAmount = amount;
-    document.getElementById('customAmount').value = '';
+        msg.textContent = number + ' copié !';
+        toast.classList.add('show');
 
-    document.querySelectorAll('.amount-btn')
-        .forEach(btn => btn.classList.remove('selected'));
+        setTimeout(() => {
+            btn.textContent = 'Copier';
+            btn.classList.remove('copied');
+            toast.classList.remove('show');
+        }, 2200);
+    };
 
-    event.target.classList.add('selected');
-    updateDonateButton();
-}
-
-function handleCustomAmountChange() {
-    const custom = document.getElementById('customAmount').value;
-    if (custom) selectedAmount = null;
-
-    document.querySelectorAll('.amount-btn')
-        .forEach(btn => btn.classList.remove('selected'));
-
-    updateDonateButton();
-}
-
-function updateDonateButton() {
-    const custom = document.getElementById('customAmount').value;
-    const txt = document.getElementById('donateButtonText');
-
-    txt.textContent = selectedAmount
-        ? `Donate $${selectedAmount}`
-        : custom ? `Donate $${custom}` : 'Donate';
-}
-
-function showToast(msg, type = 'success') {
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.className = `toast ${type}`;
-    setTimeout(() => toast.classList.add('show'), 100);
-    setTimeout(() => toast.classList.remove('show'), 4000);
-}
-
-function handleDonate() {
-    const custom = parseFloat(document.getElementById('customAmount').value);
-    const amount = selectedAmount || custom;
-
-    if (!amount || amount <= 0) {
-        showToast("Invalid amount", "error");
-        return;
+    // Clipboard API (navigateurs modernes)
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(number)
+            .then(showFeedback)
+            .catch(() => fallbackCopy(number, showFeedback));
+    } else {
+        fallbackCopy(number, showFeedback);
     }
-
-    showToast(`Thank you for donating $${amount}!`);
-
-    selectedAmount = null;
-    document.getElementById('customAmount').value = '';
-    updateDonateButton();
-
-    document.querySelectorAll('.amount-btn')
-        .forEach(btn => btn.classList.remove('selected'));
 }
 
-function initDonation() {
-    generateAmountButtons();
-    document.getElementById('customAmount')
-        .addEventListener('input', handleCustomAmountChange);
+/**
+ * Fallback execCommand pour les environnements sans Clipboard API.
+ * @param {string}   text     - Texte à copier
+ * @param {Function} callback - Callback appelé après la copie
+ */
+function fallbackCopy(text, callback) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try {
+        document.execCommand('copy');
+        if (typeof callback === 'function') callback();
+    } catch (err) {
+        console.warn('Copie impossible :', err);
+    } finally {
+        document.body.removeChild(ta);
+    }
 }
