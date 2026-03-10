@@ -381,7 +381,7 @@
     window.addEventListener("load", function() {
 
         // Init EmailJS une fois que le SDK est bien chargé
-        emailjs.init("X1PL2aPIO9Ba30Gyc");
+        emailjs.init("l7rpcI1bcC_5b35wu");
 
         // Attacher l'event listener sur le formulaire
         var form = document.getElementById("contact-form");
@@ -392,7 +392,7 @@
             btn.disabled = true;
             btn.textContent = "Envoi en cours…";
 
-            emailjs.sendForm("service_m395mqh", "template_2gym8bu", form)
+            emailjs.sendForm("service_r97kuuj", "template_v0dboxe", form)
                 .then(function() {
                     btn.disabled = false;
                     btn.textContent = "Envoyer le message";
