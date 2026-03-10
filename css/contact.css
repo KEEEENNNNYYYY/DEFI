@@ -30,7 +30,26 @@ a { text-decoration: none; }
 ═══════════════════════════════════════ */
 .glass-navbar {
     background-color: white !important;
-    color: #374151;
+}
+
+/* Tous les textes de la navbar en gris foncé */
+.glass-navbar .nav-links a,
+.glass-navbar .nav-links .nav-link,
+.glass-navbar .dropdown-toggle,
+.glass-navbar .nav-inner a,
+.glass-navbar .nav-inner button {
+    color: #374151 !important;
+}
+
+/* Hover */
+.glass-navbar .nav-links a:hover,
+.glass-navbar .dropdown-toggle:hover {
+    color: #111827 !important;
+}
+
+/* Menu mobile */
+.glass-navbar .mobile-menu a {
+    color: #374151 !important;
 }
 
 /* ═══════════════════════════════════════

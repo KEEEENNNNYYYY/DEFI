@@ -310,70 +310,42 @@
 <!-- ════════════════════════════════
      FOOTER
 ════════════════════════════════ -->
-<footer class="bg-gray-900 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<footer style="background:#111827; color:#fff;">
+    <div style="max-width:1280px; margin:0 auto; padding:3rem 2.5rem;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem;">
             <div>
-                <h3 class="text-2xl font-bold mb-4">DEFI Madagascar</h3>
-                <p class="text-gray-300 mb-6">
+                <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:1rem;">DEFI Madagascar</h3>
+                <p style="color:rgba(255,255,255,.45); font-size:.85rem; line-height:1.7;">
                     Une association engagée pour l'environnement, l'éducation et le développement durable à
                     Madagascar depuis 1993.
                 </p>
             </div>
             <div>
-                <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
-                <ul class="space-y-2">
-                    <li><a href="index.html"          class="text-gray-300 hover:text-white transition-colors">Accueil</a></li>
-                    <li><a href="index.html#about"    class="text-gray-300 hover:text-white transition-colors">À propos</a></li>
-                    <li><a href="index.html#services" class="text-gray-300 hover:text-white transition-colors">Projets</a></li>
-                    <li><a href="team.html"           class="text-gray-300 hover:text-white transition-colors">Équipe</a></li>
-                    <li><a href="index.html#valeurs"  class="text-gray-300 hover:text-white transition-colors">Valeurs</a></li>
-                    <li><a href="contact.html"        class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
-                </ul>
+                <h4 style="font-size:1rem; font-weight:600; margin-bottom:1rem;">Liens rapides</h4>
+                <div style="display:flex; flex-direction:column; gap:.5rem;">
+                    <a href="index.html" style="color:rgba(255,255,255,.45); font-size:.85rem; transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.45)'">Accueil</a>
+                    <a href="index.html#about" style="color:rgba(255,255,255,.45); font-size:.85rem;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.45)'">À propos</a>
+                    <a href="team.html" style="color:rgba(255,255,255,.45); font-size:.85rem;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.45)'">Équipe</a>
+                    <a href="donation.html" style="color:rgba(255,255,255,.45); font-size:.85rem;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.45)'">Faire un don</a>
+                    <a href="contact.html" style="color:rgba(255,255,255,.45); font-size:.85rem;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.45)'">Contact</a>
+                </div>
             </div>
             <div>
-                <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
-                <div class="space-y-4">
-                    <div class="flex items-center">
-                        <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                        <span class="text-gray-300">contact@defi-madagascar.org</span>
-                    </div>
-                    <div class="flex items-center">
-                        <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                        </svg>
-                        <span class="text-gray-300">+261-3400 133 00</span>
-                    </div>
-                    <div class="flex items-start">
-                        <svg class="h-5 w-5 text-green-400 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        </svg>
-                        <span class="text-gray-300">
-                            Village Emmergent d'Ambolomanjakarivo RN1<br>
-                            PK64, Commune Rurale de Soamahamanina
-                        </span>
-                    </div>
+                <h4 style="font-size:1rem; font-weight:600; margin-bottom:1rem;">Contact Info</h4>
+                <div style="display:flex; flex-direction:column; gap:.75rem; font-size:.85rem; color:rgba(255,255,255,.45);">
+                    <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="11727e7f6570726551757477783c7c7075707670627270633f7e6376">magagascar.defi@gmail.com</a></span>
+                    <span>+261-3400 133 00</span>
+                    <span>Village Emmergent d'Ambolomanjakarivo<br>RN1 – PK64, Soamahamanina</span>
                 </div>
             </div>
         </div>
-        <hr class="my-8 border-gray-700">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-            <p class="text-gray-300 text-sm">Copyright © 2025. All rights reserved.</p>
-            <div class="flex space-x-6 mt-4 md:mt-0">
-                <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Privacy Policy</a>
-                <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Terms of Service</a>
-                <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Cookie Policy</a>
-            </div>
+        <hr style="border:none; border-top:1px solid rgba(255,255,255,.08); margin:2rem 0;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+            <p style="color:rgba(255,255,255,.3); font-size:.8rem;">Copyright © 2025. All rights reserved.</p>
         </div>
     </div>
 </footer>
+
 
 <!-- Toast -->
 <div class="don-toast" id="donToast">

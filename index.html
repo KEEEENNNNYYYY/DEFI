@@ -25,6 +25,26 @@
     <link rel="stylesheet" href="css/impact.css">
     <link rel="stylesheet" href="css/carousel.css">
     <link rel="stylesheet" href="css/gallery.css">
+    <style>
+        /* ── Images dans la section impact (même comportement que les vidéos) ── */
+        .impact-video-stack img.impact-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            display: block;
+        }
+        .impact-video-stack img.impact-video.active {
+            opacity: 1;
+        }
+        /* Filtre assombri renforcé sur le cadre impact */
+        .impact-stage-overlay--dark {
+            background: rgba(0, 0, 0, 0.52) !important;
+        }
+    </style>
 
     <!-- Scripts (defer = non bloquants) -->
     <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -88,14 +108,14 @@
                         <div class="mega-container">
                             <div class="mega-column">
                                 <h3>Notre organisation</h3>
-                                <a href="#about">Qui sommes-nous ?</a>
-                                <a href="#historique">Historique</a>
+                                <a href="index.html#about">Qui sommes-nous ?</a>
+                                <a href="index.html#historique">Historique</a>
                                 <a href="team.html">Notre equipe</a>
                             </div>
                             <div class="mega-column">
                                 <h3>Nos actions</h3>
                                 <a href="recente-mission.html">Projets</a>
-                                <a href="#impact">Impact</a>
+                                <a href="index.html#impact">Impact</a>
                                 <a href="recente-mission.html">Nos missions</a>
                             </div>
                             <div class="mega-column">
@@ -106,7 +126,7 @@
                     </div>
                 </div>
 
-                <a href="#gallerie">Gallerie</a>
+                <a href="index.html#gallerie">Gallerie</a>
 
                 <!-- Contact -->
                 <div class="nav-item nav-mega">
@@ -130,12 +150,12 @@
         <div id="mobile-menu" class="mobile-menu">
             <div>
                 <nav>
-                    <a href="#home">Accueil</a>
-                    <a href="#about">A propos</a>
-                    <a href="#services">Projets</a>
-                    <a href="#testimonials">Equipe</a>
-                    <a href="#valeurs">Valeurs</a>
-                    <a href="#contact">Contact</a>
+                    <a href="index.html">Accueil</a>
+                    <a href="index.html#about">A propos</a>
+                    <a href="recente-mission.html">Projets</a>
+                    <a href="team.html">Equipe</a>
+                    <a href="index.html#valeurs">Valeurs</a>
+                    <a href="contact.html">Contact</a>
                 </nav>
             </div>
         </div>
@@ -154,7 +174,7 @@
                 <div class="name">et social</div>
                 <div class="des">Créons des opportunités durables pour sortir de la précarité.</div>
                 <div class="btn">
-                    <button>See More</button>
+                    <a href="recente-mission.html"><button>Découvrir</button></a>
                 </div>
             </div>
         </div>
@@ -165,7 +185,7 @@
                 <div class="name"> et tourisme</div>
                 <div class="des">Préserver et faire rayonner le patrimoine unique de Madagascar.</div>
                 <div class="btn">
-                    <button>See More</button>
+                    <a href="recente-mission.html"><button>Découvrir</button></a>
                 </div>
             </div>
         </div>
@@ -176,8 +196,7 @@
                 <div class="name"> et énergies vertes</div>
                 <div class="des">Agir pour la résilience écologique et la transition énergétique locale.</div>
                 <div class="btn">
-                    <button>See More</button>
-                    <button>Subscribe</button>
+                    <a href="recente-mission.html"><button>Découvrir</button></a>
                 </div>
             </div>
         </div>
@@ -188,7 +207,7 @@
                 <div class="name"> physique et mentale</div>
                 <div class="des">Garantir l'accès aux soins et au bien-être pour tous.</div>
                 <div class="btn">
-                    <button>See More</button>
+                    <a href="recente-mission.html"><button>Découvrir</button></a>
                 </div>
             </div>
         </div>
@@ -359,31 +378,28 @@
                 </button>
             </nav>
 
-            <!-- Vidéo centrale -->
+            <!-- Média central (images + 1 vidéo environnement) -->
             <div class="impact-stage">
                 <div class="impact-video-stack">
-                    <video class="impact-video active" data-tag="developpement"
-                           autoplay muted loop playsinline preload="metadata">
-                        <source src="assets/DSC_0705.MOV" type="video/mp4">
-                    </video>
-                    <video class="impact-video" data-tag="sante"
-                           muted loop playsinline preload="none"
-                           data-src="assets/DSC_0705.MOV">
-                    </video>
+                    <!-- Développement : groupe de femmes avec fruits/légumes -->
+                    <img class="impact-video active" data-tag="developpement"
+                         src="assets/DSC_0010.JPG" alt="Développement économique">
+                    <!-- Santé : distribution de médicaments aux enfants -->
+                    <img class="impact-video" data-tag="sante"
+                         src="assets/DSC_0308.JPG" alt="Santé communautaire">
+                    <!-- Environnement : vidéo conservée -->
                     <video class="impact-video" data-tag="environnement"
                            muted loop playsinline preload="none"
                            data-src="assets/DSC_0705.MOV">
                     </video>
-                    <video class="impact-video" data-tag="culture"
-                           muted loop playsinline preload="none"
-                           data-src="assets/DSC_0705.MOV">
-                    </video>
-                    <video class="impact-video" data-tag="jeunesse"
-                           muted loop playsinline preload="none"
-                           data-src="assets/DSC_0705.MOV">
-                    </video>
+                    <!-- Culture : échange culturel sino-malgache -->
+                    <img class="impact-video" data-tag="culture"
+                         src="assets/DSC_0317.JPG" alt="Culture et échanges">
+                    <!-- Jeunesse : célébration 8 mars, jeunes femmes -->
+                    <img class="impact-video" data-tag="jeunesse"
+                         src="assets/DSC_0133.JPG" alt="Jeunesse et formation">
                 </div>
-                <div class="impact-stage-overlay"></div>
+                <div class="impact-stage-overlay impact-stage-overlay--dark"></div>
                 <div class="impact-stage-label">
                     <span class="stage-label-num">01</span>
                     <span class="stage-label-text">Développement</span>
@@ -545,7 +561,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
-                        <span class="text-gray-300"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d7b4b8b9a3b6b4a397b3b2b1befabab6b3b6b0b6a4b4b6a5f9b8a5b0">[email&#160;protected]</a></span>
+                        <span class="text-gray-300"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d7b4b8b9a3b6b4a397b3b2b1befabab6b3b6b0b6a4b4b6a5f9b8a5b0">madagascar.defi@gmail.com</a></span>
                     </div>
                     <div class="flex items-center">
                         <svg class="h-5 w-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -581,5 +597,48 @@
 
 <div id="notification" class="notification"></div>
 
+<script>
+    /* ── Patch impact.js : gère aussi les <img> dans .impact-video-stack ── */
+    document.addEventListener('DOMContentLoaded', function () {
+        const tags   = document.querySelectorAll('.impact-tag');
+        const medias = document.querySelectorAll('.impact-video-stack .impact-video');
+        const labelNum  = document.querySelector('.stage-label-num');
+        const labelText = document.querySelector('.stage-label-text');
+        const desc   = document.getElementById('impact-description');
+
+        tags.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const tag = btn.dataset.tag;
+
+                // boutons actifs
+                tags.forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+
+                // médias actifs (video ET img)
+                medias.forEach(function (m) {
+                    if (m.dataset.tag === tag) {
+                        m.classList.add('active');
+                        // si c'est une vidéo lazy, charger la source
+                        if (m.tagName === 'VIDEO' && m.dataset.src && !m.src) {
+                            m.src = m.dataset.src;
+                            m.play();
+                        }
+                    } else {
+                        m.classList.remove('active');
+                        if (m.tagName === 'VIDEO') { try { m.pause(); } catch(e){} }
+                    }
+                });
+
+                // label + description
+                if (labelNum)  labelNum.textContent  = btn.querySelector('.tag-num').textContent;
+                if (labelText) labelText.textContent = btn.querySelector('.tag-label').textContent;
+                if (desc && btn.dataset.text) desc.textContent = btn.dataset.text;
+
+                const link = document.getElementById('impact-link');
+                if (link && btn.dataset.link) link.href = btn.dataset.link;
+            });
+        });
+    });
+</script>
 </body>
 </html>
