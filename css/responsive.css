@@ -1,0 +1,796 @@
+/* ════════════════════════════════════════════════════════════
+   DEFI MADAGASCAR — responsive.css
+   Correctifs responsive pour toutes les pages.
+   À inclure EN DERNIER dans chaque <head>, après tous les
+   autres CSS.
+
+   Breakpoints utilisés :
+     ≤ 1024px  — tablette paysage / petit laptop
+     ≤  768px  — tablette portrait
+     ≤  640px  — grand mobile (landscape)
+     ≤  480px  — mobile portrait standard
+     ≤  380px  — petit mobile (SE, Galaxy A)
+════════════════════════════════════════════════════════════ */
+
+/* ────────────────────────────────────────────────────────────
+   0.  BASE GLOBALE
+   overflow-x global pour éviter les débordements horizontaux
+   sur tous les écrans
+──────────────────────────────────────────────────────────── */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* ════════════════════════════════════════════════════════════
+   1.  HEADER / NAVBAR  (header.css)
+════════════════════════════════════════════════════════════ */
+
+/* Logo trop grand sur mobile */
+@media (max-width: 768px) {
+    .logo {
+        max-height: 40px !important;
+        width: auto !important;
+        height: auto !important;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .nav-inner {
+        padding: 0.75rem 0;
+    }
+
+    /* Bouton hamburger bien visible */
+    .mobile-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        padding: 0.4rem;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 0.375rem;
+    }
+
+    /* Sur les pages à navbar blanche, le bouton doit aussi être sombre */
+    .glass-navbar[style*="background: #fff"] .mobile-button,
+    .glass-navbar[style*="background-color: white"] .mobile-button {
+        background: #f3f4f6;
+        border-color: #e5e7eb;
+    }
+
+    /* Mega-menu désactivé sur mobile : on utilise uniquement le mobile-menu */
+    .mega-dropdown {
+        display: none !important;
+    }
+}
+
+/* Menu mobile : padding et espacement */
+@media (max-width: 768px) {
+    .mobile-menu > div {
+        border-radius: 0 0 0.75rem 0.75rem;
+        margin: 0;
+        padding: 1.25rem 1.5rem;
+    }
+
+    .mobile-menu nav {
+        gap: 1rem;
+    }
+
+    .mobile-menu a {
+        font-size: 0.95rem;
+        padding: 0.35rem 0;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        display: block;
+    }
+
+    .mobile-menu a:last-child {
+        border-bottom: none;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   2.  HERO CAROUSEL  (hero.css)
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .carousel {
+        height: 100svh; /* 100vh sécurisé sur iOS */
+    }
+
+    .item .content {
+        width: calc(100% - 2.5rem);
+        left: 1.25rem;
+        right: 1.25rem;
+        top: 50%;
+    }
+
+    .content .title,
+    .content .name {
+        font-size: clamp(1.6rem, 7vw, 2.5rem);
+        line-height: 1.1;
+    }
+
+    .content .des {
+        font-size: 0.9rem;
+        margin-top: 0.75rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .content .btn button {
+        padding: 0.6rem 1.1rem;
+        font-size: 0.85rem;
+    }
+
+    /* Flèches centrées en bas */
+    .arrows {
+        top: auto;
+        bottom: 2rem;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .content .title,
+    .content .name {
+        font-size: clamp(1.3rem, 8vw, 2rem);
+    }
+
+    .content .des {
+        font-size: 0.82rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .arrows {
+        bottom: 1.5rem;
+    }
+
+    .arrows button {
+        width: 42px;
+        height: 42px;
+        font-size: 14px;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   3.  ABOUT  (about.css)
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    /* Le trapèze de fond : réduit en hauteur */
+    .about::before {
+        height: 420px;
+    }
+
+    .about-wrap {
+        padding: 0 1.25rem;
+    }
+
+    /* Bloc mission : empilé */
+    .block-mission {
+        grid-template-columns: 1fr !important;
+        min-height: auto !important;
+        margin-bottom: 4rem;
+    }
+
+    .mission-img {
+        height: 280px;
+    }
+
+    .mission-text {
+        padding: 2rem 1.5rem !important;
+        border-left: none !important;
+        border-top: 3px solid var(--lime-solid, #14ff72) !important;
+    }
+
+    .mission-text h2 {
+        font-size: clamp(1.2rem, 5vw, 1.6rem);
+    }
+
+    /* Bloc histoire */
+    .histoire-band {
+        height: 300px;
+    }
+
+    .histoire-year {
+        font-size: clamp(3.5rem, 12vw, 5rem);
+        bottom: 2rem;
+        left: 1.5rem;
+    }
+
+    .histoire-card {
+        position: relative !important;
+        bottom: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+        padding: 2rem 1.5rem !important;
+    }
+
+    /* Bloc piliers */
+    .block-piliers {
+        margin-left: -1.25rem !important;
+        margin-right: -1.25rem !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+        margin-top: 4rem;
+    }
+
+    .piliers-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .pilier-card {
+        height: 260px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .about::before {
+        height: 340px;
+    }
+
+    .mission-img {
+        height: 220px;
+    }
+
+    .histoire-band {
+        height: 240px;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   4.  IMPACT  (impact.css)
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .impact-body {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto !important;
+        gap: 1.25rem;
+    }
+
+    .impact-stage {
+        grid-column: auto !important;
+        min-height: 280px !important;
+    }
+
+    /* Tags en rangée scrollable horizontalement */
+    .impact-tags {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 0.5rem;
+        gap: 0 !important;
+        border-left: none !important;
+        border-top: 1px solid rgba(255,255,255,.08) !important;
+        padding-top: 0.75rem !important;
+    }
+
+    .impact-tags::-webkit-scrollbar { display: none; }
+
+    .impact-tag {
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        border-left: none !important;
+        border-bottom: 2px solid transparent !important;
+        padding: 0.5rem 0.9rem !important;
+        margin-left: 0 !important;
+    }
+
+    .impact-tag.active {
+        border-bottom-color: #14ff72 !important;
+        border-left-color: transparent !important;
+    }
+
+    .tag-arrow { display: none; }
+
+    .impact-info {
+        border-left: none !important;
+        padding-left: 0 !important;
+        padding-top: 1rem !important;
+        border-top: 1px solid rgba(255,255,255,.08) !important;
+    }
+
+    .impact-stat {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .stat-num { font-size: 2.5rem; }
+
+    /* Label sur l'image */
+    .stage-label-num {
+        font-size: 2.5rem;
+    }
+
+    .stage-label-text {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .impact-stage { min-height: 230px !important; }
+    .impact-wrap  { padding: 0 1rem; }
+    .impact { padding: 3rem 0 2.5rem; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   5.  GALLERY  (gallery.css)
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .gallery::before {
+        height: 260px;
+    }
+
+    .gallery-wrap {
+        padding: 0 1.25rem;
+    }
+
+    .gallery-header {
+        padding-top: 3.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .gallery-title {
+        font-size: clamp(2rem, 9vw, 3rem);
+    }
+
+    /* La grille devient 2 colonnes fixes */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-auto-rows: 180px !important;
+        gap: 4px !important;
+    }
+
+    .g-wide { grid-column: span 2; }
+    .g-tall { grid-row: span 1; } /* annule le tall sur mobile */
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr !important;
+        grid-auto-rows: 200px !important;
+    }
+
+    .g-wide { grid-column: span 1 !important; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   6.  VALEURS CAROUSEL  (carousel.css)
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .valeurs-wrap {
+        padding: 0 1.25rem;
+    }
+
+    .valeurs-header {
+        padding-top: 3.5rem;
+        padding-bottom: 2rem;
+    }
+
+    .valeurs-title {
+        font-size: clamp(1.8rem, 8vw, 3rem);
+    }
+
+    .slider-container {
+        height: 500px !important;
+    }
+
+    .slide {
+        width: 250px !important;
+        height: 460px !important;
+    }
+
+    .slide-2 { left: calc(50% + 240px) !important; }
+    .slide-8 { left: calc(50% - 240px - 250px) !important; }
+    .slide-3 { left: calc(50% + 480px) !important; opacity: 0.15 !important; }
+    .slide-7 { left: calc(50% - 480px - 250px) !important; opacity: 0.15 !important; }
+
+    .slider-progress {
+        width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-container {
+        height: 440px !important;
+    }
+
+    .slide {
+        width: 210px !important;
+        height: 400px !important;
+    }
+
+    .slide-2 { left: calc(50% + 200px) !important; opacity: 0.3 !important; }
+    .slide-8 { left: calc(50% - 200px - 210px) !important; opacity: 0.3 !important; }
+    .slide-3 { opacity: 0 !important; }
+    .slide-7 { opacity: 0 !important; }
+
+    .slider-progress { width: 210px; }
+
+    .arrow {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   7.  CONTACT PAGE  (contact.css)
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .c-wrap {
+        padding: 0 1.25rem;
+    }
+
+    .c-header {
+        padding: 5.5rem 0 2rem; /* espace pour la navbar fixe */
+        max-width: 100% !important;
+    }
+
+    .c-title {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+    }
+
+    .c-subtitle {
+        font-size: 0.88rem;
+    }
+
+    .c-stats {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .c-stat-divider {
+        display: none;
+    }
+
+    .c-body {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+
+    .c-form {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .c-form-row {
+        grid-template-columns: 1fr !important;
+    }
+
+    .c-trust {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .c-header { padding-top: 5rem; }
+
+    .c-item {
+        padding: 0.9rem 1rem;
+        gap: 0.75rem;
+    }
+
+    .c-item-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .c-item-value {
+        font-size: 0.82rem;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   8.  DONATION PAGE  (donation.css)
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .don-wrap {
+        padding: 0 1.25rem;
+    }
+
+    .don-header {
+        padding: 5.5rem 0 2rem;
+        max-width: 100% !important;
+    }
+
+    .don-title {
+        font-size: clamp(1.8rem, 7vw, 2.8rem);
+    }
+
+    .don-body {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+
+    .don-img-wrap {
+        height: 280px !important;
+    }
+
+    /* Triangles décoratifs : réduits sur mobile */
+    .don-tri {
+        width: 60%;
+        height: 35%;
+    }
+
+    .don-tri-bl {
+        width: 60%;
+        height: 35%;
+    }
+
+    .don-stats {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .don-stat-divider {
+        display: none;
+    }
+
+    .don-card {
+        padding: 1rem 1.1rem;
+    }
+
+    .don-card-number {
+        font-size: 1rem !important;
+    }
+
+    .don-bank {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .don-trust {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .don-header { padding-top: 5rem; }
+
+    .don-card {
+        flex-wrap: wrap;
+    }
+
+    .don-copy-btn {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.25rem;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   9.  RECENTE-MISSION PAGE  (styles inline)
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 110px 1.25rem 60px !important;
+    }
+
+    .hero-title {
+        font-size: clamp(1.8rem, 7vw, 2.8rem) !important;
+    }
+
+    .hero-subtitle {
+        font-size: 0.88rem !important;
+    }
+
+    .page-content {
+        padding: 2.5rem 1.25rem 4rem !important;
+    }
+
+    /* Timeline : réduit l'espace */
+    .tl-item {
+        gap: 0 1.1rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .tl-title {
+        font-size: 0.95rem !important;
+    }
+
+    .tl-desc {
+        font-size: 0.85rem !important;
+    }
+
+    /* Image timeline pleine largeur */
+    .tl-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-top: 1rem;
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-hero {
+        padding: 100px 1rem 50px !important;
+    }
+
+    .ghost-text {
+        font-size: clamp(3rem, 15vw, 6rem) !important;
+    }
+
+    .tl-img {
+        height: 170px;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   10. TEAM PAGE  (styles inline dans team.html)
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .team-hero {
+        min-height: 44vh;
+        padding: 6rem 1.5rem 3.5rem !important;
+        align-items: flex-start !important;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 10vw, 4.5rem) !important;
+        line-height: 1 !important;
+    }
+
+    .hero-desc {
+        font-size: 0.88rem !important;
+        max-width: 100% !important;
+    }
+
+    .team-section {
+        padding: 4rem 1.5rem 5rem !important;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem !important;
+    }
+
+    .member-top {
+        padding: 1.5rem 1.5rem 1rem !important;
+    }
+
+    .member-quote {
+        padding: 1.1rem 1.5rem 1.5rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    .member-wiki-wrap {
+        padding: 0 1.5rem 1.5rem !important;
+    }
+
+    .stat-strip {
+        grid-template-columns: 1fr !important;
+        margin-top: 3rem !important;
+    }
+
+    .stat-item {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255,255,255,.07) !important;
+        padding: 1.5rem 1.5rem !important;
+    }
+
+    .stat-item:last-child {
+        border-bottom: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-hero {
+        padding: 5.5rem 1.25rem 3rem !important;
+    }
+
+    .hero-ghost {
+        font-size: clamp(4rem, 20vw, 8rem) !important;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   11. FOOTER  (footer.css + inline styles)
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    /* Footer Tailwind (index.html) */
+    .bg-gray-900 .max-w-7xl {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+
+    /* Footer inline (autres pages) */
+    footer > div {
+        padding: 2.5rem 1.25rem !important;
+    }
+
+    /* Grille footer → 1 colonne */
+    footer > div > div:first-child {
+        grid-template-columns: 1fr !important;
+        gap: 1.75rem !important;
+    }
+
+    /* Flex copyright → colonne */
+    footer .flex.justify-between {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.5rem !important;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   12. PADDING NAVBAR  — espace sous la navbar fixe
+   S'assure que le contenu n'est pas masqué par la navbar
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    /* Pages avec hero plein-écran : le carousel gère son propre margin-top */
+    .page-hero,
+    .don-header,
+    .c-header {
+        padding-top: 5.5rem;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   13. TOAST — repositionné sur petit écran
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+    .c-toast,
+    .don-toast {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        width: auto !important;
+        font-size: 0.8rem;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   14. ACCESSIBILITÉ — touch targets minimum 44×44px
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .arrow,
+    .c-submit,
+    .don-copy-btn,
+    .member-wiki-btn,
+    .mobile-button {
+        min-height: 44px;
+    }
+
+    .impact-tag {
+        min-height: 44px;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   15. MEGA-CONTAINER — grille sur tablette
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+    .mega-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        padding: 2.5rem 1.5rem !important;
+    }
+}
